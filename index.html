@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -26,6 +25,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
   <!-- ===================================================
+       مكتبة AOS (Animate On Scroll) للتحريكات
+       =================================================== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+  <!-- ===================================================
        إعداد Tailwind Config - اللون الرئيسي الزيتي
        =================================================== -->
   <script>
@@ -43,6 +48,58 @@
           },
           fontFamily: {
             cairo: ['Cairo', 'sans-serif'],
+          },
+          keyframes: {
+            'float': {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            'pulse-glow': {
+              '0%, 100%': { boxShadow: '0 0 0 0 rgba(22, 98, 90, 0.7)' },
+              '50%': { boxShadow: '0 0 0 10px rgba(22, 98, 90, 0)' },
+            },
+            'spin-slow': {
+              'from': { transform: 'rotate(0deg)' },
+              'to': { transform: 'rotate(360deg)' },
+            },
+            'shimmer': {
+              '0%': { backgroundPosition: '-1000px 0' },
+              '100%': { backgroundPosition: '1000px 0' },
+            },
+            'bounce-slow': {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            'sway': {
+              '0%, 100%': { transform: 'translateX(0) rotate(0deg)' },
+              '25%': { transform: 'translateX(10px) rotate(2deg)' },
+              '75%': { transform: 'translateX(-10px) rotate(-2deg)' },
+            },
+            'rotate-slow': {
+              'from': { transform: 'rotate(0deg)' },
+              'to': { transform: 'rotate(360deg)' },
+            },
+            'wave': {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '25%': { transform: 'translateY(-10px)' },
+              '50%': { transform: 'translateY(0px)' },
+              '75%': { transform: 'translateY(10px)' },
+            },
+            'glow': {
+              '0%, 100%': { boxShadow: '0 0 5px rgba(22, 98, 90, 0.3)' },
+              '50%': { boxShadow: '0 0 20px rgba(22, 98, 90, 0.6)' },
+            },
+          },
+          animation: {
+            'float': 'float 3s ease-in-out infinite',
+            'pulse-glow': 'pulse-glow 2s infinite',
+            'spin-slow': 'spin-slow 20s linear infinite',
+            'shimmer': 'shimmer 8s ease-in-out infinite',
+            'bounce-slow': 'bounce-slow 2s ease-in-out infinite',
+            'sway': 'sway 4s ease-in-out infinite',
+            'rotate-slow': 'rotate-slow 15s linear infinite',
+            'wave': 'wave 3s ease-in-out infinite',
+            'glow': 'glow 2s ease-in-out infinite',
           }
         }
       }
@@ -50,6 +107,251 @@
   </script>
 
   <style>
+    /* ===================================================
+       تحريكات CSS مخصصة وتأثيرات عامة
+       ================================================== */
+    
+    * {
+      transition: all 0.3s ease;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ffffff 0%, #f5fffe 100%);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* خلفية متحركة بعناصر هندسية */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(22, 98, 90, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(22, 98, 90, 0.02) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+      animation: shimmer 8s ease-in-out infinite;
+    }
+
+    /* تأثيرات الأزرار والروابط */
+    button, a {
+      position: relative;
+      overflow: hidden;
+    }
+
+    button::before, a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(22, 98, 90, 0.1);
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    button:hover::before, a:hover::before {
+      left: 100%;
+    }
+
+    /* تأثير الظهور على التمرير */
+    .reveal {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* تحريك البطاقات */
+    .portfolio-card {
+      animation: slideIn 0.6s ease-out forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .portfolio-card {
+      animation: sway 4s ease-in-out infinite !important;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(22, 98, 90, 0.15);
+      animation: none !important;
+    }
+
+    /* تحريك الصور في البطاقات */
+    .card-img {
+      animation: zoomIn 0.8s ease-out forwards, wave 3s ease-in-out infinite 0.8s;
+    }
+
+    @keyframes zoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* تحريك الأيقونات */
+    .whatsapp-pulse {
+      animation: pulse-glow 2s infinite, sway 4s ease-in-out infinite;
+    }
+
+    i {
+      animation: rotate-slow 20s linear infinite;
+    }
+
+    .fa-whatsapp, .fa-x-twitter, .fa-envelope {
+      animation: glow 2s ease-in-out infinite, rotate-slow 15s linear infinite;
+    }
+
+    /* تحريك النصوص */
+    h1, h2, h3 {
+      animation: slideInDown 0.8s ease-out;
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* تحريك أشرطة المهارات */
+    .skill-bar {
+      animation: fillBar 1.5s ease-out forwards;
+    }
+
+    @keyframes fillBar {
+      from {
+        width: 0;
+        opacity: 0;
+      }
+      to {
+        width: 100%;
+        opacity: 1;
+      }
+    }
+
+    /* تحريك الشارات والعلامات */
+    .badge, span[style*="background:#e8f4f3"] {
+      animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: scale(0);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* تحريك الصور الشخصية */
+    .rounded-full {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    /* تحريك أزرار التنقل في المودال */
+    #prev-img, #next-img {
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    #prev-img:hover, #next-img:hover {
+      transform: scale(1.15) rotate(5deg);
+      background-color: #16625a !important;
+      color: white !important;
+    }
+
+    /* تحريك العناصر عند التمرير */
+    .aos-animate {
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    /* تأثير الماوس على الأزرار */
+    .btn-primary, .btn-outline, .contact-btn {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary:hover, .btn-outline:hover, .contact-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(22, 98, 90, 0.2);
+    }
+
+    /* تحريك الفوتر */
+    footer {
+      animation: slideUp 0.8s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* تحريك العناصر في الهيدر */
+    .navbar {
+      animation: slideDown 0.8s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     /* ===================================================
        الأنماط العامة والمتغيرات
        =================================================== */
@@ -258,1201 +560,5 @@
       cursor: pointer;
       transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
       display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      text-decoration: none;
-    }
-    .btn-primary:hover {
-      background: #0f4540;
-      border-color: #0f4540;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(22,98,90,0.35);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: #16625a;
-      border: 2px solid #16625a;
-      padding: 0.75rem 2rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      text-decoration: none;
-    }
-    .btn-outline:hover {
-      background: #16625a;
-      color: #fff;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(22,98,90,0.25);
-    }
-
-    /* ===================================================
-       أزرار التواصل الاجتماعي
-       =================================================== */
-    .contact-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      padding: 1rem 1.5rem;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 1rem;
-      text-decoration: none;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: none;
-      cursor: pointer;
-    }
-    .contact-btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-    }
-
-    /* ===================================================
-       حقول النموذج
-       =================================================== */
-    .form-input {
-      width: 100%;
-      padding: 0.85rem 1.1rem;
-      border: 1.5px solid #d1d5db;
-      border-radius: 10px;
-      font-family: 'Cairo', sans-serif;
-      font-size: 0.95rem;
-      color: #1a1a2e;
-      background: #fff;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      outline: none;
-    }
-    .form-input:focus {
-      border-color: #16625a;
-      box-shadow: 0 0 0 3px rgba(22,98,90,0.12);
-    }
-    .form-input::placeholder { color: #9ca3af; }
-
-    /* ===================================================
-       قسم الإحصائيات
-       =================================================== */
-    .stat-card {
-      text-align: center;
-      padding: 1.5rem;
-      border-radius: 16px;
-      background: #fff;
-      box-shadow: 0 2px 15px rgba(22,98,90,0.08);
-      transition: transform 0.3s ease;
-    }
-    .stat-card:hover { transform: translateY(-4px); }
-
-    /* ===================================================
-       تأثير ظهور العناصر عند التمرير (Scroll Animation)
-       =================================================== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ===================================================
-       فلاتر الأعمال
-       =================================================== */
-    .filter-btn {
-      padding: 0.45rem 1.2rem;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      border: 1.5px solid #d1d5db;
-      background: #fff;
-      color: #6b7280;
-      transition: all 0.3s ease;
-    }
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: #16625a;
-      border-color: #16625a;
-      color: #fff;
-    }
-
-    /* ===================================================
-       الفوتر
-       =================================================== */
-    footer {
-      background: linear-gradient(135deg, #0f4540 0%, #16625a 100%);
-    }
-
-    /* ===================================================
-       تأثير نبضة على أيقونة الواتساب
-       =================================================== */
-    .whatsapp-pulse {
-      position: relative;
-    }
-    .whatsapp-pulse::before {
-      content: '';
-      position: absolute;
-      inset: -6px;
-      border-radius: 50%;
-      background: rgba(37, 211, 102, 0.3);
-      animation: pulse-ring 1.8s ease-out infinite;
-    }
-    @keyframes pulse-ring {
-      0%   { transform: scale(0.8); opacity: 0.8; }
-      100% { transform: scale(1.5); opacity: 0; }
-    }
-
-    /* ===================================================
-       مؤشر التحميل للصور
-       =================================================== */
-    .img-skeleton {
-      background: linear-gradient(90deg, #e8f4f3 25%, #c2dedd 50%, #e8f4f3 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
-    }
-    @keyframes shimmer {
-      0%   { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-
-    /* ===================================================
-       تعديلات الاستجابة للشاشات الصغيرة
-       =================================================== */
-    @media (max-width: 640px) {
-      .card-img { height: 200px; }
-      #hero h1 { font-size: 2rem !important; }
-    }
-  </style>
-</head>
-
-<body class="font-cairo">
-
-  <!-- ===================================================
-       الهيدر / شريط التنقل
-       =================================================== -->
-  <header id="navbar" class="fixed top-0 right-0 left-0 z-50 py-3 px-4 md:px-8">
-    <nav class="max-w-6xl mx-auto flex items-center justify-between">
-
-      <!-- الشعار النصي -->
-      <a href="#hero" class="flex items-center gap-2 group">
-        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-black text-lg"
-             style="background: linear-gradient(135deg, #16625a, #1d7d73);">أ</div>
-        <span class="font-black text-xl tracking-tight" style="color:#16625a;">
-          أبو محمد<span class="text-gray-800"> | مصمم ومبدع بصري</span>
-        </span>
-      </a>
-
-      <!-- روابط التنقل - الشاشات الكبيرة -->
-      <ul class="hidden md:flex items-center gap-8 text-gray-600 font-semibold text-[0.95rem]">
-        <li><a href="#hero"      class="nav-link active">الرئيسية</a></li>
-        <li><a href="#portfolio" class="nav-link">أعمالي</a></li>
-        <li><a href="#about"     class="nav-link">عني</a></li>
-        <li><a href="#contact"   class="nav-link">تواصل معي</a></li>
-      </ul>
-
-      <!-- زر التواصل + زر القائمة للجوال -->
-      <div class="flex items-center gap-3">
-        <a href="#contact" class="hidden md:inline-flex btn-primary text-sm py-2 px-5">
-          <i class="fa-solid fa-paper-plane"></i> تواصل معي
-        </a>
-        <!-- زر القائمة الجانبية للجوال -->
-        <button id="menu-toggle" class="md:hidden w-10 h-10 rounded-xl flex items-center justify-center border border-gray-200 bg-white/80 text-gray-600"
-                aria-label="القائمة">
-          <i class="fa-solid fa-bars text-lg"></i>
-        </button>
-      </div>
-    </nav>
-
-    <!-- القائمة الجانبية للجوال -->
-    <div id="mobile-menu"
-         class="md:hidden overflow-hidden transition-all duration-300 max-h-0 opacity-0">
-      <ul class="flex flex-col gap-1 pt-3 pb-2 px-2 text-gray-700 font-semibold text-[1rem]">
-        <li><a href="#hero"      class="block py-2 px-4 rounded-lg hover:bg-olive-pale hover:text-olive transition-colors" onclick="closeMobileMenu()">الرئيسية</a></li>
-        <li><a href="#portfolio" class="block py-2 px-4 rounded-lg hover:bg-olive-pale hover:text-olive transition-colors" onclick="closeMobileMenu()">أعمالي</a></li>
-        <li><a href="#about"     class="block py-2 px-4 rounded-lg hover:bg-olive-pale hover:text-olive transition-colors" onclick="closeMobileMenu()">عني</a></li>
-        <li><a href="#contact"   class="block py-2 px-4 rounded-lg hover:bg-olive-pale hover:text-olive transition-colors" onclick="closeMobileMenu()">تواصل معي</a></li>
-      </ul>
-    </div>
-  </header>
-
-  <!-- ===================================================
-       القسم الرئيسي - Hero Section
-       =================================================== -->
-  <section id="hero" class="min-h-screen flex items-center pt-20 pb-16 px-4 md:px-8">
-    <div class="max-w-6xl mx-auto w-full">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-
-        <!-- المحتوى النصي -->
-        <div class="order-2 md:order-1">
-          <!-- شارة صغيرة -->
-          <div class="inline-flex items-center gap-2 bg-white border border-olive-muted text-olive font-semibold text-sm px-4 py-2 rounded-full mb-6 shadow-sm">
-            <span class="w-2 h-2 rounded-full bg-olive animate-pulse"></span>
-            متاح للعمل الآن
-          </div>
-
-          <!-- العنوان الرئيسي -->
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-gray-900 mb-5">
-            أصنع
-            <span class="relative inline-block">
-              <span id="typed-text" class="text-olive"></span><span class="typed-cursor"></span>
-            </span>
-            <br/>تُعبّر عن هويتك
-          </h1>
-
-          <!-- الوصف -->
-          <p class="text-gray-500 text-lg leading-relaxed mb-8 max-w-lg">
-            مصمم جرافيك متخصص في بناء <strong class="text-gray-700">الشعارات</strong>،
-            <strong class="text-gray-700">الهويات البصرية</strong>، وتصاميم
-            <strong class="text-gray-700">السوشيال ميديا</strong> الاحترافية التي تترك أثراً لا يُنسى.
-          </p>
-
-          <!-- أزرار CTA -->
-          <div class="flex flex-wrap gap-4">
-            <a href="#portfolio" class="btn-primary">
-              <i class="fa-solid fa-eye"></i> شاهد أعمالي
-            </a>
-            <a href="#contact" class="btn-outline">
-              <i class="fa-solid fa-envelope"></i> تواصل معي
-            </a>
-          </div>
-
-          <!-- إحصائيات سريعة -->
-          <div class="flex flex-wrap gap-6 mt-10 pt-8 border-t border-gray-100">
-            <div>
-              <div class="text-3xl font-black text-olive">+180</div>
-              <div class="text-gray-500 text-sm font-medium">مشروع مكتمل</div>
-            </div>
-            <div class="w-px bg-gray-200"></div>
-            <div>
-              <div class="text-3xl font-black text-olive">+80</div>
-              <div class="text-gray-500 text-sm font-medium">عميل راضٍ</div>
-            </div>
-            <div class="w-px bg-gray-200"></div>
-            <div>
-              <div class="text-3xl font-black text-olive">5+</div>
-              <div class="text-gray-500 text-sm font-medium">سنوات خبرة</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- الصورة الشخصية -->
-        <div class="order-1 md:order-2 flex justify-center">
-          <div class="relative">
-            <!-- الدائرة الخلفية الزخرفية -->
-            <div class="absolute inset-0 rounded-full scale-110 pointer-events-none"
-                 style="background: radial-gradient(circle, rgba(22,98,90,0.12) 0%, transparent 70%);"></div>
-
-            <!-- ===================================================
-                 شعار أبو محمد - الهوية البصرية
-                 استبدل الرابط أدناه بصورة الشعار الخاصة بك
-                 مثال: src="images/logo.webp"
-                 =================================================== -->
-            <img
-              src="https://i.ibb.co/SDJYLgzQ/Artboard-1.jpg"
-              alt="شعار أحمد | مصمم ومبدع بصري"
-              class="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full object-cover border-4 border-white shadow-2xl relative z-10"
-            />
-
-            <!-- شارة التخصص -->
-            <div class="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-xl px-4 py-3 flex items-center gap-2 z-20 border border-gray-100">
-              <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white text-lg"
-                   style="background: linear-gradient(135deg, #16625a, #1d7d73);">
-                <i class="fa-solid fa-pen-nib"></i>
-              </div>
-              <div>
-                <div class="font-black text-gray-800 text-sm leading-none">مصمم ومبدع بصري</div>
-                <div class="text-olive text-xs font-semibold mt-0.5">Visual Creator</div>
-              </div>
-            </div>
-
-            <!-- شارة الخبرة -->
-            <div class="absolute -top-4 -left-4 bg-olive text-white rounded-2xl shadow-xl px-4 py-3 z-20">
-              <div class="font-black text-2xl leading-none">5+</div>
-              <div class="text-olive-muted text-xs font-semibold">سنوات خبرة</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================================================
-       قسم "عني" - About Section
-       =================================================== -->
-  <section id="about" class="py-20 px-4 md:px-8 bg-white">
-    <div class="max-w-6xl mx-auto">
-
-      <!-- عنوان القسم -->
-      <div class="text-center mb-14 reveal">
-        <span class="text-olive font-bold text-sm uppercase tracking-widest">من أنا</span>
-        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mt-2">قصتي مع التصميم</h2>
-        <div class="w-16 h-1 rounded-full mx-auto mt-4" style="background:#16625a;"></div>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-
-        <!-- النص -->
-        <div class="reveal">
-          <p class="text-gray-600 text-lg leading-relaxed mb-5">
-            أنا مصمم جرافيك أصمم شغفك وأروي قصتك بصرياً. أرافقك من الفكرة حتى اكتمال هويتك التجارية. تابعني لتطوير علامتك وإبداعك.
-          </p>
-          <p class="text-gray-600 text-lg leading-relaxed mb-8">
-            أتخصص في تصميم <strong class="text-gray-800">الهويات البصرية المتكاملة</strong>، الشعارات الاحترافية، وتصاميم منصات التواصل الاجتماعي التي تجذب الانتباه وتحقق أهداف العلامة التجارية.
-          </p>
-
-          <!-- المهارات -->
-          <div class="space-y-4">
-            <div>
-              <div class="flex justify-between text-sm font-semibold text-gray-700 mb-1">
-                <span>تصميم الشعارات والهوية البصرية</span><span class="text-olive">95%</span>
-              </div>
-              <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div class="h-full rounded-full bg-olive" style="width:95%; transition: width 1.5s ease;"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between text-sm font-semibold text-gray-700 mb-1">
-                <span>تصاميم السوشيال ميديا</span><span class="text-olive">90%</span>
-              </div>
-              <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div class="h-full rounded-full bg-olive" style="width:90%; transition: width 1.5s ease;"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between text-sm font-semibold text-gray-700 mb-1">
-                <span>تصميم المطبوعات والإعلانات</span><span class="text-olive">85%</span>
-              </div>
-              <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div class="h-full rounded-full bg-olive" style="width:85%; transition: width 1.5s ease;"></div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- بطاقات الأدوات -->
-        <div class="grid grid-cols-2 gap-4 reveal">
-          <div class="stat-card">
-            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl text-white"
-                 style="background: linear-gradient(135deg, #16625a, #1d7d73);">
-              <i class="fa-brands fa-adobe"></i>
-            </div>
-            <div class="font-bold text-gray-800">Adobe Illustrator</div>
-            <div class="text-gray-400 text-sm mt-1">متقدم</div>
-          </div>
-          <div class="stat-card">
-            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl text-white"
-                 style="background: linear-gradient(135deg, #16625a, #1d7d73);">
-              <i class="fa-solid fa-layer-group"></i>
-            </div>
-            <div class="font-bold text-gray-800">Adobe Photoshop</div>
-            <div class="text-gray-400 text-sm mt-1">متقدم</div>
-          </div>
-          <div class="stat-card">
-            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl text-white"
-                 style="background: linear-gradient(135deg, #16625a, #1d7d73);">
-              <i class="fa-solid fa-vector-square"></i>
-            </div>
-            <div class="font-bold text-gray-800">Figma</div>
-            <div class="text-gray-400 text-sm mt-1">محترف</div>
-          </div>
-          <div class="stat-card">
-            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl text-white"
-                 style="background: linear-gradient(135deg, #16625a, #1d7d73);">
-              <i class="fa-solid fa-film"></i>
-            </div>
-            <div class="font-bold text-gray-800">After Effects</div>
-            <div class="text-gray-400 text-sm mt-1">متوسط</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================================================
-       معرض الأعمال - Portfolio Section
-       =================================================== -->
-  <section id="portfolio" class="py-20 px-4 md:px-8" style="background:#f9fafb;">
-    <div class="max-w-6xl mx-auto">
-
-      <!-- عنوان القسم -->
-      <div class="text-center mb-10 reveal">
-        <span class="text-olive font-bold text-sm uppercase tracking-widest">معرض الأعمال</span>
-        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mt-2">أحدث أعمالي</h2>
-        <div class="w-16 h-1 rounded-full mx-auto mt-4" style="background:#16625a;"></div>
-        <p class="text-gray-500 mt-4 max-w-xl mx-auto">مجموعة مختارة من أبرز مشاريعي في تصميم الهويات البصرية والسوشيال ميديا</p>
-      </div>
-
-      <!-- أزرار الفلترة -->
-      <div class="flex flex-wrap justify-center gap-3 mb-10 reveal">
-        <button class="filter-btn active" data-filter="all">الكل</button>
-        <button class="filter-btn" data-filter="logo">شعارات</button>
-        <button class="filter-btn" data-filter="social">سوشيال ميديا</button>
-        <button class="filter-btn" data-filter="branding">هوية بصرية</button>
-        <button class="filter-btn" data-filter="print">مطبوعات</button>
-      </div>
-
-      <!-- شبكة الأعمال -->
-      <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!--
-          ===================================================
-          بطاقات الأعمال
-          لاستبدال الصور: غيّر قيمة data-img في كل بطاقة
-          مثال: data-img="images/project1.jpg"
-          وأيضاً قيمة src في الـ img داخل البطاقة
-          ===================================================
-        -->
-
-        <!-- بطاقة 1 - شعار -->
-        <div class="portfolio-card reveal"
-             data-category="logo"
-             data-title="شعار متجر رشفة"
-             data-desc="تصميم هوية بصرية يجمع بين “أصالة القهوة” و“حداثة الآلات”. سعيد بمشاركة نتيجة العمل على شعار “رشفة” (FIRST SIP)؛ حيث حاولت تجسيد شغف القهوة المختصة."
-             data-img="https://i.ibb.co/JjtvM4yJ/image.jpg"
-             data-tags="شعار، هوية بصرية، قهوة"
-             onclick="openModal(this)">
-          <!-- استبدل src بصورة مشروعك الحقيقية -->
-          <img src="https://i.ibb.co/JjtvM4yJ/image.jpg"
-               alt="شعار متجر رشفة" class="card-img" loading="lazy" />
-          <div class="card-overlay">
-            <div class="card-overlay-content">
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span class="text-xs bg-white/20 text-white px-2 py-0.5 rounded-full">شعار</span>
-              </div>
-              <h3 class="text-white font-bold text-lg">شعار متجر رشفة</h3>
-              <p class="text-white/80 text-sm mt-1">اضغط لعرض التفاصيل</p>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-gray-800">شعار متجر رشفة</h3>
-            <p class="text-gray-400 text-sm mt-1">هوية بصرية متكاملة</p>
-          </div>
-        </div>
-
-        <!-- بطاقة 2 - شعار -->
-        <div class="portfolio-card reveal"
-             data-category="logo"
-             data-title="شعار احترافي آب جول بي"
-             data-desc="تصميم شعار احترافي آب جول بي"
-             data-img="https://i.ibb.co/LjSQPB6/GVWgq9z-XEAA5u2-W.jpg"
-             data-tags="شعار، هوية بصرية، آب جول بي"
-             onclick="openModal(this)">
-          <!-- استبدل src بصورة مشروعك الحقيقية -->
-          <img src="https://i.ibb.co/LjSQPB6/GVWgq9z-XEAA5u2-W.jpg"
-               alt="شعار آب جول بي" class="card-img" loading="lazy" />
-          <div class="card-overlay">
-            <div class="card-overlay-content">
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span class="text-xs bg-white/20 text-white px-2 py-0.5 rounded-full">شعار</span>
-              </div>
-              <h3 class="text-white font-bold text-lg">شعار احترافي آب جول بي</h3>
-              <p class="text-white/80 text-sm mt-1">اضغط لعرض التفاصيل</p>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-gray-800">شعار احترافي آب جول بي</h3>
-            <p class="text-gray-400 text-sm mt-1">تصميم شعار احترافي</p>
-          </div>
-        </div>
-
-        <!-- بطاقة 3 - شعار -->
-        <div class="portfolio-card reveal"
-             data-category="logo"
-             data-title="شعار عطور الركن العماني"
-             data-desc="للأناقة تفاصيل، وللفخامة عنوان.. 🌟\nفي #عطور_الركن_العماني نختزل سحر الشرق وعراقة التراث في زجاجة عطر تأسر الحواس وتترك خلفك أثراً لا يُنسى.✨\n\nاكتشف تشكيلتنا الفاخرة الآن واستمتع برائحة الثقة والتميز. 💫📋"
-             data-img="https://i.ibb.co/sdNwdn0n/GNSv-Jcu-Xg-AEqe-r.jpg"
-             data-tags="شعار، عطور، هوية بصرية"
-             onclick="openModal(this)">
-          <!-- استبدل src بصورة مشروعك الحقيقية -->
-          <img src="https://i.ibb.co/sdNwdn0n/GNSv-Jcu-Xg-AEqe-r.jpg"
-               alt="شعار عطور الركن العماني" class="card-img" loading="lazy" />
-          <div class="card-overlay">
-            <div class="card-overlay-content">
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span class="text-xs bg-white/20 text-white px-2 py-0.5 rounded-full">شعار</span>
-              </div>
-              <h3 class="text-white font-bold text-lg">شعار عطور الركن العماني</h3>
-              <p class="text-white/80 text-sm mt-1">اضغط لعرض التفاصيل</p>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-gray-800">شعار عطور الركن العماني</h3>
-            <p class="text-gray-400 text-sm mt-1">تصميم شعار احترافي</p>
-          </div>
-        </div>
-
-        <!-- بطاقة 4 - شعار -->
-        <div class="portfolio-card reveal"
-             data-category="logo"
-             data-title="شعار عطور الركن العماني"
-             data-desc="بين أصالة الشرق وفخامة العطر.. ✨\nسعدت بمشاركة هويتي البصرية وشعاري الجديد لـ #عطور_الركن_العماني، حيث دمجت زجاجة العطر بنقوش تراثية تعكس عراقة العلامة وتميزها."
-             data-img="https://i.ibb.co/v4Brgf7J/GNSv-YIq-Ww-AAzq-IO.jpg"
-             data-tags="شعار، عطور، هوية بصرية"
-             onclick="openModal(this)">
-          <!-- استبدل src بصورة مشروعك الحقيقية -->
-          <img src="https://i.ibb.co/v4Brgf7J/GNSv-YIq-Ww-AAzq-IO.jpg"
-               alt="شعار عطور الركن العماني" class="card-img" loading="lazy" />
-          <div class="card-overlay">
-            <div class="card-overlay-content">
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span class="text-xs bg-white/20 text-white px-2 py-0.5 rounded-full">شعار</span>
-              </div>
-              <h3 class="text-white font-bold text-lg">شعار عطور الركن العماني</h3>
-              <p class="text-white/80 text-sm mt-1">اضغط لعرض التفاصيل</p>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-gray-800">شعار عطور الركن العماني</h3>
-            <p class="text-gray-400 text-sm mt-1">تصميم شعار احترافي</p>
-          </div>
-        </div>
-
-        <!-- بطاقة 5 - سوشيال ميديا -->
-        <div class="portfolio-card reveal"
-             data-category="social"
-             data-title="تصميم بوستات انستقرام"
-             data-desc="لكل مصمم جرافيك يبحث عن التميز والاحترافية في تصاميمه.. 🎨✨\n\nيعتبر موقع Unsplash من أفضل المنصات اللي توفر صور بجودة عالية جداً (HD) ومجانية للاستخدام التجاري والشخصي، وبتختصر عليك وقت طويل بالبحث! 📸🚀\n\nصممت هذا البوستر البسيط لمشاركة الفائدة معكم، أتمنى يفيدكم."
-             data-img="https://i.ibb.co/2HZmNtd/484368514-680527151073765-7184615620821510600-n.jpg"
-             data-tags="سوشيال ميديا، انستقرام، تصميم"
-             onclick="openModal(this)">
-          <!-- استبدل src بصورة مشروعك الحقيقية -->
-          <img src="https://i.ibb.co/2HZmNtd/484368514-680527151073765-7184615620821510600-n.jpg"
-               alt="تصميم بوستات انستقرام" class="card-img" loading="lazy" />
-          <div class="card-overlay">
-            <div class="card-overlay-content">
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span class="text-xs bg-white/20 text-white px-2 py-0.5 rounded-full">سوشيال ميديا</span>
-              </div>
-              <h3 class="text-white font-bold text-lg">تصميم بوستات انستقرام</h3>
-              <p class="text-white/80 text-sm mt-1">اضغط لعرض التفاصيل</p>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-gray-800">تصميم بوستات انستقرام</h3>
-            <p class="text-gray-400 text-sm mt-1">تصميم بوستات</p>
-          </div>
-        </div>
-
-        <!-- بطاقة 6 - شعار -->
-        <div class="portfolio-card reveal"
-             data-category="logo"
-             data-title="شعار إيقاع كافيه"
-             data-desc="لكل تفصيلة حكاية، ولكل علامة تجارية نغمة خاصة بها.. ☕️🎶\n\nهويتي البصرية الجديدة لـ إيقاع كافيه | RHYTHM CAFE.
-حاولت أدمج فيها دفء القهوة مع إيقاع اليوم المتوازن والموجات الصوتية.\n\n“اضبط إيقاع يومك” 🎙️✨"
-             data-img="https://i.ibb.co/21JpPDCR/image.jpg"
-             data-tags="شعار، قهوة، هوية بصرية"
-             onclick="openModal(this)">
-          <!-- استبدل src بصورة مشروعك الحقيقية -->
-          <img src="https://i.ibb.co/21JpPDCR/image.jpg"
-               alt="شعار إيقاع كافيه" class="card-img" loading="lazy" />
-          <div class="card-overlay">
-            <div class="card-overlay-content">
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span class="text-xs bg-white/20 text-white px-2 py-0.5 rounded-full">شعار</span>
-              </div>
-              <h3 class="text-white font-bold text-lg">شعار إيقاع كافيه</h3>
-              <p class="text-white/80 text-sm mt-1">اضغط لعرض التفاصيل</p>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-gray-800">شعار إيقاع كافيه</h3>
-            <p class="text-gray-400 text-sm mt-1">تصميم شعار احترافي</p>
-          </div>
-        </div>
-
-        <!-- بطاقة 7 - شعار -->
-        <div class="portfolio-card reveal"
-             data-category="logo"
-             data-title="تجديد شعار مدى"
-             data-desc="بين الأمس واليوم... ليس الفرق في الشكل، بل في الفكرة.
-أعيد تصميم هوية مدى لتصبح أكثر نضجاً واتزاناً، مع الحفاظ على روح العلامة التي اعتادها الجمهور.
-لأن التصميم الحقيقي لا يلفت النظر فقط... بل يبقى في الذاكرة.
-مدى... هوية تنمو، وتصميم يواكب المستقبل."
-             data-img="https://i.ibb.co/P896bG9/image.jpg"
-             data-tags="شعار، هوية بصرية، تجديد"
-             onclick="openModal(this)">
-          <img src="https://i.ibb.co/P896bG9/image.jpg"
-               alt="تجديد شعار مدى" class="card-img" loading="lazy" />
-          <div class="card-overlay">
-            <div class="card-overlay-content">
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span class="text-xs bg-white/20 text-white px-2 py-0.5 rounded-full">شعار</span>
-              </div>
-              <h3 class="text-white font-bold text-lg">تجديد شعار مدى</h3>
-              <p class="text-white/80 text-sm mt-1">اضغط لعرض التفاصيل</p>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-gray-800">تجديد شعار مدى</h3>
-            <p class="text-gray-400 text-sm mt-1">تجديد هوية بصرية</p>
-          </div>
-        </div>
-
-        <!-- بطاقة 8 - شعار -->
-        <div class="portfolio-card reveal"
-             data-category="logo"
-             data-title="تصميم شعار نسيج"
-             data-desc="التصميم ما هو مجرد خطوط وألوان، التصميم حكاية.. 🌟
-سعيد بمشاركتكم هوية بصرية جديدة لشعار (نسيج)؛ حيث تلتقي الأناقة بأدق التفاصيل."
-             data-img="https://i.ibb.co/PZLS1xwZ/1.jpg"
-             data-tags="شعار، نسيج، هوية بصرية"
-             onclick="openModal(this)">
-          <img src="https://i.ibb.co/PZLS1xwZ/1.jpg"
-               alt="تصميم شعار نسيج" class="card-img" loading="lazy" />
-          <div class="card-overlay">
-            <div class="card-overlay-content">
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span class="text-xs bg-white/20 text-white px-2 py-0.5 rounded-full">شعار</span>
-              </div>
-              <h3 class="text-white font-bold text-lg">تصميم شعار نسيج</h3>
-              <p class="text-white/80 text-sm mt-1">اضغط لعرض التفاصيل</p>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-gray-800">تصميم شعار نسيج</h3>
-            <p class="text-gray-400 text-sm mt-1">تصميم شعار احترافي</p>
-          </div>
-        </div>
-
-        <!-- بطاقة 9 - شعار -->
-        <div class="portfolio-card reveal"
-             data-category="logo"
-             data-title="تصميم شعار أفق"
-             data-desc="في 'أفق'، لا نرى الحدود كعوائق، بل كنقاط انطلاق. 🌟
-تصميمنا الجديد يعكس فلسفتنا: الصعود المستمر، الطموح المتجدد، والتركيز على أهدافك بعين لا تخطئ الهدف.
-جاهزون لنصنع الفرق معاً."
-             data-img="https://i.ibb.co/Sw9NKvhw/1.jpg"
-             data-tags="شعار، أفق، هوية بصرية"
-             onclick="openModal(this)">
-          <img src="https://i.ibb.co/Sw9NKvhw/1.jpg"
-               alt="تصميم شعار أفق" class="card-img" loading="lazy" />
-          <div class="card-overlay">
-            <div class="card-overlay-content">
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span class="text-xs bg-white/20 text-white px-2 py-0.5 rounded-full">شعار</span>
-              </div>
-              <h3 class="text-white font-bold text-lg">تصميم شعار أفق</h3>
-              <p class="text-white/80 text-sm mt-1">اضغط لعرض التفاصيل</p>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-gray-800">تصميم شعار أفق</h3>
-            <p class="text-gray-400 text-sm mt-1">تصميم شعار احترافي</p>
-          </div>
-        </div>
-
-        <!-- بطاقة 10 - مشروع جديد -->
-        <div class="portfolio-card reveal"
-             data-category="logo"
-             data-title="مشروع جديد"
-             data-desc="استبدل هذا النص بوصف مشروعك الجديد."
-             data-img="https://via.placeholder.com/800x600?text=%D9%85%D8%B4%D8%B1%D9%88%D8%B9+%D8%AC%D8%AF%D9%8A%D8%AF"
-             data-tags="استبدل بالعلامات"
-             onclick="openModal(this)">
-          <img src="https://via.placeholder.com/800x600?text=%D9%85%D8%B4%D8%B1%D9%88%D8%B9+%D8%AC%D8%AF%D9%8A%D8%AF"
-               alt="مشروع جديد" class="card-img" loading="lazy" />
-          <div class="card-overlay">
-            <div class="card-overlay-content">
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span class="text-xs bg-white/20 text-white px-2 py-0.5 rounded-full">مشروع</span>
-              </div>
-              <h3 class="text-white font-bold text-lg">مشروع جديد</h3>
-              <p class="text-white/80 text-sm mt-1">اضغط لعرض التفاصيل</p>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-gray-800">مشروع جديد</h3>
-            <p class="text-gray-400 text-sm mt-1">استبدل بالوصف</p>
-          </div>
-        </div>
-
-        <!-- بطاقة 11 - مشروع جديد -->
-        <div class="portfolio-card reveal"
-             data-category="logo"
-             data-title="مشروع جديد"
-             data-desc="استبدل هذا النص بوصف مشروعك الجديد."
-             data-img="https://via.placeholder.com/800x600?text=%D9%85%D8%B4%D8%B1%D9%88%D8%B9+%D8%AC%D8%AF%D9%8A%D8%AF"
-             data-tags="استبدل بالعلامات"
-             onclick="openModal(this)">
-          <img src="https://via.placeholder.com/800x600?text=%D9%85%D8%B4%D8%B1%D9%88%D8%B9+%D8%AC%D8%AF%D9%8A%D8%AF"
-               alt="مشروع جديد" class="card-img" loading="lazy" />
-          <div class="card-overlay">
-            <div class="card-overlay-content">
-              <div class="flex flex-wrap gap-2 mb-2">
-                <span class="text-xs bg-white/20 text-white px-2 py-0.5 rounded-full">مشروع</span>
-              </div>
-              <h3 class="text-white font-bold text-lg">مشروع جديد</h3>
-              <p class="text-white/80 text-sm mt-1">اضغط لعرض التفاصيل</p>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold text-gray-800">مشروع جديد</h3>
-            <p class="text-gray-400 text-sm mt-1">استبدل بالوصف</p>
-          </div>
-        </div>
-
-      </div>
-      <!-- نهاية شبكة الأعمال -->
-
-    </div>
-  </section>
-
-  <!-- ===================================================
-       Modal - النافذة المنبثقة لتفاصيل العمل
-       =================================================== -->
-  <div id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title"
-       onclick="handleModalClick(event)">
-    <div id="modal-box">
-
-      <!-- زر الإغلاق -->
-      <div class="flex items-center justify-between p-5 border-b border-gray-100">
-        <h2 id="modal-title" class="font-black text-xl text-gray-900"></h2>
-        <button onclick="closeModal()"
-                class="w-9 h-9 rounded-full bg-gray-100 hover:bg-red-50 hover:text-red-500 flex items-center justify-center text-gray-500 transition-colors"
-                aria-label="إغلاق">
-          <i class="fa-solid fa-xmark text-lg"></i>
-        </button>
-      </div>
-
-      <!-- صور العمل - معرض صور -->
-      <div class="flex items-center justify-center bg-gray-50 py-6 px-4 relative">
-        <!-- صورة رئيسية -->
-        <img id="modal-img" src="" alt="" class="max-w-full max-h-96 object-contain" />
-        
-        <!-- أزرار التنقل بين الصور -->
-        <button id="prev-img" onclick="changeModalImage(-1)" 
-                class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white shadow-lg flex items-center justify-center transition-all opacity-0 hover:opacity-100 group-hover:opacity-100"
-                style="display: none;">
-          <i class="fa-solid fa-chevron-right text-olive text-lg"></i>
-        </button>
-        <button id="next-img" onclick="changeModalImage(1)" 
-                class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white shadow-lg flex items-center justify-center transition-all opacity-0 hover:opacity-100 group-hover:opacity-100"
-                style="display: none;">
-          <i class="fa-solid fa-chevron-left text-olive text-lg"></i>
-        </button>
-        
-        <!-- مؤشر الصور -->
-        <div id="image-counter" class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm font-medium" style="display: none;">
-          <span id="current-img-index">1</span> / <span id="total-img-count">1</span>
-        </div>
-      </div>
-
-      <!-- تفاصيل العمل -->
-      <div class="p-6">
-        <p id="modal-desc" class="text-gray-600 leading-relaxed text-base mb-5"></p>
-        <div class="flex flex-wrap gap-2 mb-6" id="modal-tags"></div>
-        <div class="flex flex-wrap gap-3">
-          <a href="#contact" onclick="closeModal()"
-             class="btn-primary text-sm py-2.5 px-5">
-            <i class="fa-solid fa-paper-plane"></i> طلب مشروع مماثل
-          </a>
-          <button onclick="closeModal()"
-                  class="btn-outline text-sm py-2.5 px-5">
-            <i class="fa-solid fa-arrow-right"></i> العودة للأعمال
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ===================================================
-       قسم التواصل - Contact Section
-       =================================================== -->
-  <section id="contact" class="py-20 px-4 md:px-8 bg-white">
-    <div class="max-w-5xl mx-auto">
-
-      <!-- عنوان القسم -->
-      <div class="text-center mb-14 reveal">
-        <span class="text-olive font-bold text-sm uppercase tracking-widest">تواصل معي</span>
-        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mt-2">هل لديك مشروع في ذهنك؟</h2>
-        <div class="w-16 h-1 rounded-full mx-auto mt-4" style="background:#16625a;"></div>
-        <p class="text-gray-500 mt-4 max-w-xl mx-auto">تواصل معي الآن وسأكون سعيداً بمناقشة مشروعك وتقديم أفضل الحلول الإبداعية</p>
-      </div>
-
-      <div class="grid md:grid-cols-5 gap-10">
-
-        <!-- معلومات التواصل -->
-        <div class="md:col-span-2 space-y-5 reveal">
-
-          <h3 class="font-black text-xl text-gray-800 mb-6">تواصل مباشرة</h3>
-
-          <!-- ===================================================
-               زر واتساب
-               الرقم: 0507440452 | يمكن تعديل الرابط أدناه
-               =================================================== -->
-          <a href="https://wa.me/966507440452"
-             target="_blank" rel="noopener noreferrer"
-             class="contact-btn w-full"
-             style="background: linear-gradient(135deg, #25d366, #128c7e); color: white;">
-            <div class="relative whatsapp-pulse">
-              <i class="fa-brands fa-whatsapp text-2xl relative z-10"></i>
-            </div>
-            <div>
-              <div class="font-black text-base">واتساب</div>
-              <div class="text-white/80 text-sm font-medium" dir="ltr">0507440452</div>
-            </div>
-            <i class="fa-solid fa-arrow-left mr-auto opacity-60"></i>
-          </a>
-
-          <!-- ===================================================
-               زر تويتر (X)
-               الرابط: https://x.com/ax_9a9
-               =================================================== -->
-          <a href="https://x.com/ax_9a9"
-             target="_blank" rel="noopener noreferrer"
-             class="contact-btn w-full"
-             style="background: linear-gradient(135deg, #1a1a2e, #16213e); color: white;">
-            <i class="fa-brands fa-x-twitter text-2xl"></i>
-            <div>
-              <div class="font-black text-base">تويتر (X)</div>
-              <div class="text-white/80 text-sm font-medium" dir="ltr">@ax_9a9</div>
-            </div>
-            <i class="fa-solid fa-arrow-left mr-auto opacity-60"></i>
-          </a>
-
-
-
-          <!-- وقت الاستجابة -->
-          <div class="bg-olive-pale border border-olive-muted rounded-2xl p-4 flex items-center gap-3 mt-4">
-            <div class="w-10 h-10 rounded-xl bg-olive flex items-center justify-center text-white flex-shrink-0">
-              <i class="fa-solid fa-clock text-sm"></i>
-            </div>
-            <div>
-              <div class="font-bold text-gray-800 text-sm">وقت الاستجابة</div>
-              <div class="text-gray-500 text-sm">خلال 24 ساعة كحد أقصى</div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- رسالة معلومات التواصل -->
-        <div class="md:col-span-3 reveal">
-          <div class="bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-100">
-            <h3 class="font-black text-xl text-gray-800 mb-6">معلومات التواصل</h3>
-
-            <p class="text-gray-600 text-base leading-relaxed">
-              للتواصل معي بخصوص مشروعك، يرجى استخدام الوسائل المباشرة على اليسار للرد السريع والمباشر.
-
-
-
-
-
-              <p class="text-gray-600 text-base leading-relaxed mb-4">
-                للتواصل معي بخصوص مشروعك، يرجى استخدام الوسائل المباشرة على اليسار للرد السريع والمباشر.
-              </div>
-            </form>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================================================
-       الفوتر
-       =================================================== -->
-  <footer class="py-10 px-4 md:px-8 text-white">
-    <div class="max-w-6xl mx-auto">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-
-        <!-- الشعار -->
-        <div class="flex items-center gap-2">
-          <div class="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center font-black text-lg">أ</div>
-          <span class="font-black text-xl">أحمد<span class="text-olive-muted"> | مصمم ومبدع بصري</span></span>
-        </div>
-
-        <!-- روابط سريعة -->
-        <ul class="flex flex-wrap justify-center gap-6 text-white/70 font-medium text-sm">
-          <li><a href="#hero"      class="hover:text-white transition-colors">الرئيسية</a></li>
-          <li><a href="#portfolio" class="hover:text-white transition-colors">أعمالي</a></li>
-          <li><a href="#about"     class="hover:text-white transition-colors">عني</a></li>
-          <li><a href="#contact"   class="hover:text-white transition-colors">تواصل معي</a></li>
-        </ul>
-
-        <!-- أيقونات التواصل -->
-        <div class="flex items-center gap-3">
-          <a href="https://x.com/ax_9a9" target="_blank" rel="noopener noreferrer"
-             class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-             aria-label="تويتر">
-            <i class="fa-brands fa-x-twitter"></i>
-          </a>
-          <a href="https://wa.me/966507440452" target="_blank" rel="noopener noreferrer"
-             class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-             aria-label="واتساب">
-            <i class="fa-brands fa-whatsapp"></i>
-          </a>
-          <a href="mailto:your@email.com"
-             class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-             aria-label="البريد الإلكتروني">
-            <i class="fa-solid fa-envelope"></i>
-          </a>
-        </div>
-
-      </div>
-
-      <div class="border-t border-white/10 mt-8 pt-6 text-center text-white/50 text-sm">
-        <p>© <span id="current-year"></span> أحمد | مصمم ومبدع بصري — جميع الحقوق محفوظة. صُمِّم بـ <span class="text-olive-muted">♥</span> واحترافية.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ===================================================
-       JavaScript - المنطق التفاعلي
-       =================================================== -->
-  <script>
-    // ===================================================
-    // 1. تحديث السنة الحالية في الفوتر
-    // ===================================================
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-
-    // ===================================================
-    // 2. تأثير الهيدر عند التمرير
-    // ===================================================
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 30);
-    }, { passive: true });
-
-    // ===================================================
-    // 3. تفعيل/إغلاق القائمة الجانبية للجوال
-    // ===================================================
-    const menuToggle  = document.getElementById('menu-toggle');
-    const mobileMenu  = document.getElementById('mobile-menu');
-    let   menuOpen    = false;
-
-    menuToggle.addEventListener('click', () => {
-      menuOpen = !menuOpen;
-      if (menuOpen) {
-        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
-        mobileMenu.style.opacity   = '1';
-        menuToggle.innerHTML = '<i class="fa-solid fa-xmark text-lg"></i>';
-      } else {
-        closeMobileMenu();
-      }
-    });
-
-    function closeMobileMenu() {
-      menuOpen = false;
-      mobileMenu.style.maxHeight = '0';
-      mobileMenu.style.opacity   = '0';
-      menuToggle.innerHTML = '<i class="fa-solid fa-bars text-lg"></i>';
-    }
-
-    // ===================================================
-    // 4. تأثير الكتابة المتحركة في Hero
-    // ===================================================
-    const typedEl    = document.getElementById('typed-text');
-    const typedWords = ['تصاميم', 'شعارات', 'هويات بصرية', 'إبداعات'];
-    let   wordIndex  = 0;
-    let   charIndex  = 0;
-    let   isDeleting = false;
-
-    function typeEffect() {
-      const currentWord = typedWords[wordIndex];
-      if (isDeleting) {
-        typedEl.textContent = currentWord.substring(0, charIndex - 1);
-        charIndex--;
-      } else {
-        typedEl.textContent = currentWord.substring(0, charIndex + 1);
-        charIndex++;
-      }
-
-      let delay = isDeleting ? 80 : 130;
-
-      if (!isDeleting && charIndex === currentWord.length) {
-        delay = 1800;
-        isDeleting = true;
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        wordIndex  = (wordIndex + 1) % typedWords.length;
-        delay = 400;
-      }
-
-      setTimeout(typeEffect, delay);
-    }
-    setTimeout(typeEffect, 800);
-
-    // ===================================================
-    // 5. فلترة الأعمال
-    // ===================================================
-    const filterBtns  = document.querySelectorAll('.filter-btn');
-    const portfolioCards = document.querySelectorAll('#portfolio-grid .portfolio-card');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // تحديث الزر النشط
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const filter = btn.dataset.filter;
-
-        portfolioCards.forEach(card => {
-          const category = card.dataset.category;
-          const show = filter === 'all' || category === filter;
-
-          if (show) {
-            card.style.display = '';
-            // إعادة تشغيل تأثير الظهور
-            card.classList.remove('visible');
-            setTimeout(() => card.classList.add('visible'), 50);
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-
-    // ===================================================
-    // 6. Modal - النافذة المنبثقة
-    // ===================================================
-    const modalOverlay = document.getElementById('modal-overlay');
-    const modalTitle   = document.getElementById('modal-title');
-    const modalImg     = document.getElementById('modal-img');
-    const modalDesc    = document.getElementById('modal-desc');
-    const modalTags    = document.getElementById('modal-tags');
-
-    // ما يتعلق بمعرض الصور
-    let currentImageIndex = 0;
-    let modalImages = [];
-    const prevBtn = document.getElementById('prev-img');
-    const nextBtn = document.getElementById('next-img');
-    const imageCounter = document.getElementById('image-counter');
-    const currentImgSpan = document.getElementById('current-img-index');
-    const totalImgSpan = document.getElementById('total-img-count');
-
-    /**
-     * فتح النافذة المنبثقة بتفاصيل العمل
-     * @param {HTMLElement} card - عنصر البطاقة الذي تم الضغط عليه
-     */
-    function openModal(card) {
-      const title = card.dataset.title;
-      const desc  = card.dataset.desc;
-      const img   = card.dataset.img;
-      const tags  = card.dataset.tags.split('،').map(t => t.trim());
-      const images = card.dataset.images ? card.dataset.images.split('|').map(i => i.trim()) : [img];
-
-      // تعبئة بيانات النافذة
-      modalTitle.textContent = title;
-      modalDesc.textContent  = desc;
-      
-      // تخزين الصور وعرض الأولى
-      modalImages = images;
-      currentImageIndex = 0;
-      updateModalImage();
-
-      // إنشاء تاغات الوسوم
-      modalTags.innerHTML = tags.map(tag =>
-        `<span class="px-3 py-1 rounded-full text-sm font-semibold"
-               style="background:#e8f4f3; color:#16625a;">${tag}</span>`
-      ).join('');
-
-      // إظهار/إخفاء أزرار التنقل ومؤشر العدد
-      if (images.length > 1) {
-        prevBtn.style.display = 'flex';
-        nextBtn.style.display = 'flex';
-        imageCounter.style.display = 'block';
-      } else {
-        prevBtn.style.display = 'none';
-        nextBtn.style.display = 'none';
-        imageCounter.style.display = 'none';
-      }
-
-      // إظهار النافذة
-      modalOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    /**
-     * تحديث الصورة المعروضة في المودال
-     */
-    function updateModalImage() {
-      if (modalImages.length === 0) return;
-      
-      modalImg.src = modalImages[currentImageIndex];
-      currentImgSpan.textContent = currentImageIndex + 1;
-      totalImgSpan.textContent = modalImages.length;
-    }
-
-    /**
-     * التنقل بين الصور
-     */
-    function changeModalImage(direction) {
-      currentImageIndex += direction;
-      if (currentImageIndex < 0) {
-        currentImageIndex = modalImages.length - 1;
-      } else if (currentImageIndex >= modalImages.length) {
-        currentImageIndex = 0;
-      }
-      updateModalImage();
-    }
-
-    /**
-     * إغلاق النافذة المنبثقة
-     */
-    function closeModal() {
-      modalOverlay.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    /**
-     * إغلاق النافذة عند الضغط خارجها
-     */
-    function handleModalClick(e) {
-      if (e.target === modalOverlay) closeModal();
-    }
-
-    // إغلاق النافذة بمفتاح Escape
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeModal();
-    });
-
-
-
-    // ===================================================
-    // 8. تأثير ظهور العناصر عند التمرير (Intersection Observer)
-    // ===================================================
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          // تأخير متدرج للعناصر المتعددة
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, i * 80);
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    // ===================================================
-    // 9. تمييز رابط التنقل النشط عند التمرير
-    // ===================================================
-    const sections  = document.querySelectorAll('section[id], div[id="hero"]');
-    const navLinks  = document.querySelectorAll('.nav-link');
-
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          navLinks.forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-          });
-        }
-      });
-    }, { threshold: 0.4 });
-
-    document.querySelectorAll('section[id]').forEach(sec => sectionObserver.observe(sec));
-  </script>
-
-</body>
-</html>
+      align-items: center;      gap: 0.
+(Content truncated due to size limit. Use line ranges to read remaining content)
