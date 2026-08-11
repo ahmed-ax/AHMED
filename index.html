@@ -44,6 +44,8 @@
             'pulse-soft': 'pulse-soft 3s ease-in-out infinite',
             'spin-slow': 'spin-slow 12s linear infinite',
             'glow': 'glow 2s ease-in-out infinite',
+            'marquee-right': 'marquee-right 40s linear infinite',
+            'marquee-left': 'marquee-left 40s linear infinite',
           },
           keyframes: {
             float: {
@@ -65,6 +67,14 @@
             glow: {
               '0%, 100%': { filter: 'drop-shadow(0 0 5px rgba(22, 98, 90, 0.4))' },
               '50%': { filter: 'drop-shadow(0 0 20px rgba(22, 98, 90, 0.8))' },
+            },
+            'marquee-right': {
+              '0%': { transform: 'translateX(0)' },
+              '100%': { transform: 'translateX(100%)' },
+            },
+            'marquee-left': {
+              '0%': { transform: 'translateX(0)' },
+              '100%': { transform: 'translateX(-100%)' },
             }
           }
         }
@@ -164,6 +174,27 @@
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #f1f1f1; }
     ::-webkit-scrollbar-thumb { background: #16625a; border-radius: 10px; }
+
+    /* الشريط المتحرك */
+    .marquee-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .marquee-content {
+      display: flex;
+      gap: 1.5rem;
+      will-change: transform;
+    }
+
+    .marquee-content:hover {
+      animation-play-state: paused;
+    }
+
+    .marquee-content > div {
+      position: relative;
+      flex-shrink: 0;
+    }
   </style>
 </head>
 <body class="bg-white">
@@ -532,6 +563,116 @@
           </div>
         </div>
 
+      </div>
+    </div>
+
+    <!-- شريط الأعمال المتحرك الأول (يمين) -->
+    <div class="py-16 bg-white/50 backdrop-blur-sm overflow-hidden">
+      <div class="relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white z-10 pointer-events-none"></div>
+        <div class="marquee-container overflow-hidden">
+          <div class="marquee-content animate-marquee-right flex gap-6 px-6">
+            <!-- صور الأعمال - الشريط الأول -->
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/JjtvM4yJ/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">متجر رشفة</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/0jqTn80x/1.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">نسيج</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/LD22JsV9/36221-2.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">مطعم شفة</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/LjSQPB6/GVWgq9z-XEAA5u2-W.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">آب جول بي</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/sdNwdn0n/GNSv-Jcu-Xg-AEqe-r.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">الركن العماني</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/21JpPDCR/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">إيقاع كافيه</span>
+              </div>
+            </div>
+            <!-- تكرار للحركة المستمرة -->
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/JjtvM4yJ/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">متجر رشفة</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- شريط الأعمال المتحرك الثاني (يسار) -->
+    <div class="py-16 bg-gradient-to-r from-olive/5 to-olive/10 overflow-hidden">
+      <div class="relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white z-10 pointer-events-none"></div>
+        <div class="marquee-container overflow-hidden">
+          <div class="marquee-content animate-marquee-left flex gap-6 px-6">
+            <!-- صور الأعمال - الشريط الثاني -->
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/P896bG9/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">شعار مدى</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/Sw9NKvhw/1.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">شعار أفق</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/v6NMMxHS/1.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">فلك</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/LDcmMZyV/1.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">بتلة</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/B28TD4hV/9874120.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">وجهة</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/cK70dRMx/545477521.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">دوارة</span>
+              </div>
+            </div>
+            <!-- تكرار للحركة المستمرة -->
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/P896bG9/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">شعار مدى</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
