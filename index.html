@@ -1,34 +1,81 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>أحمد | مصمم ومبدع بصري</title>
-  <meta name="description" content="أحمد — مصمم جرافيك متخصص في الهويات البصرية والشعارات والمحتوى المرئي. أكثر من 180 مشروعاً مكتملاً." />
-  <meta name="theme-color" content="#0f4540" />
-  <meta property="og:title" content="أحمد | مصمم ومبدع بصري" />
-  <meta property="og:description" content="هويات بصرية، شعارات، ومحتوى مرئي يروي قصة علامتك." />
-  <meta property="og:image" content="https://i.ibb.co/SDJYLgzQ/Artboard-1.jpg" />
-  <meta property="og:type" content="website" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2316625a'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='Arial'%3E%D8%A3%3C/text%3E%3C/svg%3E" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <!-- ===================================================
+       مكتبة Tailwind CSS عبر CDN
+       =================================================== -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ===================================================
+       مكتبات الأيقونات والتحريكات
+       =================================================== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <!-- ===================================================
+       إعداد Tailwind Config
+       =================================================== -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            olive: { DEFAULT: '#16625a', light: '#1d7d73', dark: '#0f4540', deep: '#0a2f2b', pale: '#eef7f6', muted: '#c2dedd' },
-            sand: '#f7f5f0',
-            ink: '#14201f'
+            olive: {
+              DEFAULT: '#16625a',
+              light:   '#1d7d73',
+              dark:    '#0f4540',
+              pale:    '#e8f4f3',
+              muted:   '#c2dedd',
+            }
           },
           fontFamily: {
-            sans: ['"IBM Plex Sans Arabic"', 'sans-serif'],
-            display: ['Tajawal', 'sans-serif']
+            cairo: ['Cairo', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'sway': 'sway 8s ease-in-out infinite',
+            'pulse-soft': 'pulse-soft 3s ease-in-out infinite',
+            'spin-slow': 'spin-slow 12s linear infinite',
+            'glow': 'glow 2s ease-in-out infinite',
+            'marquee-right': 'marquee-right 40s linear infinite',
+            'marquee-left': 'marquee-left 40s linear infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+              '50%': { transform: 'translateY(-20px) rotate(2deg)' },
+            },
+            sway: {
+              '0%, 100%': { transform: 'translateX(0) rotate(0deg)' },
+              '50%': { transform: 'translateX(15px) rotate(-2deg)' },
+            },
+            'pulse-soft': {
+              '0%, 100%': { opacity: 1, transform: 'scale(1)' },
+              '50%': { opacity: 0.8, transform: 'scale(1.05)' },
+            },
+            'spin-slow': {
+              'from': { transform: 'rotate(0deg)' },
+              'to': { transform: 'rotate(360deg)' },
+            },
+            glow: {
+              '0%, 100%': { filter: 'drop-shadow(0 0 5px rgba(22, 98, 90, 0.4))' },
+              '50%': { filter: 'drop-shadow(0 0 20px rgba(22, 98, 90, 0.8))' },
+            },
+            'marquee-right': {
+              '0%': { transform: 'translateX(0)' },
+              '100%': { transform: 'translateX(100%)' },
+            },
+            'marquee-left': {
+              '0%': { transform: 'translateX(0)' },
+              '100%': { transform: 'translateX(-100%)' },
+            }
           }
         }
       }
@@ -36,488 +83,974 @@
   </script>
 
   <style>
-    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
-    body { font-family: "IBM Plex Sans Arabic", sans-serif; background: #fbfaf7; color: #14201f; -webkit-font-smoothing: antialiased; }
-    h1, h2, h3, .font-display { font-family: Tajawal, sans-serif; }
-    ::selection { background: #16625a; color: #fff; }
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
 
-    /* Header */
-    #navbar { transition: background-color .35s ease, box-shadow .35s ease, padding .35s ease; }
-    #navbar.scrolled { background: rgba(251,250,247,.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 rgba(20,32,31,.06); }
-    .nav-link { position: relative; }
-    .nav-link::after { content: ''; position: absolute; right: 0; bottom: -6px; height: 2px; width: 0; background: #16625a; border-radius: 2px; transition: width .3s ease; }
-    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-    .nav-link.active { color: #16625a; }
-
-    /* Reveal on scroll */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
-    .reveal.in { opacity: 1; transform: none; }
-
-    /* Hero */
-    .hero-grid { background-image: linear-gradient(rgba(22,98,90,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(22,98,90,.06) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse at 60% 40%, #000 30%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at 60% 40%, #000 30%, transparent 75%); }
-    .cursor { display: inline-block; width: 3px; height: .9em; background: #16625a; margin-inline-start: 6px; vertical-align: -0.08em; animation: blink 1s steps(1) infinite; }
-    @keyframes blink { 50% { opacity: 0; } }
-    @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-    .floaty { animation: floaty 6s ease-in-out infinite; }
-
-    /* Work cards */
-    .work-card { transition: transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s ease; }
-    .work-card:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -20px rgba(15,69,64,.35); }
-    .work-card img { transition: transform 1s cubic-bezier(.2,.7,.2,1); }
-    .work-card:hover img { transform: scale(1.06); }
-    .chip { transition: all .25s ease; }
-    .chip.active { background: #16625a; color: #fff; border-color: #16625a; }
-
-    /* Marquee */
-    .marquee { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
-    .marquee-track { display: flex; gap: 1.25rem; width: max-content; animation: scroll-x 60s linear infinite; }
-    .marquee-track.reverse { animation-direction: reverse; }
-    .marquee:hover .marquee-track { animation-play-state: paused; }
-    @keyframes scroll-x { from { transform: translateX(0); } to { transform: translateX(50%); } }
-
-    /* Videos */
-    .video-card { position: relative; border-radius: 1.75rem; overflow: hidden; background: #0a2f2b; aspect-ratio: 9 / 16; box-shadow: 0 30px 60px -30px rgba(0,0,0,.6); }
-    .video-card video { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .video-card .overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.82) 100%); transition: opacity .35s ease; cursor: pointer; }
-    .video-card.playing .overlay { opacity: 0; pointer-events: none; }
-    .play-btn { width: 72px; height: 72px; border-radius: 9999px; background: rgba(255,255,255,.16); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.35); display: grid; place-items: center; color: #fff; font-size: 1.4rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); transition: transform .3s ease, background .3s ease; }
-    .video-card:hover .play-btn { transform: translate(-50%,-50%) scale(1.08); background: #16625a; border-color: #16625a; }
-    .video-card .play-btn i { margin-left: 4px; }
-
-    /* Lightbox */
-    #lightbox { opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility .3s ease; }
-    #lightbox.open { opacity: 1; visibility: visible; }
-    #lightbox .panel { transform: translateY(16px) scale(.98); transition: transform .35s cubic-bezier(.2,.7,.2,1); }
-    #lightbox.open .panel { transform: none; }
-    .thumb.active { outline: 2px solid #16625a; outline-offset: 2px; }
-
-    /* Mobile menu */
-    #mobile-menu { transition: opacity .3s ease, visibility .3s ease; }
-    #mobile-menu:not(.open) { opacity: 0; visibility: hidden; }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation: none !important; transition: none !important; }
-      .reveal { opacity: 1; transform: none; }
+    * {
+      scroll-behavior: smooth;
+      font-family: 'Cairo', sans-serif;
     }
+
+    body {
+      background-color: #ffffff;
+      color: #1a1a2e;
+      overflow-x: hidden;
+    }
+
+    /* خلفية متحركة تفاعلية */
+    .bg-animated {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(22, 98, 90, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .bg-shapes div {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(22, 98, 90, 0.03);
+      animation: float 10s infinite ease-in-out;
+    }
+
+    /* الهيدر الزجاجي */
+    #navbar {
+      backdrop-filter: blur(12px);
+      background-color: rgba(255, 255, 255, 0.8);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    #navbar.scrolled {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      box-shadow: 0 10px 30px rgba(22, 98, 90, 0.1);
+    }
+
+    /* تحريكات مخصصة للصور والأيقونات */
+    .animate-continuous-float { animation: float 6s ease-in-out infinite; }
+    .animate-continuous-sway { animation: sway 8s ease-in-out infinite; }
+    .animate-continuous-pulse { animation: pulse-soft 3s ease-in-out infinite; }
+    .animate-continuous-glow { animation: glow 2s ease-in-out infinite; }
+
+    /* تأثيرات البطاقات */
+    .portfolio-card {
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
+      box-shadow: 0 30px 60px rgba(22, 98, 90, 0.15);
+    }
+
+    .portfolio-card img {
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .portfolio-card:hover img {
+      transform: scale(1.1);
+    }
+
+    /* المودال */
+    #modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 69, 64, 0.9);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    #modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    /* تخصيص شريط التمرير */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: #16625a; border-radius: 10px; }
+
+    /* الشريط المتحرك */
+    .marquee-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .marquee-content {
+      display: flex;
+      gap: 1.5rem;
+      will-change: transform;
+    }
+
+    .marquee-content:hover {
+      animation-play-state: paused;
+    }
+
+    .marquee-content > div {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    /* قسم الفيديوهات */
+    .video-showcase { position: relative; overflow: hidden; background: #0f4540; }
+    .video-showcase::before { content: ''; position: absolute; width: 32rem; height: 32rem; top: -12rem; right: -10rem; border-radius: 9999px; background: rgba(29,125,115,.45); filter: blur(90px); pointer-events: none; }
+    .video-showcase::after { content: ''; position: absolute; width: 26rem; height: 26rem; bottom: -12rem; left: -8rem; border-radius: 9999px; background: rgba(194,222,221,.12); filter: blur(80px); pointer-events: none; }
+    .vcard { position: relative; border-radius: 1.75rem; overflow: hidden; background: #0a2f2b; aspect-ratio: 9 / 16; box-shadow: 0 30px 60px -28px rgba(0,0,0,.7); transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease; }
+    .vcard:hover { transform: translateY(-8px); box-shadow: 0 40px 70px -28px rgba(0,0,0,.8); }
+    .vcard video { width: 100%; height: 100%; object-fit: cover; display: block; background: #0a2f2b; }
+    .vcard .v-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; color: #fff; cursor: pointer; background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.85) 100%); transition: opacity .35s ease; }
+    .vcard.playing .v-overlay { opacity: 0; pointer-events: none; }
+    .vcard .v-play { position: absolute; top: 50%; left: 50%; width: 76px; height: 76px; transform: translate(-50%,-50%); border-radius: 9999px; display: grid; place-items: center; font-size: 1.5rem; color: #fff; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.4); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: transform .3s ease, background .3s ease; }
+    .vcard .v-play i { margin-left: 5px; }
+    .vcard:hover .v-play { transform: translate(-50%,-50%) scale(1.1); background: #16625a; border-color: #16625a; }
+    .vcard .v-num { position: absolute; top: 1rem; right: 1rem; padding: .35rem .8rem; border-radius: 9999px; font-size: .75rem; font-weight: 700; color: #fff; background: rgba(0,0,0,.45); backdrop-filter: blur(6px); }
+    .vcard .v-dur { position: absolute; top: 1rem; left: 1rem; padding: .35rem .7rem; border-radius: 9999px; font-size: .75rem; font-weight: 700; color: #fff; background: rgba(0,0,0,.45); backdrop-filter: blur(6px); direction: ltr; }
+    @media (prefers-reduced-motion: reduce) { .vcard, .vcard .v-overlay, .vcard .v-play { transition: none; } }
   </style>
 </head>
-<body>
+<body class="bg-white">
 
-  <!-- ============ Header ============ -->
-  <header id="navbar" class="fixed inset-x-0 top-0 z-50 py-5">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-6">
-      <a href="#hero" class="flex items-center gap-3" aria-label="الرئيسية">
-        <span class="grid h-10 w-10 place-items-center rounded-xl bg-olive font-display text-xl font-extrabold text-white">أ</span>
-        <span class="leading-tight">
-          <span class="block font-display text-lg font-extrabold">أحمد</span>
-          <span class="block text-xs font-medium text-gray-500">مصمم ومبدع بصري</span>
-        </span>
+  <!-- خلفية متحركة -->
+  <div class="bg-animated" id="mouse-gradient"></div>
+  <div class="bg-shapes fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+    <div style="width: 400px; height: 400px; top: -100px; left: -100px; animation-delay: 0s;"></div>
+    <div style="width: 300px; height: 300px; bottom: 10%; right: -50px; animation-delay: 2s;"></div>
+    <div style="width: 200px; height: 200px; top: 40%; left: 10%; animation-delay: 4s;"></div>
+  </div>
+
+  <!-- ===================================================
+       الهيدر (Navigation)
+       =================================================== -->
+  <header id="navbar" class="fixed top-0 left-0 w-full z-50 py-5 transition-all">
+    <div class="container mx-auto px-6 flex justify-between items-center">
+      
+      <!-- الشعار -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 bg-olive text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg group-hover:rotate-12 transition-transform animate-continuous-pulse">أ</div>
+        <span class="text-xl font-extrabold text-gray-800 tracking-tight">أحمد <span class="text-olive">| مصمم ومبدع بصري</span></span>
       </a>
 
-      <nav class="hidden items-center gap-9 md:flex" aria-label="القائمة الرئيسية">
-        <a href="#hero" class="nav-link font-medium text-gray-700 hover:text-olive">الرئيسية</a>
-        <a href="#services" class="nav-link font-medium text-gray-700 hover:text-olive">خدماتي</a>
-        <a href="#portfolio" class="nav-link font-medium text-gray-700 hover:text-olive">أعمالي</a>
-        <a href="#videos" class="nav-link font-medium text-gray-700 hover:text-olive">الفيديوهات</a>
-        <a href="#contact" class="rounded-full bg-olive px-6 py-2.5 font-semibold text-white transition hover:bg-olive-dark">تواصل معي</a>
+      <!-- القائمة (شاشات كبيرة) -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#hero" class="text-gray-600 hover:text-olive font-semibold transition-colors relative group">
+          الرئيسية
+          <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-olive transition-all group-hover:w-full"></span>
+        </a>
+        <a href="#portfolio" class="text-gray-600 hover:text-olive font-semibold transition-colors relative group">
+          أعمالي
+          <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-olive transition-all group-hover:w-full"></span>
+        </a>
+        <a href="#videos" class="text-gray-600 hover:text-olive font-semibold transition-colors relative group">
+          الفيديوهات
+          <span class="absolute -bottom-1 right-0 w-0 h-0.5 bg-olive transition-all group-hover:w-full"></span>
+        </a>
+        <a href="#contact" class="bg-olive text-white px-6 py-2.5 rounded-full font-bold shadow-lg hover:bg-olive-dark transition-all transform hover:-translate-y-1 animate-continuous-glow">
+          تواصل معي
+        </a>
       </nav>
 
-      <button id="menu-btn" class="grid h-11 w-11 place-items-center rounded-xl border border-gray-200 bg-white text-lg md:hidden" aria-label="فتح القائمة" aria-expanded="false">
-        <i class="fa-solid fa-bars"></i>
+      <!-- زر الجوال -->
+      <button class="md:hidden text-gray-800 text-2xl" id="menu-btn">
+        <i class="fa-solid fa-bars-staggered"></i>
       </button>
-    </div>
-
-    <div id="mobile-menu" class="fixed inset-0 top-[76px] bg-sand/95 backdrop-blur md:hidden">
-      <nav class="flex flex-col gap-2 p-6 text-lg">
-        <a href="#hero" class="rounded-xl px-4 py-3 font-semibold hover:bg-white">الرئيسية</a>
-        <a href="#services" class="rounded-xl px-4 py-3 font-semibold hover:bg-white">خدماتي</a>
-        <a href="#portfolio" class="rounded-xl px-4 py-3 font-semibold hover:bg-white">أعمالي</a>
-        <a href="#videos" class="rounded-xl px-4 py-3 font-semibold hover:bg-white">الفيديوهات</a>
-        <a href="#contact" class="mt-4 rounded-xl bg-olive px-4 py-3 text-center font-semibold text-white">تواصل معي</a>
-      </nav>
     </div>
   </header>
 
-  <main>
-    <!-- ============ Hero ============ -->
-    <section id="hero" class="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
-      <div class="hero-grid pointer-events-none absolute inset-0"></div>
-      <div class="pointer-events-none absolute -top-40 left-[-10%] h-[520px] w-[520px] rounded-full bg-olive/10 blur-3xl"></div>
-
-      <div class="relative mx-auto grid max-w-7xl items-center gap-14 px-6 md:grid-cols-12">
-        <div class="md:col-span-7 reveal">
-          <span class="mb-6 inline-flex items-center gap-2 rounded-full border border-olive/15 bg-white px-4 py-1.5 text-sm font-semibold text-olive">
-            <span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span></span>
-            متاح للمشاريع الجديدة
-          </span>
-          <h1 class="font-display text-[2.6rem] font-extrabold leading-[1.15] text-ink sm:text-6xl lg:text-7xl">
-            أصمّم هويات
-            <span class="block text-olive"><span id="typed"></span><span class="cursor"></span></span>
-          </h1>
-          <p class="mt-7 max-w-xl text-lg leading-loose text-gray-600">
-            مصمم جرافيك أحوّل فكرة مشروعك إلى هوية بصرية متكاملة: من الشعار والألوان إلى المحتوى المرئي، أرافقك من أول رسمة حتى تكتمل علامتك التجارية.
-          </p>
-          <div class="mt-10 flex flex-wrap items-center gap-4">
-            <a href="#portfolio" class="group inline-flex items-center gap-3 rounded-2xl bg-olive px-7 py-4 font-semibold text-white shadow-lg shadow-olive/20 transition hover:bg-olive-dark">
-              شاهد أعمالي
-              <i class="fa-solid fa-arrow-left transition group-hover:-translate-x-1"></i>
-            </a>
-            <a href="https://wa.me/966507440452" target="_blank" rel="noopener" class="inline-flex items-center gap-3 rounded-2xl border border-gray-200 bg-white px-7 py-4 font-semibold text-ink transition hover:border-olive hover:text-olive">
-              <i class="fa-brands fa-whatsapp text-xl"></i>
-              ابدأ مشروعك
-            </a>
-          </div>
-
-          <dl class="mt-14 grid max-w-lg grid-cols-3 gap-6 border-t border-gray-200 pt-8">
-            <div><dt class="text-sm text-gray-500">مشروع مكتمل</dt><dd class="font-display text-3xl font-extrabold text-ink">+<span class="counter" data-to="180">0</span></dd></div>
-            <div><dt class="text-sm text-gray-500">هوية وشعار</dt><dd class="font-display text-3xl font-extrabold text-ink">+<span class="counter" data-to="15">0</span></dd></div>
-            <div><dt class="text-sm text-gray-500">عمل مرئي</dt><dd class="font-display text-3xl font-extrabold text-ink"><span class="counter" data-to="5">0</span></dd></div>
-          </dl>
+  <!-- ===================================================
+       القسم الرئيسي (Hero Section)
+       =================================================== -->
+  <section id="hero" class="min-h-screen flex items-center pt-20 relative overflow-hidden">
+    <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      
+      <!-- النصوص -->
+      <div data-aos="fade-left">
+        <div class="inline-block px-4 py-1.5 bg-olive-pale text-olive rounded-full text-sm font-bold mb-6 animate-bounce">
+          ✨ متاح للمشاريع الجديدة
         </div>
-
-        <div class="relative md:col-span-5 reveal" style="transition-delay:.15s">
-          <div class="relative mx-auto aspect-[4/5] w-full max-w-sm">
-            <div class="absolute inset-0 translate-x-4 translate-y-4 rounded-[2.5rem] bg-olive"></div>
-            <div class="relative h-full w-full overflow-hidden rounded-[2.5rem] bg-olive-pale shadow-2xl">
-              <img src="https://i.ibb.co/SDJYLgzQ/Artboard-1.jpg" alt="أحمد — مصمم جرافيك" class="h-full w-full object-cover" fetchpriority="high" />
+        <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 leading-tight mb-6">
+          أصنع إبداعات <br/>
+          <span class="text-olive" id="typed-text"></span>
+        </h1>
+        <p class="text-lg text-gray-600 mb-10 max-w-lg leading-relaxed">
+          أنا مصمم جرافيك أصمم شغفك وأروي قصتك بصرياً. أرافقك من الفكرة حتى اكتمال هويتك التجارية. تابعني لتطوير علامتك وإبداعك.
+        </p>
+        
+        <div class="flex flex-wrap gap-4">
+          <a href="#portfolio" class="bg-olive text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-olive/20 transition-all transform hover:-translate-y-1 flex items-center gap-2">
+            شاهد أعمالي
+            <i class="fa-solid fa-arrow-left"></i>
+          </a>
+          <div class="flex items-center gap-4 px-6 py-4 bg-white rounded-2xl shadow-md border border-gray-100">
+            <div class="flex -space-x-3 space-x-reverse">
+              <div class="w-10 h-10 rounded-full bg-olive-muted border-2 border-white flex items-center justify-center text-xs font-bold">+180</div>
             </div>
-            <div class="floaty absolute -right-6 top-10 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-xl">
-              <span class="grid h-10 w-10 place-items-center rounded-xl bg-olive-pale text-olive"><i class="fa-solid fa-pen-nib"></i></span>
-              <span class="text-sm font-semibold leading-tight">هوية بصرية<br /><span class="font-normal text-gray-500">من الصفر</span></span>
-            </div>
-            <div class="floaty absolute -left-6 bottom-12 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-xl" style="animation-delay:-3s">
-              <span class="grid h-10 w-10 place-items-center rounded-xl bg-olive-pale text-olive"><i class="fa-solid fa-clapperboard"></i></span>
-              <span class="text-sm font-semibold leading-tight">محتوى مرئي<br /><span class="font-normal text-gray-500">يحكي قصتك</span></span>
-            </div>
+            <span class="text-gray-700 font-bold text-sm">مشروع مكتمل بنجاح</span>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- ============ Marquee ============ -->
-    <section aria-label="لمحة من الأعمال" class="border-y border-gray-200/70 bg-white py-10">
-      <div class="marquee"><div class="marquee-track" id="marquee-1"></div></div>
-    </section>
-
-    <!-- ============ Services ============ -->
-    <section id="services" class="py-24 md:py-32">
-      <div class="mx-auto max-w-7xl px-6">
-        <div class="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end reveal">
-          <div>
-            <p class="mb-3 font-semibold text-olive">خدماتي</p>
-            <h2 class="font-display text-4xl font-extrabold md:text-5xl">ماذا أقدّم لعلامتك؟</h2>
-          </div>
-          <p class="max-w-md leading-loose text-gray-600">كل خدمة تبدأ بفهم مشروعك وجمهورك، ثم تتحول إلى تصميم واضح يخدم هدفك ويبقى في الذاكرة.</p>
+      <!-- الصورة -->
+      <div class="relative flex justify-center items-center" data-aos="zoom-in">
+        <div class="absolute w-[110%] h-[110%] border-2 border-olive/10 rounded-full animate-spin-slow"></div>
+        <div class="absolute w-[120%] h-[120%] border border-dashed border-olive/20 rounded-full animate-spin-slow" style="animation-direction: reverse;"></div>
+        
+        <div class="relative z-10 w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-[12px] border-white shadow-2xl animate-continuous-float">
+          <img src="https://i.ibb.co/SDJYLgzQ/Artboard-1.jpg" alt="أحمد" class="w-full h-full object-cover"/>
         </div>
 
-        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <article class="rounded-3xl border border-gray-200/80 bg-white p-7 transition hover:-translate-y-1 hover:border-olive/40 reveal">
-            <span class="mb-6 grid h-12 w-12 place-items-center rounded-2xl bg-olive-pale text-xl text-olive"><i class="fa-solid fa-swatchbook"></i></span>
-            <h3 class="mb-2 text-xl font-bold">الهوية البصرية</h3>
-            <p class="leading-relaxed text-gray-600">نظام متكامل من الألوان والخطوط والعناصر يعطي علامتك شخصية ثابتة في كل مكان.</p>
-          </article>
-          <article class="rounded-3xl border border-gray-200/80 bg-white p-7 transition hover:-translate-y-1 hover:border-olive/40 reveal" style="transition-delay:.08s">
-            <span class="mb-6 grid h-12 w-12 place-items-center rounded-2xl bg-olive-pale text-xl text-olive"><i class="fa-solid fa-pen-ruler"></i></span>
-            <h3 class="mb-2 text-xl font-bold">تصميم الشعارات</h3>
-            <p class="leading-relaxed text-gray-600">شعار بفكرة واضحة وقصة تُروى، يعمل بكفاءة على اللافتة والجوال وكل المقاسات.</p>
-          </article>
-          <article class="rounded-3xl border border-gray-200/80 bg-white p-7 transition hover:-translate-y-1 hover:border-olive/40 reveal" style="transition-delay:.16s">
-            <span class="mb-6 grid h-12 w-12 place-items-center rounded-2xl bg-olive-pale text-xl text-olive"><i class="fa-solid fa-store"></i></span>
-            <h3 class="mb-2 text-xl font-bold">تطبيقات العلامة</h3>
-            <p class="leading-relaxed text-gray-600">نماذج واقعية للافتات والتغليف والبطاقات تُريك هويتك قبل أن تطبعها.</p>
-          </article>
-          <article class="rounded-3xl border border-gray-200/80 bg-white p-7 transition hover:-translate-y-1 hover:border-olive/40 reveal" style="transition-delay:.24s">
-            <span class="mb-6 grid h-12 w-12 place-items-center rounded-2xl bg-olive-pale text-xl text-olive"><i class="fa-solid fa-film"></i></span>
-            <h3 class="mb-2 text-xl font-bold">المحتوى المرئي</h3>
-            <p class="leading-relaxed text-gray-600">مقاطع قصيرة بإيقاع مدروس تنقل الإحساس والرسالة وتناسب منصات التواصل.</p>
-          </article>
+        <!-- شارات طائرة -->
+        <div class="absolute top-10 right-0 bg-white p-4 rounded-2xl shadow-xl animate-continuous-sway z-20">
+          <i class="fa-solid fa-pen-nib text-olive text-2xl"></i>
+        </div>
+        <div class="absolute bottom-10 left-0 bg-white p-4 rounded-2xl shadow-xl animate-continuous-sway z-20" style="animation-delay: -2s;">
+          <i class="fa-solid fa-palette text-olive text-2xl"></i>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ============ Portfolio ============ -->
-    <section id="portfolio" class="bg-sand py-24 md:py-32">
-      <div class="mx-auto max-w-7xl px-6">
-        <div class="mb-10 text-center reveal">
-          <p class="mb-3 font-semibold text-olive">معرض الأعمال</p>
-          <h2 class="font-display text-4xl font-extrabold md:text-5xl">مختارات من أعمالي</h2>
-          <p class="mx-auto mt-5 max-w-xl leading-loose text-gray-600">مشاريع تعكس شغفي بالتفاصيل، اضغط على أي عمل لتشاهد الفكرة والتطبيقات.</p>
-        </div>
-
-        <div id="filters" class="mb-12 flex flex-wrap justify-center gap-2 reveal" role="tablist" aria-label="تصنيف الأعمال"></div>
-
-        <div id="grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+  <!-- ===================================================
+       معرض الأعمال (Portfolio)
+       =================================================== -->
+  <section id="portfolio" class="py-24 bg-gray-50/50">
+    <div class="container mx-auto px-6">
+      
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-4xl font-extrabold text-gray-900 mb-4">أحدث أعمالي</h2>
+        <div class="w-20 h-1.5 bg-olive mx-auto rounded-full mb-6"></div>
+        <p class="text-gray-500 max-w-xl mx-auto">مجموعة مختارة من المشاريع التي تعكس شغفي بالتميز والدقة في التصميم.</p>
       </div>
-    </section>
 
-    <!-- ============ Videos ============ -->
-    <section id="videos" class="relative overflow-hidden bg-olive-deep py-24 text-white md:py-32">
-      <div class="pointer-events-none absolute -top-40 right-[-10%] h-[520px] w-[520px] rounded-full bg-olive-light/30 blur-3xl"></div>
-      <div class="relative mx-auto max-w-7xl px-6">
-        <div class="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end reveal">
-          <div>
-            <p class="mb-3 inline-flex items-center gap-2 font-semibold text-olive-muted"><i class="fa-solid fa-clapperboard"></i> أعمال مرئية</p>
-            <h2 class="font-display text-4xl font-extrabold md:text-5xl">قصص تُروى بالصورة</h2>
-          </div>
-          <p class="max-w-md leading-loose text-white/70">مقاطع قصيرة صمّمتها بعناية، كل واحد منها يحمل إحساساً ورسالة. اضغط على أي فيديو لتشغيله.</p>
-        </div>
-
-        <div id="video-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
-      </div>
-    </section>
-
-    <!-- ============ Contact ============ -->
-    <section id="contact" class="py-24 md:py-32">
-      <div class="mx-auto max-w-5xl px-6">
-        <div class="relative overflow-hidden rounded-[2.5rem] bg-olive px-8 py-16 text-center text-white md:px-16 md:py-20 reveal">
-          <div class="pointer-events-none absolute -left-20 -top-20 h-72 w-72 rounded-full bg-white/10 blur-2xl"></div>
-          <div class="pointer-events-none absolute -bottom-24 -right-16 h-80 w-80 rounded-full bg-olive-light blur-2xl"></div>
-          <div class="relative">
-            <h2 class="font-display text-4xl font-extrabold leading-tight md:text-5xl">عندك مشروع؟ خلّنا نبدأ</h2>
-            <p class="mx-auto mt-5 max-w-xl text-lg leading-loose text-olive-muted">أرسل لي فكرتك، وأرجع لك بتصوّر واضح وخطة عمل تناسب مشروعك.</p>
-            <div class="mt-10 flex flex-wrap justify-center gap-4">
-              <a href="https://wa.me/966507440452" target="_blank" rel="noopener" class="inline-flex items-center gap-3 rounded-2xl bg-white px-8 py-4 text-lg font-bold text-olive transition hover:scale-[1.03]">
-                <i class="fa-brands fa-whatsapp text-2xl"></i> تواصل عبر واتساب
-              </a>
-              <a href="https://x.com/ax_9a9" target="_blank" rel="noopener" class="inline-flex items-center gap-3 rounded-2xl border border-white/30 px-8 py-4 text-lg font-bold text-white transition hover:bg-white/10">
-                <i class="fa-brands fa-x-twitter text-xl"></i> تابعني على X
-              </a>
+      <!-- شبكة الأعمال -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- رشفة -->
+        <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 group animate-continuous-sway" 
+             data-aos="fade-up"
+             onclick="openModal('متجر رشفة', 'تصميم هوية بصرية يجمع بين أصالة القهوة وحداثة الآلات. تجسيد لشغف القهوة المختصة.', 'https://i.ibb.co/JjtvM4yJ/image.jpg', 'هوية بصرية | شعار')">
+          <div class="relative h-72 overflow-hidden">
+            <img src="https://i.ibb.co/JjtvM4yJ/image.jpg" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
             </div>
           </div>
+          <div class="p-6">
+            <span class="text-olive text-xs font-bold uppercase tracking-widest">هوية بصرية</span>
+            <h3 class="text-xl font-bold text-gray-900 mt-2">متجر رشفة</h3>
+          </div>
+        </div>
+
+        <!-- نسيج -->
+        <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 group animate-continuous-sway" 
+             style="animation-delay: -8s;"
+             data-aos="fade-up" data-aos-delay="500"
+             onclick="openModal('شعار نسيج', 'من خطوة الخيط إلى تفاصيل الفخامة... تصميم لشعار نسيج لتصميم الأزياء الراقية.', 'https://i.ibb.co/0jqTn80x/1.jpg', 'هوية بصرية | أزياء', ['https://i.ibb.co/Hf8mN8Mn/2.jpg', 'https://i.ibb.co/WNgfGsYW/3.jpg'])">
+          <div class="relative h-72 overflow-hidden">
+            <img src="https://i.ibb.co/0jqTn80x/1.jpg" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-olive text-xs font-bold uppercase tracking-widest">هوية بصرية</span>
+            <h3 class="text-xl font-bold text-gray-900 mt-2">نسيج</h3>
+          </div>
+        </div>
+
+        <!-- مطعم شفة -->
+        <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 group animate-continuous-sway" 
+             style="animation-delay: -9s;"
+             data-aos="fade-up" data-aos-delay="600"
+             onclick="openModal('مطعم شفة', 'أحدث أعمالي في تصميم الهوية البصرية لمطعم شفة للمأكولات الطازجة. الشعار يجمع بين البساطة والرقي.', 'https://i.ibb.co/LD22JsV9/36221-2.png', 'مطعم | براندنج')">
+          <div class="relative h-72 overflow-hidden">
+            <img src="https://i.ibb.co/LD22JsV9/36221-2.png" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-olive text-xs font-bold uppercase tracking-widest">مطعم</span>
+            <h3 class="text-xl font-bold text-gray-900 mt-2">مطعم شفة</h3>
+          </div>
+        </div>
+
+        <!-- آب جول بي -->
+        <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 group animate-continuous-sway" 
+             style="animation-delay: -1s;"
+             data-aos="fade-up" data-aos-delay="100"
+             onclick="openModal('شعار آب جول بي', 'تصميم شعار احترافي آب جول بي يجمع بين القوة والعصرية.', 'https://i.ibb.co/LjSQPB6/GVWgq9z-XEAA5u2-W.jpg', 'شعار | براندنج')">
+          <div class="relative h-72 overflow-hidden">
+            <img src="https://i.ibb.co/LjSQPB6/GVWgq9z-XEAA5u2-W.jpg" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-olive text-xs font-bold uppercase tracking-widest">شعار</span>
+            <h3 class="text-xl font-bold text-gray-900 mt-2">آب جول بي</h3>
+          </div>
+        </div>
+
+        <!-- الركن العماني 1 -->
+        <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 group animate-continuous-sway" 
+             style="animation-delay: -2s;"
+             data-aos="fade-up" data-aos-delay="200"
+             onclick="openModal('عطور الركن العماني', 'نختزل سحر الشرق وعراقة التراث في زجاجة عطر تأسر الحواس.', 'https://i.ibb.co/sdNwdn0n/GNSv-Jcu-Xg-AEqe-r.jpg', 'عطور | هوية بصرية')">
+          <div class="relative h-72 overflow-hidden">
+            <img src="https://i.ibb.co/sdNwdn0n/GNSv-Jcu-Xg-AEqe-r.jpg" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-olive text-xs font-bold uppercase tracking-widest">هوية تجارية</span>
+            <h3 class="text-xl font-bold text-gray-900 mt-2">عطور الركن العماني</h3>
+          </div>
+        </div>
+
+        <!-- إيقاع كافيه -->
+        <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 group animate-continuous-sway" 
+             style="animation-delay: -3s;"
+             data-aos="fade-up"
+             onclick="openModal('إيقاع كافيه', 'دمج دفء القهوة مع إيقاع اليوم المتوازن والموجات الصوتية.', 'https://i.ibb.co/21JpPDCR/image.jpg', 'كافيه | شعار')">
+          <div class="relative h-72 overflow-hidden">
+            <img src="https://i.ibb.co/21JpPDCR/image.jpg" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-olive text-xs font-bold uppercase tracking-widest">شعار</span>
+            <h3 class="text-xl font-bold text-gray-900 mt-2">إيقاع كافيه</h3>
+          </div>
+        </div>
+
+        <!-- مدى -->
+        <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 group animate-continuous-sway" 
+             style="animation-delay: -4s;"
+             data-aos="fade-up" data-aos-delay="100"
+             onclick="openModal('تجديد شعار مدى', 'إعادة تصميم هوية مدى لتصبح أكثر نضجاً واتزاناً.', 'https://i.ibb.co/P896bG9/image.jpg', 'تجديد هوية', ['https://i.ibb.co/tMLGnhBm/image.jpg', 'https://i.ibb.co/1fZXZd9G/1.jpg'])">
+          <div class="relative h-72 overflow-hidden">
+            <img src="https://i.ibb.co/P896bG9/image.jpg" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-olive text-xs font-bold uppercase tracking-widest">تطوير علامة</span>
+            <h3 class="text-xl font-bold text-gray-900 mt-2">شعار مدى</h3>
+          </div>
+        </div>
+
+        <!-- أفق -->
+        <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 group animate-continuous-sway" 
+             style="animation-delay: -7s;"
+             data-aos="fade-up" data-aos-delay="400"
+             onclick="openModal('شعار أفق', 'الصعود المستمر، الطموح المتجدد، والتركيز على أهدافك.', 'https://i.ibb.co/Sw9NKvhw/1.jpg', 'شعار', ['https://i.ibb.co/qF9d2QQ3/image.jpg', 'https://i.ibb.co/9k3PTC3V/2.jpg'])">
+          <div class="relative h-72 overflow-hidden">
+            <img src="https://i.ibb.co/Sw9NKvhw/1.jpg" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-olive text-xs font-bold uppercase tracking-widest">شعار</span>
+            <h3 class="text-xl font-bold text-gray-900 mt-2">أفق</h3>
+          </div>
+        </div>
+
+        <!-- فلك -->
+        <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 group animate-continuous-sway" 
+             style="animation-delay: -6s;"
+             data-aos="fade-up" data-aos-delay="300"
+             onclick="openModal('شعار فلك', 'لكل علامة تجارية مدارها الخاص... 🌌 تجسيد فكرة المدار، الأبعاد، والابتكار في فكرة واحدة.', 'https://i.ibb.co/v6NMMxHS/1.png', 'شعار | براندنج', ['https://i.ibb.co/21zpp7yT/image.jpg', 'https://i.ibb.co/6zfj2S5/2.png', 'https://i.ibb.co/1fK7348b/4.png', 'https://i.ibb.co/PGqfsSDs/Chat-GPT-Image-28-2026-10-53-52-1.png', 'https://i.ibb.co/yFw873MQ/Chat-GPT-Image-28-2026-10-55-56.png'])">
+          <div class="relative h-72 overflow-hidden">
+            <img src="https://i.ibb.co/v6NMMxHS/1.png" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-olive text-xs font-bold uppercase tracking-widest">شعار</span>
+            <h3 class="text-xl font-bold text-gray-900 mt-2">فلك (FALAKS)</h3>
+          </div>
+        </div>
+
+        <!-- بتلة -->
+        <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 group animate-continuous-sway" 
+             style="animation-delay: -7s;"
+             data-aos="fade-up" data-aos-delay="400"
+             onclick="openModal('شعار بتلة', 'كل علامة تستحق هوية تُزهر بها. 🌿🌸 مشروع هوية بصرية لعلامة بتلة | Petal.', 'https://i.ibb.co/LDcmMZyV/1.png', 'هوية بصرية | براندنج', ['https://i.ibb.co/NgJ5Xyqc/image.jpg', 'https://i.ibb.co/FqVcp5gb/2.png', 'https://i.ibb.co/46smbbN/Firefly-Gemini-Flash.png', 'https://i.ibb.co/RpZjKtyZ/using-the-logo-from-the-reference-image-matte-bla.png', 'https://i.ibb.co/Cp35Kx8p/Firefly-Gemini-Flash-2.png'])">
+          <div class="relative h-72 overflow-hidden">
+            <img src="https://i.ibb.co/LDcmMZyV/1.png" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-olive text-xs font-bold uppercase tracking-widest">هوية بصرية</span>
+            <h3 class="text-xl font-bold text-gray-900 mt-2">بتلة (Petal)</h3>
+          </div>
+        </div>
+
+        <!-- وجهة -->
+        <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 group animate-continuous-sway" 
+             style="animation-delay: -8s;"
+             data-aos="fade-up" data-aos-delay="500"
+             onclick="openModal('شعار وجهة', 'حيث تلتقي الأفكار وتبدأ الأحاديث... 💬✨ تصميمي للهوية البصرية لـ وجهة | DESTINATION في حي السفارات. اعتمدت على دمج أيقونات المحادثة للتعبير عن التفاعل والتواصل.', 'https://i.ibb.co/B28TD4hV/9874120.png', 'هوية بصرية | براندنج')">
+          <div class="relative h-72 overflow-hidden">
+            <img src="https://i.ibb.co/B28TD4hV/9874120.png" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-olive text-xs font-bold uppercase tracking-widest">هوية بصرية</span>
+            <h3 class="text-xl font-bold text-gray-900 mt-2">شعار وجهة</h3>
+          </div>
+        </div>
+
+        <!-- دوارة -->
+        <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 group animate-continuous-sway" 
+             style="animation-delay: -9s;"
+             data-aos="fade-up"
+             onclick="openModal('شعار دوارة', 'لذّة الشاورما الأصيلة، بكلّ طبقة... 😋🍖 تصميمي للهوية البصرية لـ دوّارة - Dawwara، حيث يجسد الشعار حركة سيخ الشاورما المستمرة وتراص اللحم الشهي.', 'https://i.ibb.co/cK70dRMx/545477521.jpg', 'مطاعم | هوية بصرية')">
+          <div class="relative h-72 overflow-hidden">
+            <img src="https://i.ibb.co/cK70dRMx/545477521.jpg" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-olive text-xs font-bold uppercase tracking-widest">مطاعم</span>
+            <h3 class="text-xl font-bold text-gray-900 mt-2">شعار دوارة</h3>
+          </div>
+        </div>
+
+        <!-- مسك الغنيم -->
+        <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 group animate-continuous-sway" 
+             style="animation-delay: -10s;"
+             data-aos="fade-up" data-aos-delay="100"
+             onclick="openModal('شعار مسك الغنيم', 'أصالة الماضي وفخامة الحاضر في تفصيلة واحدة... ✨🌸 تصميمي للهوية البصرية لـ مسك الغنيم لـ العطور والمسك الفاخر.', 'https://i.ibb.co/v6hZ75w3/2245734-0.png', 'عطور | فخامة')">
+          <div class="relative h-72 overflow-hidden">
+            <img src="https://i.ibb.co/v6hZ75w3/2245734-0.png" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-olive text-xs font-bold uppercase tracking-widest">عطور</span>
+            <h3 class="text-xl font-bold text-gray-900 mt-2">مسك الغنيم</h3>
+          </div>
+        </div>
+
+        <!-- إمتنان -->
+        <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 group animate-continuous-sway" 
+             style="animation-delay: -11s;"
+             data-aos="fade-up" data-aos-delay="200"
+             onclick="openModal('شعار إمتنان', 'تجربة تسوّق ممتعة تبدأ من التفاصيل... 🛒✨ أشارككم تصميمي للهوية البصرية لشعار إمتنان | THANKFULNESS في أبها.', 'https://i.ibb.co/nNw5PDJz/788754623-1.png', 'تسوق | هوية بصرية', ['https://i.ibb.co/CKDYFNnK/788754623-2.png'])">
+          <div class="relative h-72 overflow-hidden">
+            <img src="https://i.ibb.co/nNw5PDJz/788754623-1.png" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-olive text-xs font-bold uppercase tracking-widest">تسوق</span>
+            <h3 class="text-xl font-bold text-gray-900 mt-2">شعار إمتنان</h3>
+          </div>
+        </div>
+
+        <!-- قاعة الأوسط -->
+        <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 group animate-continuous-sway" 
+             style="animation-delay: -12s;"
+             data-aos="fade-up" data-aos-delay="300"
+             onclick="openModal('قاعة الأوسط', 'لكل مناسبة سعيدة... مكان يليق بجمالها ✨🏰 تصميمي للهوية البصرية لشعار قاعة الأوسط (بريدة - حي الصباخ). دمجت بين القوس المعماري الفخم والخطوط الإسلامية العصرية.', 'https://i.ibb.co/20qDf1fy/image.jpg', 'هوية بصرية | قاعات', ['https://i.ibb.co/4Z3VcR15/Firefly-Gemini-Flash-The-guiding-text-A-realistic-and-high-quality-mockup-of-two-professional-busi.png', 'https://i.ibb.co/S4tMkHpS/Firefly-Gemini-Flash-The-guiding-text-A-realistic-mockup-of-a-modern-smartphone-e-g-i-Phone-15-P.png', 'https://i.ibb.co/B2x5Mn46/Firefly-Gemini-Flash-The-guiding-text-A-realistic-mockup-of-a-large-luxurious-rectangular-signage.png', 'https://i.ibb.co/9Hn5m0SP/Chat-GPT-Image-5-2026-10-49-56.png'])">
+          <div class="relative h-72 overflow-hidden">
+            <img src="https://i.ibb.co/20qDf1fy/image.jpg" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-olive text-xs font-bold uppercase tracking-widest">هوية بصرية</span>
+            <h3 class="text-xl font-bold text-gray-900 mt-2">قاعة الأوسط</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- شريط الأعمال المتحرك الأول (يمين) -->
+    <div class="py-16 bg-white/50 backdrop-blur-sm overflow-hidden">
+      <div class="relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white z-10 pointer-events-none"></div>
+        <div class="marquee-container overflow-hidden">
+          <div class="marquee-content animate-marquee-right flex gap-6 px-6">
+            <!-- صور الأعمال - الشريط الأول -->
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/JjtvM4yJ/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">متجر رشفة</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/0jqTn80x/1.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">نسيج</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/LD22JsV9/36221-2.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">مطعم شفة</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/LjSQPB6/GVWgq9z-XEAA5u2-W.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">آب جول بي</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/sdNwdn0n/GNSv-Jcu-Xg-AEqe-r.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">الركن العماني</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/21JpPDCR/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">إيقاع كافيه</span>
+              </div>
+            </div>
+            <!-- تكرار للحركة المستمرة -->
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/JjtvM4yJ/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">متجر رشفة</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
 
-  <!-- ============ Footer ============ -->
-  <footer class="border-t border-gray-200 py-10">
-    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 md:flex-row">
-      <p class="text-sm text-gray-500">© <span id="year"></span> أحمد — مصمم ومبدع بصري. جميع الحقوق محفوظة.</p>
-      <div class="flex gap-3">
-        <a href="https://wa.me/966507440452" target="_blank" rel="noopener" aria-label="واتساب" class="grid h-11 w-11 place-items-center rounded-xl border border-gray-200 text-gray-500 transition hover:border-olive hover:text-olive"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="https://x.com/ax_9a9" target="_blank" rel="noopener" aria-label="X" class="grid h-11 w-11 place-items-center rounded-xl border border-gray-200 text-gray-500 transition hover:border-olive hover:text-olive"><i class="fa-brands fa-x-twitter"></i></a>
+    <!-- شريط الأعمال المتحرك الثاني (يسار) -->
+    <div class="py-16 bg-gradient-to-r from-olive/5 to-olive/10 overflow-hidden">
+      <div class="relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white z-10 pointer-events-none"></div>
+        <div class="marquee-container overflow-hidden">
+          <div class="marquee-content animate-marquee-left flex gap-6 px-6">
+            <!-- صور الأعمال - الشريط الثاني -->
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/P896bG9/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">شعار مدى</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/Sw9NKvhw/1.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">شعار أفق</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/v6NMMxHS/1.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">فلك</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/LDcmMZyV/1.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">بتلة</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/B28TD4hV/9874120.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">وجهة</span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/cK70dRMx/545477521.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">دوارة</span>
+              </div>
+            </div>
+            <!-- تكرار للحركة المستمرة -->
+            <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+              <img src="https://i.ibb.co/P896bG9/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+                <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">شعار مدى</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===================================================
+       قسم الفيديوهات
+       =================================================== -->
+  <section id="videos" class="video-showcase py-24 text-white">
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-olive-muted text-sm font-bold mb-5">
+          <i class="fa-solid fa-clapperboard"></i>
+          موشن جرافيك · تايبوغرافي متحرك
+        </span>
+        <h2 class="text-4xl md:text-5xl font-extrabold mb-4">فيديوهات <span class="text-olive-muted">أحمد</span></h2>
+        <p class="text-white/70 text-lg leading-loose">أحوّل القصائد والكلمات إلى مشاهد متحركة؛ لكل نص هويته البصرية الخاصة، من الخط واللون إلى الإيقاع والحركة. ثمانية أعمال موشن جرافيك مختارة، اضغط على أي فيديو لمشاهدته.</p>
+      </div>
+
+      <div id="video-grid" class="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
+        <article class="w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-aos="fade-up" data-aos-delay="0">
+          <div class="vcard" data-vcard>
+            <video preload="metadata" playsinline poster="assets/qadi-alhob.jpg" aria-label="فيديو قاضي الحب">
+              <source src="assets/qadi-alhob.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">فيديو 01</span>
+              <span class="v-dur" data-dur></span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">قاضي الحب</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">موشن جرافيك</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">قصيدة</span></div>
+            <p class="text-white/70 leading-relaxed">مسرح عربي بستارته الحمراء وفوانيسه، تتحرك فيه أبيات القصيدة مع الإيقاع لتتحول الكلمات إلى مشهد يُروى أمام الجمهور.</p>
+          </div>
+        </article>
+        <article class="w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-aos="fade-up" data-aos-delay="120">
+          <div class="vcard" data-vcard>
+            <video preload="metadata" playsinline poster="assets/darb_final.jpg" aria-label="فيديو درب">
+              <source src="assets/darb_final.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">فيديو 02</span>
+              <span class="v-dur" data-dur></span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">درب</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">تايبوغرافي</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">أسلوب بسيط</span></div>
+            <p class="text-white/70 leading-relaxed">أشكال هندسية بسيطة وخط ذهبي يرسم الطريق، يرافق كلمات التوبة والرجاء بهدوء يترك للمعنى مساحته.</p>
+          </div>
+        </article>
+        <article class="w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-aos="fade-up" data-aos-delay="240">
+          <div class="vcard" data-vcard>
+            <video preload="metadata" playsinline poster="assets/ahinnu-ila-alhijaz.jpg" aria-label="فيديو أحنّ إلى الحجاز">
+              <source src="assets/ahinnu-ila-alhijaz.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">فيديو 03</span>
+              <span class="v-dur" data-dur></span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">أحنّ إلى الحجاز</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">ورق مقصوص</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">حنين</span></div>
+            <p class="text-white/70 leading-relaxed">طبقات من الجبال بأسلوب الورق المقصوص وألوان دافئة، تستحضر الحنين إلى الحجاز وتجمع بين الكلمة والمكان.</p>
+          </div>
+        </article>
+        <article class="w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-aos="fade-up" data-aos-delay="0">
+          <div class="vcard" data-vcard>
+            <video preload="metadata" playsinline poster="assets/alhamdu-final.jpg" aria-label="فيديو الحمد لله">
+              <source src="assets/alhamdu-final.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">فيديو 04</span>
+              <span class="v-dur" data-dur></span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">الحمد لله</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">زخرفة إسلامية</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">تأمل</span></div>
+            <p class="text-white/70 leading-relaxed">زخارف هندسية إسلامية بالأخضر والذهبي تتشكّل حول كلمات الحمد، في تكوين متوازن يبعث السكينة.</p>
+          </div>
+        </article>
+        <article class="w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-aos="fade-up" data-aos-delay="120">
+          <div class="vcard" data-vcard>
+            <video preload="metadata" playsinline poster="assets/yawm-alfiraq.jpg" aria-label="فيديو يوم الفراق">
+              <source src="assets/yawm-alfiraq.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">فيديو 05</span>
+              <span class="v-dur" data-dur></span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">يوم الفراق</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">درامي</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">أجواء</span></div>
+            <p class="text-white/70 leading-relaxed">أجواء ممطرة وألوان باردة تعكس ثقل الوداع، مع كتابة متحركة تتناغم مع نبرة الإلقاء ولحظاته.</p>
+          </div>
+        </article>
+        <article class="w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-aos="fade-up" data-aos-delay="240">
+          <div class="vcard" data-vcard>
+            <video preload="metadata" playsinline poster="assets/aldurar.jpg" aria-label="فيديو الدُّرر">
+              <source src="assets/aldurar.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">فيديو 06</span>
+              <span class="v-dur" data-dur></span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">الدُّرر</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">شعر فصيح</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">ذهبي</span></div>
+            <p class="text-white/70 leading-relaxed">بوصلة ونجوم وموج بخطوط ذهبية على أزرق ملكي، تجسّد الأبيات الشهيرة عن نجوم السماء ودُرر البحر في مشهد فاخر.</p>
+          </div>
+        </article>
+        <article class="w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-aos="fade-up" data-aos-delay="0">
+          <div class="vcard" data-vcard>
+            <video preload="metadata" playsinline poster="assets/akhawi-alsabr.jpg" aria-label="فيديو أخاوي الصبر">
+              <source src="assets/akhawi-alsabr.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">فيديو 07</span>
+              <span class="v-dur" data-dur></span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">أخاوي الصبر</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">زجاج معشّق</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">قصيدة</span></div>
+            <p class="text-white/70 leading-relaxed">نوافذ من الزجاج المعشّق داخل أقواس حجرية، كل نافذة تروي مشهداً من القصيدة بطابع كلاسيكي وحركة حديثة.</p>
+          </div>
+        </article>
+        <article class="w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-aos="fade-up" data-aos-delay="120">
+          <div class="vcard" data-vcard>
+            <video preload="metadata" playsinline poster="assets/ya-rafiqi.jpg" aria-label="فيديو يا رفيقي">
+              <source src="assets/ya-rafiqi.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">فيديو 08</span>
+              <span class="v-dur" data-dur></span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">يا رفيقي</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">نيون</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">صداقة</span></div>
+            <p class="text-white/70 leading-relaxed">لافتات نيون مضيئة على جدار من الطوب، تحتفي برفقة السنين بأيقونات تلمع وكلمات تتوهج مع كل بيت.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================
+       قسم التواصل (Contact)
+       =================================================== -->
+  <section id="contact" class="py-24 bg-olive text-white relative overflow-hidden">
+    <!-- خلفية متحركة للقسم -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-[100px] animate-float"></div>
+      <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-[100px] animate-float" style="animation-delay: -3s;"></div>
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10 text-center">
+      <h2 class="text-4xl font-extrabold mb-6" data-aos="fade-up">هل لديك مشروع تود البدء فيه؟</h2>
+      <p class="text-olive-muted text-lg mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+        أنا هنا لمساعدتك في تحويل أفكارك إلى واقع بصري مبهر. تواصل معي مباشرة عبر القنوات التالية.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-6" data-aos="zoom-in">
+        <a href="https://wa.me/966507440452" target="_blank" class="bg-white text-olive px-10 py-5 rounded-2xl font-bold text-xl shadow-2xl hover:scale-105 transition-transform flex items-center gap-4 group animate-continuous-pulse">
+          <i class="fa-brands fa-whatsapp text-3xl group-hover:rotate-12 transition-transform"></i>
+          تواصل عبر واتساب
+        </a>
+        <a href="https://x.com/ax_9a9" target="_blank" class="bg-black/20 text-white border border-white/20 px-10 py-5 rounded-2xl font-bold text-xl hover:bg-black/30 transition-all flex items-center gap-4 group">
+          <i class="fa-brands fa-x-twitter text-3xl group-hover:-rotate-12 transition-transform"></i>
+          تابعني على X
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================
+       الفوتر (Footer)
+       =================================================== -->
+  <footer class="py-12 bg-white border-t border-gray-100">
+    <div class="container mx-auto px-6 text-center">
+      <div class="flex justify-center gap-6 mb-8">
+        <a href="#" class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-gray-400 hover:text-olive hover:bg-olive-pale transition-all animate-continuous-sway">
+          <i class="fa-brands fa-instagram text-xl"></i>
+        </a>
+        <a href="#" class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-gray-400 hover:text-olive hover:bg-olive-pale transition-all animate-continuous-sway" style="animation-delay: -1s;">
+          <i class="fa-brands fa-behance text-xl"></i>
+        </a>
+        <a href="#" class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-gray-400 hover:text-olive hover:bg-olive-pale transition-all animate-continuous-sway" style="animation-delay: -2s;">
+          <i class="fa-brands fa-linkedin-in text-xl"></i>
+        </a>
+      </div>
+      <p class="text-gray-400 font-semibold">© <span id="year"></span> أحمد | جميع الحقوق محفوظة</p>
     </div>
   </footer>
 
-  <!-- ============ Lightbox ============ -->
-  <div id="lightbox" class="fixed inset-0 z-[100] flex items-center justify-center bg-ink/80 p-4 backdrop-blur-md" role="dialog" aria-modal="true" aria-labelledby="lb-title">
-    <div class="panel relative flex max-h-[92vh] w-full max-w-5xl flex-col overflow-hidden rounded-[2rem] bg-white md:flex-row">
-      <button id="lb-close" class="absolute left-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full bg-white/90 text-lg shadow-md transition hover:bg-white" aria-label="إغلاق"><i class="fa-solid fa-xmark"></i></button>
-      <div class="relative flex min-h-[40vh] items-center justify-center bg-sand p-4 md:w-3/5">
-        <img id="lb-img" src="" alt="" class="max-h-[60vh] max-w-full rounded-xl object-contain md:max-h-[80vh]" />
-        <button id="lb-prev" class="absolute right-3 top-1/2 hidden h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 shadow" aria-label="السابق"><i class="fa-solid fa-chevron-right"></i></button>
-        <button id="lb-next" class="absolute left-3 top-1/2 hidden h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 shadow" aria-label="التالي"><i class="fa-solid fa-chevron-left"></i></button>
-      </div>
-      <div class="flex flex-col overflow-y-auto p-8 md:w-2/5 md:p-10">
-        <span id="lb-tag" class="mb-3 text-sm font-semibold text-olive"></span>
-        <h3 id="lb-title" class="mb-4 font-display text-3xl font-extrabold"></h3>
-        <p id="lb-desc" class="leading-loose text-gray-600"></p>
-        <div id="lb-thumbs" class="mt-8 flex flex-wrap gap-3"></div>
-        <a href="https://wa.me/966507440452" target="_blank" rel="noopener" class="mt-auto inline-flex items-center gap-3 pt-10 font-bold text-olive transition hover:gap-5">
-          اطلب مشروعاً مماثلاً <i class="fa-solid fa-arrow-left"></i>
-        </a>
+  <!-- ===================================================
+       Modal - نافذة تفاصيل العمل
+       =================================================== -->
+  <div id="modal-overlay" onclick="closeModal()">
+    <div class="container mx-auto px-6 h-full flex items-center justify-center" onclick="event.stopPropagation()">
+      <div class="bg-white rounded-[40px] overflow-hidden max-w-4xl w-full max-h-[90vh] shadow-2xl relative flex flex-col md:flex-row animate-popIn">
+        <button onclick="closeModal()" class="absolute top-6 right-6 w-12 h-12 bg-white/90 rounded-full flex items-center justify-center text-gray-800 shadow-lg z-50 hover:bg-white transition-all">
+          <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+        
+        <div class="md:w-3/5 bg-gray-100 flex items-center justify-center p-4">
+          <img id="modal-img" src="" class="max-w-full max-h-full object-contain rounded-2xl shadow-lg animate-continuous-float"/>
+        </div>
+        
+        <div class="md:w-2/5 p-10 flex flex-col justify-center">
+          <span id="modal-tag" class="text-olive font-bold text-sm mb-4 block"></span>
+          <h3 id="modal-title" class="text-3xl font-extrabold text-gray-900 mb-6"></h3>
+          <p id="modal-desc" class="text-gray-600 leading-relaxed text-lg"></p>
+          
+          <!-- عرض الصور الإضافية -->
+          <div id="image-gallery" class="mt-8 hidden">
+            <p class="text-sm text-gray-500 mb-3 font-semibold">صور إضافية:</p>
+            <div id="gallery-images" class="flex gap-3 flex-wrap"></div>
+          </div>
+          
+          <div class="mt-10">
+            <a href="https://wa.me/966507440452" target="_blank" class="inline-flex items-center gap-3 text-olive font-bold text-lg hover:gap-5 transition-all">
+              اطلب مشروعاً مماثلاً
+              <i class="fa-solid fa-arrow-left"></i>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
+  <!-- ===================================================
+       JavaScript
+       =================================================== -->
   <script>
-    /* ---------- Reveal on scroll ---------- */
-    const revObs = new IntersectionObserver(entries => entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); revObs.unobserve(en.target); } }), { threshold: .12 });
-    function observeReveals() { document.querySelectorAll('.reveal:not(.in)').forEach(el => revObs.observe(el)); }
-
-    /* ---------- Data ---------- */
-    const WORKS = [
-      { title: 'متجر رشفة', cat: 'مطاعم وكافيهات', tag: 'هوية بصرية · شعار', desc: 'هوية بصرية تجمع بين أصالة القهوة وحداثة الآلات، تجسيداً لشغف القهوة المختصة.', img: 'https://i.ibb.co/JjtvM4yJ/image.jpg' },
-      { title: 'نسيج', cat: 'هوية بصرية', tag: 'هوية بصرية · أزياء', desc: 'من خطوة الخيط إلى تفاصيل الفخامة: شعار لعلامة تصميم الأزياء الراقية.', img: 'https://i.ibb.co/0jqTn80x/1.jpg', more: ['https://i.ibb.co/Hf8mN8Mn/2.jpg', 'https://i.ibb.co/WNgfGsYW/3.jpg'] },
-      { title: 'مطعم شفة', cat: 'مطاعم وكافيهات', tag: 'مطعم · براندنج', desc: 'هوية بصرية لمطعم شفة للمأكولات الطازجة؛ شعار يجمع بين البساطة والرقي.', img: 'https://i.ibb.co/LD22JsV9/36221-2.png' },
-      { title: 'آب جول بي', cat: 'شعارات', tag: 'شعار · براندنج', desc: 'شعار احترافي يجمع بين القوة والعصرية.', img: 'https://i.ibb.co/LjSQPB6/GVWgq9z-XEAA5u2-W.jpg' },
-      { title: 'عطور الركن العماني', cat: 'عطور وفخامة', tag: 'عطور · هوية بصرية', desc: 'نختزل سحر الشرق وعراقة التراث في زجاجة عطر تأسر الحواس.', img: 'https://i.ibb.co/sdNwdn0n/GNSv-Jcu-Xg-AEqe-r.jpg' },
-      { title: 'إيقاع كافيه', cat: 'مطاعم وكافيهات', tag: 'كافيه · شعار', desc: 'دمج دفء القهوة مع إيقاع اليوم المتوازن والموجات الصوتية.', img: 'https://i.ibb.co/21JpPDCR/image.jpg' },
-      { title: 'مدى', cat: 'شعارات', tag: 'تجديد هوية', desc: 'إعادة تصميم هوية مدى لتصبح أكثر نضجاً واتزاناً.', img: 'https://i.ibb.co/P896bG9/image.jpg', more: ['https://i.ibb.co/tMLGnhBm/image.jpg', 'https://i.ibb.co/1fZXZd9G/1.jpg'] },
-      { title: 'أفق', cat: 'شعارات', tag: 'شعار', desc: 'الصعود المستمر، والطموح المتجدد، والتركيز على الهدف.', img: 'https://i.ibb.co/Sw9NKvhw/1.jpg', more: ['https://i.ibb.co/qF9d2QQ3/image.jpg', 'https://i.ibb.co/9k3PTC3V/2.jpg'] },
-      { title: 'فلك · FALAKS', cat: 'هوية بصرية', tag: 'شعار · براندنج', desc: 'لكل علامة تجارية مدارها الخاص؛ تجسيد لفكرة المدار والأبعاد والابتكار في شكل واحد.', img: 'https://i.ibb.co/v6NMMxHS/1.png', more: ['https://i.ibb.co/21zpp7yT/image.jpg', 'https://i.ibb.co/6zfj2S5/2.png', 'https://i.ibb.co/1fK7348b/4.png', 'https://i.ibb.co/PGqfsSDs/Chat-GPT-Image-28-2026-10-53-52-1.png', 'https://i.ibb.co/yFw873MQ/Chat-GPT-Image-28-2026-10-55-56.png'] },
-      { title: 'بتلة · Petal', cat: 'هوية بصرية', tag: 'هوية بصرية · براندنج', desc: 'كل علامة تستحق هوية تُزهر بها؛ مشروع هوية بصرية متكامل لعلامة بتلة.', img: 'https://i.ibb.co/LDcmMZyV/1.png', more: ['https://i.ibb.co/NgJ5Xyqc/image.jpg', 'https://i.ibb.co/FqVcp5gb/2.png', 'https://i.ibb.co/46smbbN/Firefly-Gemini-Flash.png', 'https://i.ibb.co/RpZjKtyZ/using-the-logo-from-the-reference-image-matte-bla.png', 'https://i.ibb.co/Cp35Kx8p/Firefly-Gemini-Flash-2.png'] },
-      { title: 'وجهة · DESTINATION', cat: 'هوية بصرية', tag: 'هوية بصرية · براندنج', desc: 'حيث تلتقي الأفكار وتبدأ الأحاديث؛ هوية لـ«وجهة» في حي السفارات، تعتمد على دمج أيقونات المحادثة للتعبير عن التفاعل والتواصل.', img: 'https://i.ibb.co/B28TD4hV/9874120.png' },
-      { title: 'دوّارة · Dawwara', cat: 'مطاعم وكافيهات', tag: 'مطاعم · هوية بصرية', desc: 'لذّة الشاورما الأصيلة بكل طبقة؛ شعار يجسّد حركة السيخ المستمرة وتراصّ اللحم.', img: 'https://i.ibb.co/cK70dRMx/545477521.jpg' },
-      { title: 'مسك الغنيم', cat: 'عطور وفخامة', tag: 'عطور · فخامة', desc: 'أصالة الماضي وفخامة الحاضر في تفصيلة واحدة؛ هوية للعطور والمسك الفاخر.', img: 'https://i.ibb.co/v6hZ75w3/2245734-0.png' },
-      { title: 'إمتنان · THANKFULNESS', cat: 'هوية بصرية', tag: 'تسوّق · هوية بصرية', desc: 'تجربة تسوّق ممتعة تبدأ من التفاصيل؛ هوية بصرية لمتجر إمتنان في أبها.', img: 'https://i.ibb.co/nNw5PDJz/788754623-1.png', more: ['https://i.ibb.co/CKDYFNnK/788754623-2.png'] },
-      { title: 'قاعة الأوسط', cat: 'هوية بصرية', tag: 'هوية بصرية · قاعات', desc: 'لكل مناسبة سعيدة مكان يليق بجمالها؛ هوية لقاعة الأوسط في بريدة تدمج القوس المعماري الفخم بالخطوط الإسلامية العصرية.', img: 'https://i.ibb.co/20qDf1fy/image.jpg', more: ['https://i.ibb.co/4Z3VcR15/Firefly-Gemini-Flash-The-guiding-text-A-realistic-and-high-quality-mockup-of-two-professional-busi.png', 'https://i.ibb.co/S4tMkHpS/Firefly-Gemini-Flash-The-guiding-text-A-realistic-mockup-of-a-modern-smartphone-e-g-i-Phone-15-P.png', 'https://i.ibb.co/B2x5Mn46/Firefly-Gemini-Flash-The-guiding-text-A-realistic-mockup-of-a-large-luxurious-rectangular-signage.png', 'https://i.ibb.co/9Hn5m0SP/Chat-GPT-Image-5-2026-10-49-56.png'] }
-    ];
-
-    const VIDEOS = [
-      { title: 'قاضي الحب', tags: ['قصة', 'مشاعر'], desc: 'حكاية بصرية دافئة بإيقاع هادئ، تمنح كل لقطة مساحتها لتوصل معناها.', file: 'qadi-alhob' },
-      { title: 'درب', tags: ['رحلة', 'قصصي'], desc: 'رحلة مرئية عن الطريق والاستمرار، بتكوين متوازن وانتقالات تشدّ المشاهد.', file: 'darb_final' },
-      { title: 'أحنّ إلى الحجاز', tags: ['حنين', 'هوية مكان'], desc: 'مقطع يحمل الحنين إلى المكان والذاكرة بروح هادئة ولمسات بصرية مؤثرة.', file: 'ahinnu-ila-alhijaz' },
-      { title: 'الحمد لله', tags: ['امتنان', 'تأمل'], desc: 'رسالة هادئة تحتفي بالامتنان، بتكوين بسيط يمنح لحظة من السكينة.', file: 'alhamdu-final' },
-      { title: 'يوم الفراق', tags: ['درامي', 'وداع'], desc: 'مشهد يلتقط ثقل الوداع وصدق اللحظة، ويحوّل الإحساس إلى تجربة مرئية.', file: 'yawm-alfiraq' }
-    ];
-
-    const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-
-    /* ---------- Portfolio grid + filters ---------- */
-    const grid = document.getElementById('grid');
-    const filters = document.getElementById('filters');
-    const cats = ['الكل', ...new Set(WORKS.map(w => w.cat))];
-
-    filters.innerHTML = cats.map((c, i) =>
-      `<button class="chip rounded-full border border-gray-300 bg-white px-5 py-2 text-sm font-semibold text-gray-700 hover:border-olive ${i === 0 ? 'active' : ''}" data-cat="${esc(c)}" role="tab">${esc(c)}</button>`).join('');
-
-    function renderGrid(cat) {
-      const list = WORKS.map((w, i) => ({ ...w, i })).filter(w => cat === 'الكل' || w.cat === cat);
-      grid.innerHTML = list.map(w => `
-        <button class="work-card group overflow-hidden rounded-3xl bg-white text-right reveal" data-i="${w.i}" aria-label="عرض تفاصيل ${esc(w.title)}">
-          <div class="relative aspect-[4/3] overflow-hidden bg-olive-pale">
-            <img src="${w.img}" alt="${esc(w.title)}" loading="lazy" class="h-full w-full object-cover" />
-            ${w.more ? `<span class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-ink"><i class="fa-regular fa-images ml-1"></i>${w.more.length + 1}</span>` : ''}
-          </div>
-          <div class="flex items-center justify-between gap-4 p-6">
-            <div>
-              <p class="mb-1 text-xs font-semibold text-olive">${esc(w.tag)}</p>
-              <h3 class="text-xl font-bold">${esc(w.title)}</h3>
-            </div>
-            <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-gray-200 text-gray-500 transition group-hover:border-olive group-hover:bg-olive group-hover:text-white"><i class="fa-solid fa-arrow-left"></i></span>
-          </div>
-        </button>`).join('');
-      observeReveals();
-    }
-
-    filters.addEventListener('click', e => {
-      const b = e.target.closest('button'); if (!b) return;
-      filters.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c === b));
-      renderGrid(b.dataset.cat);
-    });
-    grid.addEventListener('click', e => { const c = e.target.closest('[data-i]'); if (c) openLightbox(+c.dataset.i); });
-    renderGrid('الكل');
-
-    /* ---------- Marquee ---------- */
-    const mq = document.getElementById('marquee-1');
-    const tiles = WORKS.map(w => `<div class="h-40 w-56 shrink-0 overflow-hidden rounded-2xl bg-olive-pale md:h-48 md:w-64"><img src="${w.img}" alt="" loading="lazy" class="h-full w-full object-cover" /></div>`).join('');
-    mq.innerHTML = tiles + tiles;
-
-    /* ---------- Videos ---------- */
-    const vgrid = document.getElementById('video-grid');
-    vgrid.innerHTML = VIDEOS.map((v, i) => `
-      <article class="reveal" style="transition-delay:${(i % 3) * .08}s">
-        <div class="video-card" data-video>
-          <video preload="none" playsinline poster="assets/${v.file}.jpg" aria-label="${esc(v.title)}">
-            <source src="assets/${v.file}.mp4" type="video/mp4" />
-          </video>
-          <div class="overlay">
-            <span class="play-btn"><i class="fa-solid fa-play"></i></span>
-            <span class="mb-2 text-xs font-semibold text-white/70">فيديو ${String(i + 1).padStart(2, '0')}</span>
-            <h3 class="font-display text-2xl font-extrabold">${esc(v.title)}</h3>
-          </div>
-        </div>
-        <div class="px-1 pt-5">
-          <div class="mb-3 flex flex-wrap gap-2">${v.tags.map(t => `<span class="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-olive-muted">${esc(t)}</span>`).join('')}</div>
-          <p class="leading-relaxed text-white/70">${esc(v.desc)}</p>
-        </div>
-      </article>`).join('');
-
-    vgrid.addEventListener('click', e => {
-      const card = e.target.closest('[data-video]'); if (!card) return;
-      const video = card.querySelector('video');
-      if (card.classList.contains('playing')) return;
-      vgrid.querySelectorAll('[data-video].playing').forEach(c => { c.querySelector('video').pause(); });
-      video.controls = true;
-      video.play();
-      card.classList.add('playing');
-    });
-    vgrid.querySelectorAll('video').forEach(v => {
-      v.addEventListener('pause', () => { if (v.currentTime === 0 || v.ended) { v.controls = false; v.closest('[data-video]').classList.remove('playing'); } });
-      v.addEventListener('ended', () => { v.currentTime = 0; v.controls = false; v.closest('[data-video]').classList.remove('playing'); });
-      v.addEventListener('play', () => vgrid.querySelectorAll('video').forEach(o => { if (o !== v) o.pause(); }));
+    // تهيئة AOS
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: true
     });
 
-    /* ---------- Lightbox ---------- */
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lb-img');
-    const lbThumbs = document.getElementById('lb-thumbs');
-    const lbPrev = document.getElementById('lb-prev');
-    const lbNext = document.getElementById('lb-next');
-    let imgs = [], cur = 0, lastFocus = null;
-
-    function showImg(n) {
-      cur = (n + imgs.length) % imgs.length;
-      lbImg.src = imgs[cur];
-      lbThumbs.querySelectorAll('.thumb').forEach((t, i) => t.classList.toggle('active', i === cur));
-    }
-    function openLightbox(i) {
-      const w = WORKS[i];
-      lastFocus = document.activeElement;
-      imgs = [w.img, ...(w.more || [])];
-      document.getElementById('lb-title').textContent = w.title;
-      document.getElementById('lb-tag').textContent = w.tag;
-      document.getElementById('lb-desc').textContent = w.desc;
-      lbImg.alt = w.title;
-      lbThumbs.innerHTML = imgs.length > 1 ? imgs.map((src, k) => `<button class="thumb h-16 w-16 overflow-hidden rounded-lg" data-k="${k}" aria-label="صورة ${k + 1}"><img src="${src}" alt="" class="h-full w-full object-cover" /></button>`).join('') : '';
-      [lbPrev, lbNext].forEach(b => { b.classList.toggle('hidden', imgs.length < 2); b.classList.toggle('grid', imgs.length > 1); });
-      showImg(0);
-      lb.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      document.getElementById('lb-close').focus();
-    }
-    function closeLightbox() {
-      lb.classList.remove('open');
-      document.body.style.overflow = '';
-      if (lastFocus) lastFocus.focus();
-    }
-    lbThumbs.addEventListener('click', e => { const t = e.target.closest('[data-k]'); if (t) showImg(+t.dataset.k); });
-    lbPrev.addEventListener('click', () => showImg(cur - 1));
-    lbNext.addEventListener('click', () => showImg(cur + 1));
-    document.getElementById('lb-close').addEventListener('click', closeLightbox);
-    lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
-    document.addEventListener('keydown', e => {
-      if (!lb.classList.contains('open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') showImg(cur + 1);
-      if (e.key === 'ArrowRight') showImg(cur - 1);
-    });
-
-    /* ---------- Header, menu, active link ---------- */
-    const nav = document.getElementById('navbar');
-    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 20);
-    window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
-
-    const menuBtn = document.getElementById('menu-btn');
-    const menu = document.getElementById('mobile-menu');
-    const setMenu = open => { menu.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', open); menuBtn.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>'; nav.classList.toggle('scrolled', open || window.scrollY > 20); };
-    menuBtn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
-
-    const links = document.querySelectorAll('.nav-link');
-    const secObs = new IntersectionObserver(entries => entries.forEach(en => {
-      if (en.isIntersecting) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + en.target.id));
-    }), { rootMargin: '-45% 0px -50% 0px' });
-    ['hero', 'services', 'portfolio', 'videos', 'contact'].forEach(id => secObs.observe(document.getElementById(id)));
-
-    observeReveals();
-
-    /* ---------- Counters ---------- */
-    const cntObs = new IntersectionObserver(entries => entries.forEach(en => {
-      if (!en.isIntersecting) return;
-      const el = en.target, to = +el.dataset.to, t0 = performance.now();
-      const step = t => { const p = Math.min((t - t0) / 1400, 1); el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); };
-      requestAnimationFrame(step); cntObs.unobserve(el);
-    }));
-    document.querySelectorAll('.counter').forEach(c => cntObs.observe(c));
-
-    /* ---------- Typing effect ---------- */
-    const words = ['تُعبّر عن هويتك', 'تبني علامتك', 'تخطف الأنظار'];
-    const typed = document.getElementById('typed');
-    let wi = 0, ci = 0, del = false;
-    (function tick() {
-      const w = words[wi];
-      typed.textContent = w.slice(0, ci);
-      if (!del && ci < w.length) ci++;
-      else if (!del) { del = true; return setTimeout(tick, 1800); }
-      else if (ci > 0) ci--;
-      else { del = false; wi = (wi + 1) % words.length; }
-      setTimeout(tick, del ? 40 : 75);
-    })();
-
+    // تحديث السنة
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // تأثير الكتابة
+    new Typed('#typed-text', {
+      strings: ['تُعبّر عن هويتك', 'تبني علامتك التجارية', 'تخطف الأنظار'],
+      typeSpeed: 60,
+      backSpeed: 40,
+      loop: true
+    });
+
+    // تفاعل الهيدر عند التمرير
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // تفاعل الخلفية مع الماوس
+    document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+      document.getElementById('mouse-gradient').style.setProperty('--mouse-x', x + '%');
+      document.getElementById('mouse-gradient').style.setProperty('--mouse-y', y + '%');
+    });
+
+    // وظائف المودال
+    function openModal(title, desc, img, tag, additionalImages = []) {
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-desc').textContent = desc;
+      document.getElementById('modal-img').src = img;
+      document.getElementById('modal-tag').textContent = tag;
+      
+      // عرض الصور الإضافية إذا كانت موجودة
+      const galleryDiv = document.getElementById('image-gallery');
+      const galleryImagesDiv = document.getElementById('gallery-images');
+      
+      if (additionalImages && additionalImages.length > 0) {
+        galleryDiv.classList.remove('hidden');
+        galleryImagesDiv.innerHTML = additionalImages.map(imgUrl => 
+          `<img src="${imgUrl}" alt="صورة إضافية" class="w-20 h-20 rounded-lg object-cover cursor-pointer hover:scale-110 transition-transform shadow-md" onclick="document.getElementById('modal-img').src='${imgUrl}'"/>`
+        ).join('');
+      } else {
+        galleryDiv.classList.add('hidden');
+      }
+      
+      const modal = document.getElementById('modal-overlay');
+      modal.style.display = 'flex';
+      setTimeout(() => modal.classList.add('active'), 10);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modal-overlay');
+      modal.classList.remove('active');
+      setTimeout(() => modal.style.display = 'none', 400);
+      document.body.style.overflow = 'auto';
+    }
+
+    // تأثير الماوس على البطاقات (Parallax خفيف)
+    document.querySelectorAll('.portfolio-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) translateY(0)`;
+      });
+    });
+
+    // تشغيل الفيديوهات: فيديو واحد في كل مرة
+    const vGrid = document.getElementById('video-grid');
+    const fmt = t => { t = Math.round(t); return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); };
+    vGrid.querySelectorAll('[data-vcard]').forEach(card => {
+      const v = card.querySelector('video');
+      const reset = () => { v.controls = false; card.classList.remove('playing'); };
+      v.addEventListener('loadedmetadata', () => { card.querySelector('[data-dur]').textContent = fmt(v.duration); });
+      card.querySelector('.v-overlay').addEventListener('click', () => {
+        vGrid.querySelectorAll('video').forEach(o => { if (o !== v) o.pause(); });
+        v.controls = true; card.classList.add('playing'); v.play();
+      });
+      v.addEventListener('play', () => vGrid.querySelectorAll('video').forEach(o => { if (o !== v) o.pause(); }));
+      v.addEventListener('ended', () => { v.currentTime = 0; reset(); });
+    });
   </script>
 </body>
 </html>
