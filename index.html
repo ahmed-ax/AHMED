@@ -210,6 +210,12 @@
     .vcard:hover .v-play { transform: translate(-50%,-50%) scale(1.1); background: #16625a; border-color: #16625a; }
     .vcard .v-num { position: absolute; top: 1rem; right: 1rem; padding: .35rem .8rem; border-radius: 9999px; font-size: .75rem; font-weight: 700; color: #fff; background: rgba(0,0,0,.45); backdrop-filter: blur(6px); }
     .vcard .v-dur { position: absolute; top: 1rem; left: 1rem; padding: .35rem .7rem; border-radius: 9999px; font-size: .75rem; font-weight: 700; color: #fff; background: rgba(0,0,0,.45); backdrop-filter: blur(6px); direction: ltr; }
+    .vf-btn { display:inline-flex; align-items:center; gap:.5rem; padding:.6rem 1.25rem; border-radius:9999px; font-weight:700; font-size:.95rem; color:#c2dedd; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); transition:all .25s ease; }
+    .vf-btn span { font-size:.75rem; padding:.05rem .5rem; border-radius:9999px; background:rgba(255,255,255,.12); }
+    .vf-btn:hover { border-color:rgba(255,255,255,.4); color:#fff; }
+    .vf-btn.active { background:#fff; color:#0f4540; border-color:#fff; }
+    .vf-btn.active span { background:#e8f4f3; }
+    .v-item.hide { display:none; }
     @media (prefers-reduced-motion: reduce) { .vcard, .vcard .v-overlay, .vcard .v-play { transition: none; } }
   </style>
 </head>
@@ -708,109 +714,44 @@
           موشن جرافيك · تايبوغرافي متحرك
         </span>
         <h2 class="text-4xl md:text-5xl font-extrabold mb-4">فيديوهات <span class="text-olive-muted">أحمد</span></h2>
-        <p class="text-white/70 text-lg leading-loose">أحوّل القصائد والكلمات إلى مشاهد متحركة؛ لكل نص هويته البصرية الخاصة، من الخط واللون إلى الإيقاع والحركة. ثمانية أعمال موشن جرافيك مختارة، اضغط على أي فيديو لمشاهدته.</p>
+        <p class="text-white/70 text-lg leading-loose">أحوّل القصائد والكلمات إلى مشاهد متحركة؛ لكل نص هويته البصرية الخاصة، من الخط واللون إلى الإيقاع والحركة. من القصائد إلى المحتوى الإيماني والإعلانات التجارية، أكثر من عشرين عملاً موشن جرافيك. اختر التصنيف واضغط على أي فيديو لمشاهدته.</p>
+      </div>
+
+      <div id="video-filters" class="flex flex-wrap justify-center gap-3 mb-12" data-aos="fade-up">
+        <button class="vf-btn active" data-f="all">الكل <span>21</span></button>
+        <button class="vf-btn" data-f="قصائد">قصائد <span>7</span></button>
+        <button class="vf-btn" data-f="محتوى إيماني">محتوى إيماني <span>7</span></button>
+        <button class="vf-btn" data-f="إعلانات">إعلانات <span>7</span></button>
       </div>
 
       <div id="video-grid" class="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
-        <article class="w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-aos="fade-up" data-aos-delay="0">
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
           <div class="vcard" data-vcard>
-            <video preload="metadata" playsinline poster="assets/qadi-alhob.jpg" aria-label="فيديو قاضي الحب">
+            <video preload="none" playsinline poster="assets/qadi-alhob.jpg" aria-label="فيديو قاضي الحب">
               <source src="assets/qadi-alhob.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
             <div class="v-overlay">
-              <span class="v-num">فيديو 01</span>
-              <span class="v-dur" data-dur></span>
+              <span class="v-num">قصائد</span>
+              <span class="v-dur">1:09</span>
               <span class="v-play"><i class="fa-solid fa-play"></i></span>
               <h3 class="text-2xl font-extrabold">قاضي الحب</h3>
             </div>
           </div>
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">موشن جرافيك</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">قصيدة</span></div>
-            <p class="text-white/70 leading-relaxed">مسرح عربي بستارته الحمراء وفوانيسه، تتحرك فيه أبيات القصيدة مع الإيقاع لتتحول الكلمات إلى مشهد يُروى أمام الجمهور.</p>
+            <p class="text-white/70 leading-relaxed">مسرح عربي بستارته الحمراء وفوانيسه، تتحرك فيه أبيات القصيدة مع الإيقاع لتتحول الكلمات إلى مشهد يُروى.</p>
           </div>
         </article>
-        <article class="w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-aos="fade-up" data-aos-delay="120">
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
           <div class="vcard" data-vcard>
-            <video preload="metadata" playsinline poster="assets/darb_final.jpg" aria-label="فيديو درب">
-              <source src="assets/darb_final.mp4" type="video/mp4" />
-              متصفحك لا يدعم تشغيل الفيديو.
-            </video>
-            <div class="v-overlay">
-              <span class="v-num">فيديو 02</span>
-              <span class="v-dur" data-dur></span>
-              <span class="v-play"><i class="fa-solid fa-play"></i></span>
-              <h3 class="text-2xl font-extrabold">درب</h3>
-            </div>
-          </div>
-          <div class="pt-5 px-1">
-            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">تايبوغرافي</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">أسلوب بسيط</span></div>
-            <p class="text-white/70 leading-relaxed">أشكال هندسية بسيطة وخط ذهبي يرسم الطريق، يرافق كلمات التوبة والرجاء بهدوء يترك للمعنى مساحته.</p>
-          </div>
-        </article>
-        <article class="w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-aos="fade-up" data-aos-delay="240">
-          <div class="vcard" data-vcard>
-            <video preload="metadata" playsinline poster="assets/ahinnu-ila-alhijaz.jpg" aria-label="فيديو أحنّ إلى الحجاز">
-              <source src="assets/ahinnu-ila-alhijaz.mp4" type="video/mp4" />
-              متصفحك لا يدعم تشغيل الفيديو.
-            </video>
-            <div class="v-overlay">
-              <span class="v-num">فيديو 03</span>
-              <span class="v-dur" data-dur></span>
-              <span class="v-play"><i class="fa-solid fa-play"></i></span>
-              <h3 class="text-2xl font-extrabold">أحنّ إلى الحجاز</h3>
-            </div>
-          </div>
-          <div class="pt-5 px-1">
-            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">ورق مقصوص</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">حنين</span></div>
-            <p class="text-white/70 leading-relaxed">طبقات من الجبال بأسلوب الورق المقصوص وألوان دافئة، تستحضر الحنين إلى الحجاز وتجمع بين الكلمة والمكان.</p>
-          </div>
-        </article>
-        <article class="w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-aos="fade-up" data-aos-delay="0">
-          <div class="vcard" data-vcard>
-            <video preload="metadata" playsinline poster="assets/alhamdu-final.jpg" aria-label="فيديو الحمد لله">
-              <source src="assets/alhamdu-final.mp4" type="video/mp4" />
-              متصفحك لا يدعم تشغيل الفيديو.
-            </video>
-            <div class="v-overlay">
-              <span class="v-num">فيديو 04</span>
-              <span class="v-dur" data-dur></span>
-              <span class="v-play"><i class="fa-solid fa-play"></i></span>
-              <h3 class="text-2xl font-extrabold">الحمد لله</h3>
-            </div>
-          </div>
-          <div class="pt-5 px-1">
-            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">زخرفة إسلامية</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">تأمل</span></div>
-            <p class="text-white/70 leading-relaxed">زخارف هندسية إسلامية بالأخضر والذهبي تتشكّل حول كلمات الحمد، في تكوين متوازن يبعث السكينة.</p>
-          </div>
-        </article>
-        <article class="w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-aos="fade-up" data-aos-delay="120">
-          <div class="vcard" data-vcard>
-            <video preload="metadata" playsinline poster="assets/yawm-alfiraq.jpg" aria-label="فيديو يوم الفراق">
-              <source src="assets/yawm-alfiraq.mp4" type="video/mp4" />
-              متصفحك لا يدعم تشغيل الفيديو.
-            </video>
-            <div class="v-overlay">
-              <span class="v-num">فيديو 05</span>
-              <span class="v-dur" data-dur></span>
-              <span class="v-play"><i class="fa-solid fa-play"></i></span>
-              <h3 class="text-2xl font-extrabold">يوم الفراق</h3>
-            </div>
-          </div>
-          <div class="pt-5 px-1">
-            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">درامي</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">أجواء</span></div>
-            <p class="text-white/70 leading-relaxed">أجواء ممطرة وألوان باردة تعكس ثقل الوداع، مع كتابة متحركة تتناغم مع نبرة الإلقاء ولحظاته.</p>
-          </div>
-        </article>
-        <article class="w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-aos="fade-up" data-aos-delay="240">
-          <div class="vcard" data-vcard>
-            <video preload="metadata" playsinline poster="assets/aldurar.jpg" aria-label="فيديو الدُّرر">
+            <video preload="none" playsinline poster="assets/aldurar.jpg" aria-label="فيديو الدُّرر">
               <source src="assets/aldurar.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
             <div class="v-overlay">
-              <span class="v-num">فيديو 06</span>
-              <span class="v-dur" data-dur></span>
+              <span class="v-num">قصائد</span>
+              <span class="v-dur">0:23</span>
               <span class="v-play"><i class="fa-solid fa-play"></i></span>
               <h3 class="text-2xl font-extrabold">الدُّرر</h3>
             </div>
@@ -820,15 +761,15 @@
             <p class="text-white/70 leading-relaxed">بوصلة ونجوم وموج بخطوط ذهبية على أزرق ملكي، تجسّد الأبيات الشهيرة عن نجوم السماء ودُرر البحر في مشهد فاخر.</p>
           </div>
         </article>
-        <article class="w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-aos="fade-up" data-aos-delay="0">
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
           <div class="vcard" data-vcard>
-            <video preload="metadata" playsinline poster="assets/akhawi-alsabr.jpg" aria-label="فيديو أخاوي الصبر">
+            <video preload="none" playsinline poster="assets/akhawi-alsabr.jpg" aria-label="فيديو أخاوي الصبر">
               <source src="assets/akhawi-alsabr.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
             <div class="v-overlay">
-              <span class="v-num">فيديو 07</span>
-              <span class="v-dur" data-dur></span>
+              <span class="v-num">قصائد</span>
+              <span class="v-dur">0:43</span>
               <span class="v-play"><i class="fa-solid fa-play"></i></span>
               <h3 class="text-2xl font-extrabold">أخاوي الصبر</h3>
             </div>
@@ -838,15 +779,15 @@
             <p class="text-white/70 leading-relaxed">نوافذ من الزجاج المعشّق داخل أقواس حجرية، كل نافذة تروي مشهداً من القصيدة بطابع كلاسيكي وحركة حديثة.</p>
           </div>
         </article>
-        <article class="w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-aos="fade-up" data-aos-delay="120">
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
           <div class="vcard" data-vcard>
-            <video preload="metadata" playsinline poster="assets/ya-rafiqi.jpg" aria-label="فيديو يا رفيقي">
+            <video preload="none" playsinline poster="assets/ya-rafiqi.jpg" aria-label="فيديو يا رفيقي">
               <source src="assets/ya-rafiqi.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
             <div class="v-overlay">
-              <span class="v-num">فيديو 08</span>
-              <span class="v-dur" data-dur></span>
+              <span class="v-num">قصائد</span>
+              <span class="v-dur">0:35</span>
               <span class="v-play"><i class="fa-solid fa-play"></i></span>
               <h3 class="text-2xl font-extrabold">يا رفيقي</h3>
             </div>
@@ -854,6 +795,312 @@
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">نيون</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">صداقة</span></div>
             <p class="text-white/70 leading-relaxed">لافتات نيون مضيئة على جدار من الطوب، تحتفي برفقة السنين بأيقونات تلمع وكلمات تتوهج مع كل بيت.</p>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/wajhain.jpg" aria-label="فيديو وجهين">
+              <source src="assets/wajhain.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">قصائد</span>
+              <span class="v-dur">1:00</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">وجهين</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">تايبوغرافي</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">عتاب</span></div>
+            <p class="text-white/70 leading-relaxed">فوانيس معلّقة وخط عربي على خلفية داكنة، تتصاعد فيه الكلمات بين العتاب والهجر بإيقاع يشدّ المستمع حتى آخر بيت.</p>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/ahinnu-ila-alhijaz.jpg" aria-label="فيديو أحنّ إلى الحجاز">
+              <source src="assets/ahinnu-ila-alhijaz.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">قصائد</span>
+              <span class="v-dur">0:35</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">أحنّ إلى الحجاز</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">ورق مقصوص</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">حنين</span></div>
+            <p class="text-white/70 leading-relaxed">طبقات من الجبال بأسلوب الورق المقصوص وألوان دافئة، تستحضر الحنين إلى الحجاز وتجمع بين الكلمة والمكان.</p>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/yawm-alfiraq.jpg" aria-label="فيديو يوم الفراق">
+              <source src="assets/yawm-alfiraq.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">قصائد</span>
+              <span class="v-dur">0:34</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">يوم الفراق</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">درامي</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">أجواء</span></div>
+            <p class="text-white/70 leading-relaxed">أجواء ممطرة وألوان باردة تعكس ثقل الوداع، مع كتابة متحركة تتناغم مع نبرة الإلقاء ولحظاته.</p>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/darb_final.jpg" aria-label="فيديو درب">
+              <source src="assets/darb_final.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى إيماني</span>
+              <span class="v-dur">1:39</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">درب</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">تايبوغرافي</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">توبة</span></div>
+            <p class="text-white/70 leading-relaxed">أشكال هندسية بسيطة وخط ذهبي يرسم الطريق، يرافق كلمات التوبة والرجاء بهدوء يترك للمعنى مساحته.</p>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/alhamdu-final.jpg" aria-label="فيديو الحمد لله">
+              <source src="assets/alhamdu-final.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى إيماني</span>
+              <span class="v-dur">1:02</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">الحمد لله</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">زخرفة إسلامية</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">تأمل</span></div>
+            <p class="text-white/70 leading-relaxed">زخارف هندسية إسلامية بالأخضر والذهبي تتشكّل حول كلمات الحمد، في تكوين متوازن يبعث السكينة.</p>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/nawl.jpg" aria-label="فيديو النَّول">
+              <source src="assets/nawl.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى إيماني</span>
+              <span class="v-dur">0:56</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">النَّول</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">تراث</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">رمزية</span></div>
+            <p class="text-white/70 leading-relaxed">نول خشبي يحيك سجادة عربية بنقوشها خيطاً بعد خيط، استعارة بصرية لما يُبنى بين العبد وربه بالصبر والإحسان.</p>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/raml.jpg" aria-label="فيديو رمل">
+              <source src="assets/raml.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى إيماني</span>
+              <span class="v-dur">0:39</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">رمل</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">آيات</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">الوقت</span></div>
+            <p class="text-white/70 leading-relaxed">ساعة رملية تتساقط حبّاتها مع الآيات والكلمات، تذكير بقيمة الوقت وأن باب التوبة مفتوح قبل أن ينفد الرمل.</p>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/tabasheer.jpg" aria-label="فيديو تباشير">
+              <source src="assets/tabasheer.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى إيماني</span>
+              <span class="v-dur">0:40</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">تباشير</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">رسم طباشير</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">أمل</span></div>
+            <p class="text-white/70 leading-relaxed">رسوم بالطباشير على سبورة داكنة ترسم طريق الحزن والأمل، حيث تتحول الخطوط المتعرجة إلى سلّم نحو الفرج.</p>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/taht-alturab.jpg" aria-label="فيديو تحت التراب">
+              <source src="assets/taht-alturab.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى إيماني</span>
+              <span class="v-dur">1:38</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">تحت التراب</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">قصة بصرية</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">صبر</span></div>
+            <p class="text-white/70 leading-relaxed">بذرة تشق طريقها تحت التراب حتى تصير شجرة مثمرة، قصة بصرية عن أن في البلاء عطاءً وأن الصبر يُثمر.</p>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/turos.jpg" aria-label="فيديو تروس">
+              <source src="assets/turos.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى إيماني</span>
+              <span class="v-dur">1:28</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">تروس</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">ميكانيكي</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">همّة</span></div>
+            <p class="text-white/70 leading-relaxed">تروس نحاسية تدور بلا توقف، ترافق مواقف السلف وأقوالهم عن الجد والمثابرة حتى بلوغ الغاية.</p>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/riyadh-alsaliheen-3.jpg" aria-label="فيديو رياض الصالحين · وقفات إيمانية">
+              <source src="assets/riyadh-alsaliheen-3.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">إعلانات</span>
+              <span class="v-dur">0:28</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">رياض الصالحين · وقفات إيمانية</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">إعلان قناة</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">هوية</span></div>
+            <p class="text-white/70 leading-relaxed">إعلان تعريفي لقناة رياض الصالحين بإضاءة ذهبية وشعار متوهّج، يعرض محتوى القناة من وقفات قرآنية وتسبيح واستغفار.</p>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/riyadh-alsaliheen-4.jpg" aria-label="فيديو رياض الصالحين · مكانٌ في يومك">
+              <source src="assets/riyadh-alsaliheen-4.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">إعلانات</span>
+              <span class="v-dur">0:27</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">رياض الصالحين · مكانٌ في يومك</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">إعلان قناة</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">دعوة</span></div>
+            <p class="text-white/70 leading-relaxed">شمس تعبر قوساً هادئاً وبوابة خضراء مضيئة، برسالة تدعو المشاهد ليجعل للتذكير مكاناً ثابتاً في يومه.</p>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/riyadh-alsaliheen-5.jpg" aria-label="فيديو رياض الصالحين · الممرّ">
+              <source src="assets/riyadh-alsaliheen-5.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">إعلانات</span>
+              <span class="v-dur">0:33</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">رياض الصالحين · الممرّ</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">إعلان قناة</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">سينمائي</span></div>
+            <p class="text-white/70 leading-relaxed">ممر من الأقواس الخضراء والذهبية تعبره المصاحف والمخطوطات نحو الشعار، بإخراج سينمائي ينتهي بدعوة للمتابعة.</p>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/riyadh-alsaliheen-6.jpg" aria-label="فيديو رياض الصالحين · الفسيفساء">
+              <source src="assets/riyadh-alsaliheen-6.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">إعلانات</span>
+              <span class="v-dur">0:34</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">رياض الصالحين · الفسيفساء</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">إعلان قناة</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">فسيفساء</span></div>
+            <p class="text-white/70 leading-relaxed">بلاطات فسيفساء ثُمانية بالأخضر والذهبي تنقلب لتكشف أقسام القناة: الآيات والتسبيح والأذكار.</p>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/riyadh-alsaliheen-7.jpg" aria-label="فيديو رياض الصالحين · رسائل إيمانية">
+              <source src="assets/riyadh-alsaliheen-7.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">إعلانات</span>
+              <span class="v-dur">0:32</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">رياض الصالحين · رسائل إيمانية</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">إعلان قناة</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">مسطّح</span></div>
+            <p class="text-white/70 leading-relaxed">تصميم مسطّح أنيق بألوان هادئة، يعرّف بمحتوى القناة: آيات من القرآن، ومواقف من السيرة، وتذكير بالعبادات والأخلاق.</p>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/riyadh-alsaliheen-8.jpg" aria-label="فيديو رياض الصالحين · المنصّات">
+              <source src="assets/riyadh-alsaliheen-8.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">إعلانات</span>
+              <span class="v-dur">0:36</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">رياض الصالحين · المنصّات</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">إعلان قناة</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">ثلاثي الأبعاد</span></div>
+            <p class="text-white/70 leading-relaxed">منصّات ثلاثية الأبعاد بعناصر إسلامية من هلال وفانوس ومصحف، تعرض أقسام القناة من السنة والعبادة والأخلاق.</p>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/mohamed-naji-ad.jpg" aria-label="فيديو إعلان التعليق الصوتي">
+              <source src="assets/mohamed-naji-ad.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">إعلانات</span>
+              <span class="v-dur">0:45</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">إعلان التعليق الصوتي</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">تعليق صوتي</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">خدمات</span></div>
+            <p class="text-white/70 leading-relaxed">إعلان لخدمات التعليق الصوتي بتصميم داكن وذهبي، يستعرض مجالات العمل من الإعلانات إلى المحتوى الرقمي بإيقاع يحافظ على الانتباه.</p>
           </div>
         </article>
       </div>
@@ -1043,13 +1290,20 @@
     vGrid.querySelectorAll('[data-vcard]').forEach(card => {
       const v = card.querySelector('video');
       const reset = () => { v.controls = false; card.classList.remove('playing'); };
-      v.addEventListener('loadedmetadata', () => { card.querySelector('[data-dur]').textContent = fmt(v.duration); });
       card.querySelector('.v-overlay').addEventListener('click', () => {
         vGrid.querySelectorAll('video').forEach(o => { if (o !== v) o.pause(); });
         v.controls = true; card.classList.add('playing'); v.play();
       });
       v.addEventListener('play', () => vGrid.querySelectorAll('video').forEach(o => { if (o !== v) o.pause(); }));
       v.addEventListener('ended', () => { v.currentTime = 0; reset(); });
+    });
+
+    // فلترة الفيديوهات حسب التصنيف
+    document.getElementById('video-filters').addEventListener('click', e => {
+      const b = e.target.closest('.vf-btn'); if (!b) return;
+      document.querySelectorAll('.vf-btn').forEach(x => x.classList.toggle('active', x === b));
+      vGrid.querySelectorAll('video').forEach(v => v.pause());
+      vGrid.querySelectorAll('.v-item').forEach(it => it.classList.toggle('hide', b.dataset.f !== 'all' && it.dataset.cat !== b.dataset.f));
     });
   </script>
 </body>
