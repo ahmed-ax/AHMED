@@ -272,11 +272,32 @@
       .pf-hint b { color: #16625a; }
       #contact { padding-top: 4rem; padding-bottom: 4rem; }
       .app-tabbar { display: flex; position: fixed; left: 12px; right: 12px; bottom: calc(10px + env(safe-area-inset-bottom)); z-index: 60; height: 62px; border-radius: 22px; background: rgba(255,255,255,.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 10px 30px rgba(15,69,64,.18); border: 1px solid rgba(22,98,90,.12); }
-      .app-tabbar a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; font-size: .72rem; font-weight: 700; color: #7b8a88; text-decoration: none; transition: color .2s; }
+      .app-tabbar a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; font-size: .75rem; font-weight: 700; color: #7b8a88; text-decoration: none; transition: color .2s; }
       .app-tabbar a i { font-size: 1.15rem; transition: transform .2s; }
       .app-tabbar a.on { color: #16625a; }
       .app-tabbar a.on i { transform: translateY(-2px); }
       .app-tabbar a:active i { transform: scale(.88); }
+      [data-aos][data-aos-delay] { transition-delay: 0s !important; }
+      .portfolio-card, .vcard, .vf-btn, .app-tabbar a, .v-text summary { transition: transform .15s ease; }
+      .portfolio-card:active, .vcard:active { transform: scale(.98); }
+      .vf-btn:active, .v-text summary:active { transform: scale(.96); }
+      .vcard video { background: #0c2f2c; }
+      #modal-overlay { overscroll-behavior: contain; }
+      #hero { min-height: auto; padding-top: calc(5rem + env(safe-area-inset-top)); padding-bottom: 3rem; }
+      #hero > .container { gap: 2.5rem; }
+      #hero h1 { font-size: 2.65rem; line-height: 1.2; margin-bottom: 1rem; }
+      #typed-text { display: inline-block; min-height: 1.2em; }
+      #hero p { font-size: 1.02rem; line-height: 1.85; margin-bottom: 1.75rem; }
+      #hero .hero-cta { display: grid; grid-template-columns: 1fr; gap: .75rem; }
+      #hero .hero-cta > * { justify-content: center; width: 100%; }
+      #hero .hero-cta > a { padding-top: 1rem; padding-bottom: 1rem; }
+      #hero .hero-art { order: -1; width: 11.5rem; height: 11.5rem; margin: 0 auto; }
+      #hero .hero-pic { width: 11.5rem !important; height: 11.5rem !important; border-width: 8px !important; }
+      #hero > .container { gap: 2rem; }
+      #hero [data-aos="fade-left"] { text-align: center; }
+      #hero p { margin-inline: auto; }
+      #hero .hero-art > .absolute.bg-white { padding: .6rem; }
+      #hero .hero-art > .absolute.bg-white i { font-size: 1.1rem; }
     }
     @media (min-width: 768px) { .pf-hint { display: none; } }
   </style>
@@ -348,7 +369,7 @@
           أنا مصمم جرافيك أصمم شغفك وأروي قصتك بصرياً. أرافقك من الفكرة حتى اكتمال هويتك التجارية. تابعني لتطوير علامتك وإبداعك.
         </p>
         
-        <div class="flex flex-wrap gap-4">
+        <div class="hero-cta flex flex-wrap gap-4">
           <a href="#portfolio" class="bg-olive text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-olive/20 transition-all transform hover:-translate-y-1 flex items-center gap-2">
             شاهد أعمالي
             <i class="fa-solid fa-arrow-left"></i>
@@ -363,12 +384,12 @@
       </div>
 
       <!-- الصورة -->
-      <div class="relative flex justify-center items-center" data-aos="zoom-in">
+      <div class="hero-art relative flex justify-center items-center" data-aos="zoom-in">
         <div class="absolute w-[110%] h-[110%] border-2 border-olive/10 rounded-full animate-spin-slow"></div>
         <div class="absolute w-[120%] h-[120%] border border-dashed border-olive/20 rounded-full animate-spin-slow" style="animation-direction: reverse;"></div>
         
-        <div class="relative z-10 w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-[12px] border-white shadow-2xl animate-continuous-float">
-          <img src="https://i.ibb.co/SDJYLgzQ/Artboard-1.jpg" alt="أحمد" class="w-full h-full object-cover"/>
+        <div class="hero-pic relative z-10 w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-[12px] border-white shadow-2xl animate-continuous-float">
+          <img fetchpriority="high" decoding="async" src="https://i.ibb.co/SDJYLgzQ/Artboard-1.jpg" alt="أحمد" class="w-full h-full object-cover"/>
         </div>
 
         <!-- شارات طائرة -->
@@ -403,7 +424,7 @@
              data-aos="fade-up"
              onclick="openModal('متجر رشفة', 'تصميم هوية بصرية يجمع بين أصالة القهوة وحداثة الآلات. تجسيد لشغف القهوة المختصة.', 'https://i.ibb.co/JjtvM4yJ/image.jpg', 'هوية بصرية | شعار')">
           <div class="relative h-72 overflow-hidden">
-            <img src="https://i.ibb.co/JjtvM4yJ/image.jpg" class="w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://i.ibb.co/JjtvM4yJ/image.jpg" class="w-full h-full object-cover"/>
             <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
             </div>
@@ -420,7 +441,7 @@
              data-aos="fade-up" data-aos-delay="500"
              onclick="openModal('شعار نسيج', 'من خطوة الخيط إلى تفاصيل الفخامة... تصميم لشعار نسيج لتصميم الأزياء الراقية.', 'https://i.ibb.co/0jqTn80x/1.jpg', 'هوية بصرية | أزياء', ['https://i.ibb.co/Hf8mN8Mn/2.jpg', 'https://i.ibb.co/WNgfGsYW/3.jpg'])">
           <div class="relative h-72 overflow-hidden">
-            <img src="https://i.ibb.co/0jqTn80x/1.jpg" class="w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://i.ibb.co/0jqTn80x/1.jpg" class="w-full h-full object-cover"/>
             <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
             </div>
@@ -437,7 +458,7 @@
              data-aos="fade-up" data-aos-delay="600"
              onclick="openModal('مطعم شفة', 'أحدث أعمالي في تصميم الهوية البصرية لمطعم شفة للمأكولات الطازجة. الشعار يجمع بين البساطة والرقي.', 'https://i.ibb.co/LD22JsV9/36221-2.png', 'مطعم | براندنج')">
           <div class="relative h-72 overflow-hidden">
-            <img src="https://i.ibb.co/LD22JsV9/36221-2.png" class="w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://i.ibb.co/LD22JsV9/36221-2.png" class="w-full h-full object-cover"/>
             <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
             </div>
@@ -454,7 +475,7 @@
              data-aos="fade-up" data-aos-delay="100"
              onclick="openModal('شعار آب جول بي', 'تصميم شعار احترافي آب جول بي يجمع بين القوة والعصرية.', 'https://i.ibb.co/LjSQPB6/GVWgq9z-XEAA5u2-W.jpg', 'شعار | براندنج')">
           <div class="relative h-72 overflow-hidden">
-            <img src="https://i.ibb.co/LjSQPB6/GVWgq9z-XEAA5u2-W.jpg" class="w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://i.ibb.co/LjSQPB6/GVWgq9z-XEAA5u2-W.jpg" class="w-full h-full object-cover"/>
             <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
             </div>
@@ -471,7 +492,7 @@
              data-aos="fade-up" data-aos-delay="200"
              onclick="openModal('عطور الركن العماني', 'نختزل سحر الشرق وعراقة التراث في زجاجة عطر تأسر الحواس.', 'https://i.ibb.co/sdNwdn0n/GNSv-Jcu-Xg-AEqe-r.jpg', 'عطور | هوية بصرية')">
           <div class="relative h-72 overflow-hidden">
-            <img src="https://i.ibb.co/sdNwdn0n/GNSv-Jcu-Xg-AEqe-r.jpg" class="w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://i.ibb.co/sdNwdn0n/GNSv-Jcu-Xg-AEqe-r.jpg" class="w-full h-full object-cover"/>
             <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
             </div>
@@ -488,7 +509,7 @@
              data-aos="fade-up"
              onclick="openModal('إيقاع كافيه', 'دمج دفء القهوة مع إيقاع اليوم المتوازن والموجات الصوتية.', 'https://i.ibb.co/21JpPDCR/image.jpg', 'كافيه | شعار')">
           <div class="relative h-72 overflow-hidden">
-            <img src="https://i.ibb.co/21JpPDCR/image.jpg" class="w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://i.ibb.co/21JpPDCR/image.jpg" class="w-full h-full object-cover"/>
             <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
             </div>
@@ -505,7 +526,7 @@
              data-aos="fade-up" data-aos-delay="100"
              onclick="openModal('تجديد شعار مدى', 'إعادة تصميم هوية مدى لتصبح أكثر نضجاً واتزاناً.', 'https://i.ibb.co/P896bG9/image.jpg', 'تجديد هوية', ['https://i.ibb.co/tMLGnhBm/image.jpg', 'https://i.ibb.co/1fZXZd9G/1.jpg'])">
           <div class="relative h-72 overflow-hidden">
-            <img src="https://i.ibb.co/P896bG9/image.jpg" class="w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://i.ibb.co/P896bG9/image.jpg" class="w-full h-full object-cover"/>
             <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
             </div>
@@ -522,7 +543,7 @@
              data-aos="fade-up" data-aos-delay="400"
              onclick="openModal('شعار أفق', 'الصعود المستمر، الطموح المتجدد، والتركيز على أهدافك.', 'https://i.ibb.co/Sw9NKvhw/1.jpg', 'شعار', ['https://i.ibb.co/qF9d2QQ3/image.jpg', 'https://i.ibb.co/9k3PTC3V/2.jpg'])">
           <div class="relative h-72 overflow-hidden">
-            <img src="https://i.ibb.co/Sw9NKvhw/1.jpg" class="w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://i.ibb.co/Sw9NKvhw/1.jpg" class="w-full h-full object-cover"/>
             <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
             </div>
@@ -539,7 +560,7 @@
              data-aos="fade-up" data-aos-delay="300"
              onclick="openModal('شعار فلك', 'لكل علامة تجارية مدارها الخاص... 🌌 تجسيد فكرة المدار، الأبعاد، والابتكار في فكرة واحدة.', 'https://i.ibb.co/v6NMMxHS/1.png', 'شعار | براندنج', ['https://i.ibb.co/21zpp7yT/image.jpg', 'https://i.ibb.co/6zfj2S5/2.png', 'https://i.ibb.co/1fK7348b/4.png', 'https://i.ibb.co/PGqfsSDs/Chat-GPT-Image-28-2026-10-53-52-1.png', 'https://i.ibb.co/yFw873MQ/Chat-GPT-Image-28-2026-10-55-56.png'])">
           <div class="relative h-72 overflow-hidden">
-            <img src="https://i.ibb.co/v6NMMxHS/1.png" class="w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://i.ibb.co/v6NMMxHS/1.png" class="w-full h-full object-cover"/>
             <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
             </div>
@@ -556,7 +577,7 @@
              data-aos="fade-up" data-aos-delay="400"
              onclick="openModal('شعار بتلة', 'كل علامة تستحق هوية تُزهر بها. 🌿🌸 مشروع هوية بصرية لعلامة بتلة | Petal.', 'https://i.ibb.co/LDcmMZyV/1.png', 'هوية بصرية | براندنج', ['https://i.ibb.co/NgJ5Xyqc/image.jpg', 'https://i.ibb.co/FqVcp5gb/2.png', 'https://i.ibb.co/46smbbN/Firefly-Gemini-Flash.png', 'https://i.ibb.co/RpZjKtyZ/using-the-logo-from-the-reference-image-matte-bla.png', 'https://i.ibb.co/Cp35Kx8p/Firefly-Gemini-Flash-2.png'])">
           <div class="relative h-72 overflow-hidden">
-            <img src="https://i.ibb.co/LDcmMZyV/1.png" class="w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://i.ibb.co/LDcmMZyV/1.png" class="w-full h-full object-cover"/>
             <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
             </div>
@@ -573,7 +594,7 @@
              data-aos="fade-up" data-aos-delay="500"
              onclick="openModal('شعار وجهة', 'حيث تلتقي الأفكار وتبدأ الأحاديث... 💬✨ تصميمي للهوية البصرية لـ وجهة | DESTINATION في حي السفارات. اعتمدت على دمج أيقونات المحادثة للتعبير عن التفاعل والتواصل.', 'https://i.ibb.co/B28TD4hV/9874120.png', 'هوية بصرية | براندنج')">
           <div class="relative h-72 overflow-hidden">
-            <img src="https://i.ibb.co/B28TD4hV/9874120.png" class="w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://i.ibb.co/B28TD4hV/9874120.png" class="w-full h-full object-cover"/>
             <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
             </div>
@@ -590,7 +611,7 @@
              data-aos="fade-up"
              onclick="openModal('شعار دوارة', 'لذّة الشاورما الأصيلة، بكلّ طبقة... 😋🍖 تصميمي للهوية البصرية لـ دوّارة - Dawwara، حيث يجسد الشعار حركة سيخ الشاورما المستمرة وتراص اللحم الشهي.', 'https://i.ibb.co/cK70dRMx/545477521.jpg', 'مطاعم | هوية بصرية')">
           <div class="relative h-72 overflow-hidden">
-            <img src="https://i.ibb.co/cK70dRMx/545477521.jpg" class="w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://i.ibb.co/cK70dRMx/545477521.jpg" class="w-full h-full object-cover"/>
             <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
             </div>
@@ -607,7 +628,7 @@
              data-aos="fade-up" data-aos-delay="100"
              onclick="openModal('شعار مسك الغنيم', 'أصالة الماضي وفخامة الحاضر في تفصيلة واحدة... ✨🌸 تصميمي للهوية البصرية لـ مسك الغنيم لـ العطور والمسك الفاخر.', 'https://i.ibb.co/v6hZ75w3/2245734-0.png', 'عطور | فخامة')">
           <div class="relative h-72 overflow-hidden">
-            <img src="https://i.ibb.co/v6hZ75w3/2245734-0.png" class="w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://i.ibb.co/v6hZ75w3/2245734-0.png" class="w-full h-full object-cover"/>
             <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
             </div>
@@ -624,7 +645,7 @@
              data-aos="fade-up" data-aos-delay="200"
              onclick="openModal('شعار إمتنان', 'تجربة تسوّق ممتعة تبدأ من التفاصيل... 🛒✨ أشارككم تصميمي للهوية البصرية لشعار إمتنان | THANKFULNESS في أبها.', 'https://i.ibb.co/nNw5PDJz/788754623-1.png', 'تسوق | هوية بصرية', ['https://i.ibb.co/CKDYFNnK/788754623-2.png'])">
           <div class="relative h-72 overflow-hidden">
-            <img src="https://i.ibb.co/nNw5PDJz/788754623-1.png" class="w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://i.ibb.co/nNw5PDJz/788754623-1.png" class="w-full h-full object-cover"/>
             <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
             </div>
@@ -641,7 +662,7 @@
              data-aos="fade-up" data-aos-delay="300"
              onclick="openModal('قاعة الأوسط', 'لكل مناسبة سعيدة... مكان يليق بجمالها ✨🏰 تصميمي للهوية البصرية لشعار قاعة الأوسط (بريدة - حي الصباخ). دمجت بين القوس المعماري الفخم والخطوط الإسلامية العصرية.', 'https://i.ibb.co/20qDf1fy/image.jpg', 'هوية بصرية | قاعات', ['https://i.ibb.co/4Z3VcR15/Firefly-Gemini-Flash-The-guiding-text-A-realistic-and-high-quality-mockup-of-two-professional-busi.png', 'https://i.ibb.co/S4tMkHpS/Firefly-Gemini-Flash-The-guiding-text-A-realistic-mockup-of-a-modern-smartphone-e-g-i-Phone-15-P.png', 'https://i.ibb.co/B2x5Mn46/Firefly-Gemini-Flash-The-guiding-text-A-realistic-mockup-of-a-large-luxurious-rectangular-signage.png', 'https://i.ibb.co/9Hn5m0SP/Chat-GPT-Image-5-2026-10-49-56.png'])">
           <div class="relative h-72 overflow-hidden">
-            <img src="https://i.ibb.co/20qDf1fy/image.jpg" class="w-full h-full object-cover"/>
+            <img loading="lazy" decoding="async" src="https://i.ibb.co/20qDf1fy/image.jpg" class="w-full h-full object-cover"/>
             <div class="absolute inset-0 bg-olive/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-white text-olive px-6 py-2 rounded-full font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">عرض التفاصيل</span>
             </div>
@@ -663,44 +684,44 @@
           <div class="marquee-content animate-marquee-right flex gap-6 px-6">
             <!-- صور الأعمال - الشريط الأول -->
             <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
-              <img src="https://i.ibb.co/JjtvM4yJ/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <img loading="lazy" decoding="async" src="https://i.ibb.co/JjtvM4yJ/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
                 <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">متجر رشفة</span>
               </div>
             </div>
             <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
-              <img src="https://i.ibb.co/0jqTn80x/1.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <img loading="lazy" decoding="async" src="https://i.ibb.co/0jqTn80x/1.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
                 <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">نسيج</span>
               </div>
             </div>
             <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
-              <img src="https://i.ibb.co/LD22JsV9/36221-2.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <img loading="lazy" decoding="async" src="https://i.ibb.co/LD22JsV9/36221-2.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
                 <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">مطعم شفة</span>
               </div>
             </div>
             <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
-              <img src="https://i.ibb.co/LjSQPB6/GVWgq9z-XEAA5u2-W.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <img loading="lazy" decoding="async" src="https://i.ibb.co/LjSQPB6/GVWgq9z-XEAA5u2-W.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
                 <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">آب جول بي</span>
               </div>
             </div>
             <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
-              <img src="https://i.ibb.co/sdNwdn0n/GNSv-Jcu-Xg-AEqe-r.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <img loading="lazy" decoding="async" src="https://i.ibb.co/sdNwdn0n/GNSv-Jcu-Xg-AEqe-r.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
                 <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">الركن العماني</span>
               </div>
             </div>
             <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
-              <img src="https://i.ibb.co/21JpPDCR/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <img loading="lazy" decoding="async" src="https://i.ibb.co/21JpPDCR/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
                 <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">إيقاع كافيه</span>
               </div>
             </div>
             <!-- تكرار للحركة المستمرة -->
             <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
-              <img src="https://i.ibb.co/JjtvM4yJ/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <img loading="lazy" decoding="async" src="https://i.ibb.co/JjtvM4yJ/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
                 <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">متجر رشفة</span>
               </div>
@@ -718,44 +739,44 @@
           <div class="marquee-content animate-marquee-left flex gap-6 px-6">
             <!-- صور الأعمال - الشريط الثاني -->
             <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
-              <img src="https://i.ibb.co/P896bG9/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <img loading="lazy" decoding="async" src="https://i.ibb.co/P896bG9/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
                 <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">شعار مدى</span>
               </div>
             </div>
             <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
-              <img src="https://i.ibb.co/Sw9NKvhw/1.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <img loading="lazy" decoding="async" src="https://i.ibb.co/Sw9NKvhw/1.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
                 <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">شعار أفق</span>
               </div>
             </div>
             <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
-              <img src="https://i.ibb.co/v6NMMxHS/1.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <img loading="lazy" decoding="async" src="https://i.ibb.co/v6NMMxHS/1.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
                 <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">فلك</span>
               </div>
             </div>
             <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
-              <img src="https://i.ibb.co/LDcmMZyV/1.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <img loading="lazy" decoding="async" src="https://i.ibb.co/LDcmMZyV/1.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
                 <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">بتلة</span>
               </div>
             </div>
             <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
-              <img src="https://i.ibb.co/B28TD4hV/9874120.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <img loading="lazy" decoding="async" src="https://i.ibb.co/B28TD4hV/9874120.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
                 <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">وجهة</span>
               </div>
             </div>
             <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
-              <img src="https://i.ibb.co/cK70dRMx/545477521.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <img loading="lazy" decoding="async" src="https://i.ibb.co/cK70dRMx/545477521.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
                 <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">دوارة</span>
               </div>
             </div>
             <!-- تكرار للحركة المستمرة -->
             <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg border-4 border-olive/20 hover:border-olive hover:shadow-2xl transition-all duration-300 cursor-pointer group">
-              <img src="https://i.ibb.co/P896bG9/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
+              <img loading="lazy" decoding="async" src="https://i.ibb.co/P896bG9/image.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"/>
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
                 <span class="text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">شعار مدى</span>
               </div>
@@ -798,7 +819,7 @@
           <div class="v-row flex flex-wrap justify-center gap-8">
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/darb_final.jpg" aria-label="فيديو درب">
+            <video preload="none" playsinline data-poster="assets/darb_final.jpg" aria-label="فيديو درب">
               <source src="assets/darb_final.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -818,7 +839,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/alhamdu-final.jpg" aria-label="فيديو الحمد لله">
+            <video preload="none" playsinline data-poster="assets/alhamdu-final.jpg" aria-label="فيديو الحمد لله">
               <source src="assets/alhamdu-final.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -838,7 +859,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/nawl.jpg" aria-label="فيديو النَّول">
+            <video preload="none" playsinline data-poster="assets/nawl.jpg" aria-label="فيديو النَّول">
               <source src="assets/nawl.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -858,7 +879,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/raml.jpg" aria-label="فيديو رمل">
+            <video preload="none" playsinline data-poster="assets/raml.jpg" aria-label="فيديو رمل">
               <source src="assets/raml.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -878,7 +899,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/tabasheer.jpg" aria-label="فيديو تباشير">
+            <video preload="none" playsinline data-poster="assets/tabasheer.jpg" aria-label="فيديو تباشير">
               <source src="assets/tabasheer.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -898,7 +919,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/taht-alturab.jpg" aria-label="فيديو تحت التراب">
+            <video preload="none" playsinline data-poster="assets/taht-alturab.jpg" aria-label="فيديو تحت التراب">
               <source src="assets/taht-alturab.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -918,7 +939,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/turos.jpg" aria-label="فيديو تروس">
+            <video preload="none" playsinline data-poster="assets/turos.jpg" aria-label="فيديو تروس">
               <source src="assets/turos.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -938,7 +959,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/zann-abdi.jpg" aria-label="فيديو أنا عند ظن عبدي بي">
+            <video preload="none" playsinline data-poster="assets/zann-abdi.jpg" aria-label="فيديو أنا عند ظن عبدي بي">
               <source src="assets/zann-abdi.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -958,7 +979,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/allah-maak.jpg" aria-label="فيديو إذا كان الله معك">
+            <video preload="none" playsinline data-poster="assets/allah-maak.jpg" aria-label="فيديو إذا كان الله معك">
               <source src="assets/allah-maak.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -978,7 +999,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/saat-alafiya.jpg" aria-label="فيديو ساعة من العافية">
+            <video preload="none" playsinline data-poster="assets/saat-alafiya.jpg" aria-label="فيديو ساعة من العافية">
               <source src="assets/saat-alafiya.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -998,7 +1019,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/la-tanzil.jpg" aria-label="فيديو لا تنزل في المستوى">
+            <video preload="none" playsinline data-poster="assets/la-tanzil.jpg" aria-label="فيديو لا تنزل في المستوى">
               <source src="assets/la-tanzil.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1018,7 +1039,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/duaa-alkhurooj.jpg" aria-label="فيديو دعاء الخروج من البيت">
+            <video preload="none" playsinline data-poster="assets/duaa-alkhurooj.jpg" aria-label="فيديو دعاء الخروج من البيت">
               <source src="assets/duaa-alkhurooj.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1038,7 +1059,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/rabbi-inni.jpg" aria-label="فيديو رب إني لما أنزلت إلي">
+            <video preload="none" playsinline data-poster="assets/rabbi-inni.jpg" aria-label="فيديو رب إني لما أنزلت إلي">
               <source src="assets/rabbi-inni.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1058,7 +1079,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/dar-mamar.jpg" aria-label="فيديو دار ممر">
+            <video preload="none" playsinline data-poster="assets/dar-mamar.jpg" aria-label="فيديو دار ممر">
               <source src="assets/dar-mamar.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1078,7 +1099,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/taarraf-fi-alrakhaa.jpg" aria-label="فيديو تعرّف على الله في الرخاء">
+            <video preload="none" playsinline data-poster="assets/taarraf-fi-alrakhaa.jpg" aria-label="فيديو تعرّف على الله في الرخاء">
               <source src="assets/taarraf-fi-alrakhaa.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1098,7 +1119,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/albalaa-alataa.jpg" aria-label="فيديو البلاء فيه العطاء">
+            <video preload="none" playsinline data-poster="assets/albalaa-alataa.jpg" aria-label="فيديو البلاء فيه العطاء">
               <source src="assets/albalaa-alataa.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1118,7 +1139,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/wasiat-kull-shay.jpg" aria-label="فيديو وسعت كل شيء">
+            <video preload="none" playsinline data-poster="assets/wasiat-kull-shay.jpg" aria-label="فيديو وسعت كل شيء">
               <source src="assets/wasiat-kull-shay.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1138,7 +1159,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/lahzat-sidq.jpg" aria-label="فيديو بلحظة صدق">
+            <video preload="none" playsinline data-poster="assets/lahzat-sidq.jpg" aria-label="فيديو بلحظة صدق">
               <source src="assets/lahzat-sidq.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1167,7 +1188,7 @@
           <div class="v-row flex flex-wrap justify-center gap-8">
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/qadi-alhob.jpg" aria-label="فيديو قاضي الحب">
+            <video preload="none" playsinline data-poster="assets/qadi-alhob.jpg" aria-label="فيديو قاضي الحب">
               <source src="assets/qadi-alhob.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1187,7 +1208,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/aldurar.jpg" aria-label="فيديو الدُّرر">
+            <video preload="none" playsinline data-poster="assets/aldurar.jpg" aria-label="فيديو الدُّرر">
               <source src="assets/aldurar.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1207,7 +1228,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/akhawi-alsabr.jpg" aria-label="فيديو أخاوي الصبر">
+            <video preload="none" playsinline data-poster="assets/akhawi-alsabr.jpg" aria-label="فيديو أخاوي الصبر">
               <source src="assets/akhawi-alsabr.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1227,7 +1248,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/ya-rafiqi.jpg" aria-label="فيديو يا رفيقي">
+            <video preload="none" playsinline data-poster="assets/ya-rafiqi.jpg" aria-label="فيديو يا رفيقي">
               <source src="assets/ya-rafiqi.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1247,7 +1268,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/wajhain.jpg" aria-label="فيديو وجهين">
+            <video preload="none" playsinline data-poster="assets/wajhain.jpg" aria-label="فيديو وجهين">
               <source src="assets/wajhain.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1267,7 +1288,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/ahinnu-ila-alhijaz.jpg" aria-label="فيديو أحنّ إلى الحجاز">
+            <video preload="none" playsinline data-poster="assets/ahinnu-ila-alhijaz.jpg" aria-label="فيديو أحنّ إلى الحجاز">
               <source src="assets/ahinnu-ila-alhijaz.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1287,7 +1308,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/yawm-alfiraq.jpg" aria-label="فيديو يوم الفراق">
+            <video preload="none" playsinline data-poster="assets/yawm-alfiraq.jpg" aria-label="فيديو يوم الفراق">
               <source src="assets/yawm-alfiraq.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1316,7 +1337,7 @@
           <div class="v-row flex flex-wrap justify-center gap-8">
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى مالي">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/reit-funds.jpg" aria-label="فيديو صناديق الريت">
+            <video preload="none" playsinline data-poster="assets/reit-funds.jpg" aria-label="فيديو صناديق الريت">
               <source src="assets/reit-funds.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1336,7 +1357,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى مالي">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/nisab-alnajah.jpg" aria-label="فيديو نسب النجاح">
+            <video preload="none" playsinline data-poster="assets/nisab-alnajah.jpg" aria-label="فيديو نسب النجاح">
               <source src="assets/nisab-alnajah.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1365,7 +1386,7 @@
           <div class="v-row flex flex-wrap justify-center gap-8">
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/riyadh-alsaliheen-3.jpg" aria-label="فيديو رياض الصالحين · وقفات إيمانية">
+            <video preload="none" playsinline data-poster="assets/riyadh-alsaliheen-3.jpg" aria-label="فيديو رياض الصالحين · وقفات إيمانية">
               <source src="assets/riyadh-alsaliheen-3.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1385,7 +1406,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/riyadh-alsaliheen-4.jpg" aria-label="فيديو رياض الصالحين · مكانٌ في يومك">
+            <video preload="none" playsinline data-poster="assets/riyadh-alsaliheen-4.jpg" aria-label="فيديو رياض الصالحين · مكانٌ في يومك">
               <source src="assets/riyadh-alsaliheen-4.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1405,7 +1426,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/riyadh-alsaliheen-5.jpg" aria-label="فيديو رياض الصالحين · الممرّ">
+            <video preload="none" playsinline data-poster="assets/riyadh-alsaliheen-5.jpg" aria-label="فيديو رياض الصالحين · الممرّ">
               <source src="assets/riyadh-alsaliheen-5.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1425,7 +1446,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/riyadh-alsaliheen-6.jpg" aria-label="فيديو رياض الصالحين · الفسيفساء">
+            <video preload="none" playsinline data-poster="assets/riyadh-alsaliheen-6.jpg" aria-label="فيديو رياض الصالحين · الفسيفساء">
               <source src="assets/riyadh-alsaliheen-6.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1445,7 +1466,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/riyadh-alsaliheen-7.jpg" aria-label="فيديو رياض الصالحين · رسائل إيمانية">
+            <video preload="none" playsinline data-poster="assets/riyadh-alsaliheen-7.jpg" aria-label="فيديو رياض الصالحين · رسائل إيمانية">
               <source src="assets/riyadh-alsaliheen-7.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1465,7 +1486,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/riyadh-alsaliheen-8.jpg" aria-label="فيديو رياض الصالحين · المنصّات">
+            <video preload="none" playsinline data-poster="assets/riyadh-alsaliheen-8.jpg" aria-label="فيديو رياض الصالحين · المنصّات">
               <source src="assets/riyadh-alsaliheen-8.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1485,7 +1506,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/mohamed-naji-ad.jpg" aria-label="فيديو إعلان التعليق الصوتي">
+            <video preload="none" playsinline data-poster="assets/mohamed-naji-ad.jpg" aria-label="فيديو إعلان التعليق الصوتي">
               <source src="assets/mohamed-naji-ad.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1505,7 +1526,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/balagh.jpg" aria-label="فيديو مبادرة بلاغ · قبل أن يصبح الخطر خبراً">
+            <video preload="none" playsinline data-poster="assets/balagh.jpg" aria-label="فيديو مبادرة بلاغ · قبل أن يصبح الخطر خبراً">
               <source src="assets/balagh.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1534,7 +1555,7 @@
           <div class="v-row flex flex-wrap justify-center gap-8">
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="مونتاج">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/montage-ameer.jpg" aria-label="فيديو مونتاج بودكاست · أمير أو أسير">
+            <video preload="none" playsinline data-poster="assets/montage-ameer.jpg" aria-label="فيديو مونتاج بودكاست · أمير أو أسير">
               <source src="assets/montage-ameer.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1554,7 +1575,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="مونتاج">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/montage-podcast.jpg" aria-label="فيديو مونتاج بودكاست · أول إيفنت">
+            <video preload="none" playsinline data-poster="assets/montage-podcast.jpg" aria-label="فيديو مونتاج بودكاست · أول إيفنت">
               <source src="assets/montage-podcast.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1574,7 +1595,7 @@
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="مونتاج">
           <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/montage-zidane.jpg" aria-label="فيديو مونتاج صانع محتوى · ليش زيدان؟">
+            <video preload="none" playsinline data-poster="assets/montage-zidane.jpg" aria-label="فيديو مونتاج صانع محتوى · ليش زيدان؟">
               <source src="assets/montage-zidane.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
@@ -1667,7 +1688,7 @@
         </button>
         
         <div class="md:w-3/5 bg-gray-100 flex items-center justify-center p-4">
-          <img id="modal-img" src="" class="max-w-full max-h-full object-contain rounded-2xl shadow-lg animate-continuous-float"/>
+          <img loading="lazy" decoding="async" id="modal-img" src="" class="max-w-full max-h-full object-contain rounded-2xl shadow-lg animate-continuous-float"/>
         </div>
         
         <div class="md:w-2/5 p-10 flex flex-col justify-center">
@@ -1699,8 +1720,8 @@
     // تهيئة AOS
     AOS.init({
       duration: 1000,
-      once: false,
-      mirror: true
+      once: window.innerWidth < 768,
+      mirror: window.innerWidth >= 768
     });
 
     // تحديث السنة
@@ -1746,7 +1767,7 @@
       if (additionalImages && additionalImages.length > 0) {
         galleryDiv.classList.remove('hidden');
         galleryImagesDiv.innerHTML = additionalImages.map(imgUrl => 
-          `<img src="${imgUrl}" alt="صورة إضافية" class="w-20 h-20 rounded-lg object-cover cursor-pointer hover:scale-110 transition-transform shadow-md" onclick="document.getElementById('modal-img').src='${imgUrl}'"/>`
+          `<img loading="lazy" decoding="async" src="${imgUrl}" alt="صورة إضافية" class="w-20 h-20 rounded-lg object-cover cursor-pointer hover:scale-110 transition-transform shadow-md" onclick="document.getElementById('modal-img').src='${imgUrl}'"/>`
         ).join('');
       } else {
         galleryDiv.classList.add('hidden');
@@ -1756,10 +1777,14 @@
       modal.style.display = 'flex';
       setTimeout(() => modal.classList.add('active'), 10);
       document.body.style.overflow = 'hidden';
+      if (!history.state || !history.state.modal) history.pushState({ modal: 1 }, '');
     }
+    window.addEventListener('popstate', () => { if (document.getElementById('modal-overlay').classList.contains('active')) closeModal(true); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.getElementById('modal-overlay').classList.contains('active')) closeModal(); });
 
-    function closeModal() {
+    function closeModal(fromBack) {
       const modal = document.getElementById('modal-overlay');
+      if (!fromBack && history.state && history.state.modal) { history.back(); return; }
       modal.classList.remove('active');
       setTimeout(() => modal.style.display = 'none', 400);
       document.body.style.overflow = 'auto';
@@ -1797,6 +1822,16 @@
       v.addEventListener('play', () => vGrid.querySelectorAll('video').forEach(o => { if (o !== v) o.pause(); }));
       v.addEventListener('ended', () => { v.currentTime = 0; reset(); });
     });
+
+    // تحميل أغلفة الفيديو عند الاقتراب منها
+    {
+      const vids = [...document.querySelectorAll('video[data-poster]')];
+      const load = v => { if (v.dataset.poster) { v.poster = v.dataset.poster; v.removeAttribute('data-poster'); } };
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { load(e.target); io.unobserve(e.target); } }), { rootMargin: '600px 600px' });
+        vids.forEach(v => io.observe(v));
+      } else vids.forEach(load);
+    }
 
     // شريط التنقل السفلي + عدّاد الأعمال (الجوال)
     {
