@@ -3,7 +3,12 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="theme-color" content="#ffffff"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <meta name="apple-mobile-web-app-title" content="أحمد"/>
   <title>أحمد | مصمم ومبدع بصري</title>
 
   <!-- ===================================================
@@ -197,7 +202,7 @@
     }
 
     /* قسم الفيديوهات */
-    .video-showcase { position: relative; overflow: hidden; background: #0f4540; }
+    .video-showcase { position: relative; overflow: hidden; overflow: clip; background: #0f4540; }
     .video-showcase::before { content: ''; position: absolute; width: 32rem; height: 32rem; top: -12rem; right: -10rem; border-radius: 9999px; background: rgba(29,125,115,.45); filter: blur(90px); pointer-events: none; }
     .video-showcase::after { content: ''; position: absolute; width: 26rem; height: 26rem; bottom: -12rem; left: -8rem; border-radius: 9999px; background: rgba(194,222,221,.12); filter: blur(80px); pointer-events: none; }
     .vcard { position: relative; border-radius: 1.75rem; overflow: hidden; background: #0a2f2b; aspect-ratio: 9 / 16; box-shadow: 0 30px 60px -28px rgba(0,0,0,.7); transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease; }
@@ -230,8 +235,50 @@
     .v-text summary::after { content:'+'; margin-inline-start:auto; font-size:1.1rem; color:#c2dedd; }
     .v-text[open] summary::after { content:'−'; }
     .v-text-body { padding:.9rem 1rem 1rem; max-height:340px; overflow-y:auto; }
+    .v-swipe { display:none; }
+    @media (max-width: 767px) {
+      #videos { padding-top: 4.5rem; padding-bottom: 4rem; }
+      #video-filters { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; position: sticky; top: calc(56px + env(safe-area-inset-top)); z-index: 40; margin: 0 -1.5rem 2rem; padding: .75rem 1.5rem; background: rgba(12,58,54,.94); backdrop-filter: blur(8px); scrollbar-width: none; }
+      #video-filters::-webkit-scrollbar, .v-row::-webkit-scrollbar { display: none; }
+      #video-filters .vf-btn { flex: none; padding: .5rem 1rem; font-size: .9rem; }
+      .v-sec { margin-bottom: 3.25rem; scroll-margin-top: 140px; }
+      .v-sec-head { margin-bottom: 1.1rem; padding-bottom: .8rem; }
+      .v-sec-head h3 { font-size: 1.55rem; }
+      .v-sec-head p { font-size: .95rem; }
+      .v-swipe { display: flex; width: 100%; justify-content: space-between; align-items: center; font-size: .82rem; color: #c2dedd; margin-top: .35rem; }
+      .v-swipe .v-count { font-weight: 700; color: rgba(255,255,255,.7); }
+      .v-swipe .v-count b { color: #fff; }
+      .v-row { flex-wrap: nowrap !important; justify-content: flex-start !important; align-items: flex-start; gap: 14px !important; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -1.5rem; padding: 4px 1.5rem 10px; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+      .v-row > .v-item { flex: 0 0 84%; width: auto !important; max-width: none !important; scroll-snap-align: center; }
+      .v-row > .v-item:only-child { flex-basis: 100%; }
+      .v-text-body { max-height: 260px; }
+    }
     .v-text-body p { color:rgba(255,255,255,.78); line-height:2; font-size:.95rem; margin-bottom:.35rem; }
     @media (prefers-reduced-motion: reduce) { .vcard, .vcard .v-overlay, .vcard .v-play { transition: none; } }
+
+    /* ===== عرض الجوال بأسلوب التطبيقات ===== */
+    .app-tabbar { display: none; }
+    @media (max-width: 767px) {
+      html { -webkit-tap-highlight-color: transparent; }
+      body { padding-bottom: calc(76px + env(safe-area-inset-bottom)); overscroll-behavior-y: none; }
+      #navbar { padding-top: calc(.9rem + env(safe-area-inset-top)); padding-bottom: .9rem; }
+      section[id] { scroll-margin-top: 70px; }
+      #portfolio { padding-top: 4.5rem; padding-bottom: 3.5rem; }
+      #portfolio .text-center.mb-16 { margin-bottom: 1.75rem; }
+      .pf-row { display: flex !important; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px !important; margin: 0 -1.5rem; padding: 6px 1.5rem 18px; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+      .pf-row::-webkit-scrollbar { display: none; }
+      .pf-row > * { flex: 0 0 82%; scroll-snap-align: center; }
+      .pf-hint { display: flex; justify-content: space-between; font-size: .82rem; color: #6b7280; margin: -.75rem 0 .75rem; }
+      .pf-hint b { color: #16625a; }
+      #contact { padding-top: 4rem; padding-bottom: 4rem; }
+      .app-tabbar { display: flex; position: fixed; left: 12px; right: 12px; bottom: calc(10px + env(safe-area-inset-bottom)); z-index: 60; height: 62px; border-radius: 22px; background: rgba(255,255,255,.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 10px 30px rgba(15,69,64,.18); border: 1px solid rgba(22,98,90,.12); }
+      .app-tabbar a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; font-size: .72rem; font-weight: 700; color: #7b8a88; text-decoration: none; transition: color .2s; }
+      .app-tabbar a i { font-size: 1.15rem; transition: transform .2s; }
+      .app-tabbar a.on { color: #16625a; }
+      .app-tabbar a.on i { transform: translateY(-2px); }
+      .app-tabbar a:active i { transform: scale(.88); }
+    }
+    @media (min-width: 768px) { .pf-hint { display: none; } }
   </style>
 </head>
 <body class="bg-white">
@@ -276,7 +323,7 @@
       </nav>
 
       <!-- زر الجوال -->
-      <button class="md:hidden text-gray-800 text-2xl" id="menu-btn">
+      <button class="hidden text-gray-800 text-2xl" id="menu-btn" aria-hidden="true">
         <i class="fa-solid fa-bars-staggered"></i>
       </button>
     </div>
@@ -348,7 +395,8 @@
       </div>
 
       <!-- شبكة الأعمال -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="pf-hint"><span>اسحب لباقي الأعمال <i class="fa-solid fa-arrow-left"></i></span><span><b id="pf-count">1</b> / <span id="pf-total"></span></span></div>
+      <div class="pf-row grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         
         <!-- رشفة -->
         <div class="portfolio-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 group animate-continuous-sway" 
@@ -745,8 +793,9 @@
           <div class="v-sec-head">
             <h3>محتوى إيماني <span>18</span></h3>
             <p>آيات وأحاديث ومواعظ، لكل واحد منها هوية بصرية تخدم معناه.</p>
+            <div class="v-swipe"><span>اسحب لباقي الفيديوهات <i class="fa-solid fa-arrow-left"></i></span><span class="v-count"><b>1</b> / 18</span></div>
           </div>
-          <div class="flex flex-wrap justify-center gap-8">
+          <div class="v-row flex flex-wrap justify-center gap-8">
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
             <video preload="none" playsinline poster="assets/darb_final.jpg" aria-label="فيديو درب">
@@ -1113,8 +1162,9 @@
           <div class="v-sec-head">
             <h3>قصائد <span>7</span></h3>
             <p>قصائد فصيحة ونبطية تتحول أبياتها إلى مشاهد متحركة.</p>
+            <div class="v-swipe"><span>اسحب لباقي الفيديوهات <i class="fa-solid fa-arrow-left"></i></span><span class="v-count"><b>1</b> / 7</span></div>
           </div>
-          <div class="flex flex-wrap justify-center gap-8">
+          <div class="v-row flex flex-wrap justify-center gap-8">
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
           <div class="vcard" data-vcard>
             <video preload="none" playsinline poster="assets/qadi-alhob.jpg" aria-label="فيديو قاضي الحب">
@@ -1261,8 +1311,9 @@
           <div class="v-sec-head">
             <h3>محتوى مالي <span>2</span></h3>
             <p>معلومات مالية واستثمارية تصير الأرقام فيها هي البطل.</p>
+            <div class="v-swipe"><span>اسحب لباقي الفيديوهات <i class="fa-solid fa-arrow-left"></i></span><span class="v-count"><b>1</b> / 2</span></div>
           </div>
-          <div class="flex flex-wrap justify-center gap-8">
+          <div class="v-row flex flex-wrap justify-center gap-8">
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى مالي">
           <div class="vcard" data-vcard>
             <video preload="none" playsinline poster="assets/reit-funds.jpg" aria-label="فيديو صناديق الريت">
@@ -1309,8 +1360,9 @@
           <div class="v-sec-head">
             <h3>إعلانات <span>8</span></h3>
             <p>إعلانات تعريفية وتوعوية لقنوات ومبادرات وخدمات.</p>
+            <div class="v-swipe"><span>اسحب لباقي الفيديوهات <i class="fa-solid fa-arrow-left"></i></span><span class="v-count"><b>1</b> / 8</span></div>
           </div>
-          <div class="flex flex-wrap justify-center gap-8">
+          <div class="v-row flex flex-wrap justify-center gap-8">
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
           <div class="vcard" data-vcard>
             <video preload="none" playsinline poster="assets/riyadh-alsaliheen-3.jpg" aria-label="فيديو رياض الصالحين · وقفات إيمانية">
@@ -1477,8 +1529,9 @@
           <div class="v-sec-head">
             <h3>مونتاج <span>3</span></h3>
             <p>مقاطع بودكاست وصنّاع محتوى بعد المونتاج.</p>
+            <div class="v-swipe"><span>اسحب لباقي الفيديوهات <i class="fa-solid fa-arrow-left"></i></span><span class="v-count"><b>1</b> / 3</span></div>
           </div>
-          <div class="flex flex-wrap justify-center gap-8">
+          <div class="v-row flex flex-wrap justify-center gap-8">
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="مونتاج">
           <div class="vcard" data-vcard>
             <video preload="none" playsinline poster="assets/montage-ameer.jpg" aria-label="فيديو مونتاج بودكاست · أمير أو أسير">
@@ -1597,6 +1650,15 @@
   <!-- ===================================================
        Modal - نافذة تفاصيل العمل
        =================================================== -->
+
+  <!-- شريط التنقل السفلي (الجوال) -->
+  <nav class="app-tabbar" aria-label="التنقل">
+    <a href="#hero" data-s="hero" class="on"><i class="fa-solid fa-house"></i>الرئيسية</a>
+    <a href="#portfolio" data-s="portfolio"><i class="fa-solid fa-pen-nib"></i>أعمالي</a>
+    <a href="#videos" data-s="videos"><i class="fa-solid fa-clapperboard"></i>الفيديوهات</a>
+    <a href="#contact" data-s="contact"><i class="fa-solid fa-paper-plane"></i>تواصل</a>
+  </nav>
+
   <div id="modal-overlay" onclick="closeModal()">
     <div class="container mx-auto px-6 h-full flex items-center justify-center" onclick="event.stopPropagation()">
       <div class="bg-white rounded-[40px] overflow-hidden max-w-4xl w-full max-h-[90vh] shadow-2xl relative flex flex-col md:flex-row animate-popIn">
@@ -1736,13 +1798,61 @@
       v.addEventListener('ended', () => { v.currentTime = 0; reset(); });
     });
 
+    // شريط التنقل السفلي + عدّاد الأعمال (الجوال)
+    {
+      const tabs = [...document.querySelectorAll('.app-tabbar a')];
+      const secs = tabs.map(a => document.getElementById(a.dataset.s));
+      const mark = () => {
+        const y = window.innerHeight * 0.4; let cur = 0;
+        secs.forEach((s, i) => { if (s && s.getBoundingClientRect().top <= y) cur = i; });
+        tabs.forEach((a, i) => a.classList.toggle('on', i === cur));
+      };
+      window.addEventListener('scroll', () => requestAnimationFrame(mark), { passive: true }); mark();
+      tabs.forEach(a => a.addEventListener('click', e => {
+        e.preventDefault(); const s = document.getElementById(a.dataset.s);
+        window.scrollTo({ top: a.dataset.s === 'hero' ? 0 : s.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
+      }));
+      const row = document.querySelector('.pf-row'), out = document.getElementById('pf-count');
+      // تمييز قسم الفيديو الحالي في شريط الأقسام
+      const chips = [...document.querySelectorAll('#video-filters .vf-btn')];
+      const vsecs = chips.map(c => document.querySelector(c.getAttribute('href')));
+      let lastChip = -1;
+      window.addEventListener('scroll', () => requestAnimationFrame(() => {
+        let cur = -1; vsecs.forEach((s, i) => { if (s && s.getBoundingClientRect().top <= 200) cur = i; });
+        if (cur !== lastChip) { lastChip = cur; chips.forEach((c, i) => c.classList.toggle('active', i === cur));
+          if (cur >= 0 && window.innerWidth < 768) { const bar = chips[cur].parentElement; bar.scrollTo({ left: chips[cur].offsetLeft - (bar.clientWidth - chips[cur].offsetWidth) / 2, behavior: 'smooth' }); } }
+      }), { passive: true });
+      if (row && out) {
+        const items = [...row.children]; document.getElementById('pf-total').textContent = items.length;
+        row.addEventListener('scroll', () => requestAnimationFrame(() => {
+          const c = row.getBoundingClientRect(), mid = c.left + c.width / 2; let best = 0, d = 1e9;
+          items.forEach((it, i) => { const r = it.getBoundingClientRect(), x = Math.abs(r.left + r.width / 2 - mid); if (x < d) { d = x; best = i; } });
+          out.textContent = best + 1;
+        }), { passive: true });
+      }
+    }
+
+    // عدّاد السحب في أقسام الفيديو (الجوال)
+    document.querySelectorAll('.v-row').forEach(row => {
+      const out = row.parentElement.querySelector('.v-count b'); if (!out) return;
+      const items = [...row.children];
+      const upd = () => {
+        const c = row.getBoundingClientRect(); const mid = c.left + c.width / 2;
+        let best = 0, d = 1e9;
+        items.forEach((it, i) => { const r = it.getBoundingClientRect(); const x = Math.abs(r.left + r.width / 2 - mid); if (x < d) { d = x; best = i; } });
+        out.textContent = best + 1;
+      };
+      row.addEventListener('scroll', () => requestAnimationFrame(upd), { passive: true });
+      row.addEventListener('scroll', () => { clearTimeout(row._t); row._t = setTimeout(() => row.querySelectorAll('video').forEach(v => { const r = v.getBoundingClientRect(); const c = row.getBoundingClientRect(); if (r.right < c.left + 20 || r.left > c.right - 20) v.pause(); }), 150); }, { passive: true });
+    });
+
     // التنقل بين أقسام الفيديوهات
     document.getElementById('video-filters').addEventListener('click', e => {
       const b = e.target.closest('.vf-btn'); if (!b) return;
       e.preventDefault();
       document.querySelectorAll('.vf-btn').forEach(x => x.classList.toggle('active', x === b));
       const t = document.querySelector(b.getAttribute('href'));
-      if (t) window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
+      if (t) window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - (window.innerWidth < 768 ? 140 : 100), behavior: 'smooth' });
     });
   </script>
 </body>
