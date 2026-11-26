@@ -270,6 +270,14 @@
       .pf-row > * { flex: 0 0 82%; scroll-snap-align: center; }
       .pf-hint { display: flex; justify-content: space-between; font-size: .82rem; color: #6b7280; margin: -.75rem 0 .75rem; }
       .pf-hint b { color: #16625a; }
+      .pf-hint, .v-swipe { align-items: center; }
+      .sw-nav { display: inline-flex; align-items: center; gap: .55rem; font-weight: 700; }
+      .sw-btn { width: 36px; height: 36px; border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; font-size: .8rem; border: 1px solid rgba(22,98,90,.22); background: #fff; color: #16625a; box-shadow: 0 2px 8px rgba(15,69,64,.08); transition: transform .15s, opacity .2s; }
+      .v-swipe .sw-btn { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.25); color: #fff; box-shadow: none; }
+      .sw-btn:active { transform: scale(.9); }
+      .sw-btn:disabled { opacity: .3; }
+      .pf-row, .v-row { cursor: grab; }
+      .pf-row img { -webkit-user-drag: none; user-select: none; }
       #contact { padding-top: 4rem; padding-bottom: 4rem; }
       .app-tabbar { display: flex; position: fixed; left: 12px; right: 12px; bottom: calc(10px + env(safe-area-inset-bottom)); z-index: 60; height: 62px; border-radius: 22px; background: rgba(255,255,255,.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 10px 30px rgba(15,69,64,.18); border: 1px solid rgba(22,98,90,.12); }
       .app-tabbar a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; font-size: .75rem; font-weight: 700; color: #7b8a88; text-decoration: none; transition: color .2s; }
@@ -1866,6 +1874,24 @@
         }), { passive: true });
       }
     }
+
+    // أسهم التنقل والسحب بالماوس في صفوف الأعمال والفيديو (الجوال)
+    document.querySelectorAll('.pf-row, .v-row').forEach(row => {
+      const hint = row.classList.contains('pf-row') ? row.previousElementSibling : row.parentElement.querySelector('.v-swipe');
+      if (!hint) return;
+      const cnt = hint.lastElementChild;
+      const step = dir => { const it = row.children[0]; if (it) row.scrollBy({ left: -dir * (it.offsetWidth + 14), behavior: 'smooth' }); };
+      const mk = (dir, icon, label) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'sw-btn'; b.setAttribute('aria-label', label); b.innerHTML = '<i class="fa-solid ' + icon + '"></i>'; b.addEventListener('click', () => step(dir)); return b; };
+      const prev = mk(-1, 'fa-chevron-right', 'السابق'), next = mk(1, 'fa-chevron-left', 'التالي');
+      const nav = document.createElement('span'); nav.className = 'sw-nav'; cnt.replaceWith(nav); nav.append(prev, cnt, next);
+      const upd = () => { const max = row.scrollWidth - row.clientWidth, x = Math.abs(row.scrollLeft); prev.disabled = x < 4; next.disabled = x > max - 4; };
+      row.addEventListener('scroll', () => requestAnimationFrame(upd), { passive: true }); window.addEventListener('resize', upd); upd();
+      let sx = 0, sl = 0, drag = false, moved = false;
+      row.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse' || row.scrollWidth <= row.clientWidth) return; drag = true; moved = false; sx = e.clientX; sl = row.scrollLeft; row.style.scrollSnapType = 'none'; row.style.cursor = 'grabbing'; });
+      window.addEventListener('pointermove', e => { if (!drag) return; const dx = e.clientX - sx; if (Math.abs(dx) > 6) moved = true; row.scrollLeft = sl - dx; });
+      window.addEventListener('pointerup', () => { if (!drag) return; drag = false; row.style.cursor = ''; row.style.scrollSnapType = ''; });
+      row.addEventListener('click', e => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+    });
 
     // عدّاد السحب في أقسام الفيديو (الجوال)
     document.querySelectorAll('.v-row').forEach(row => {
