@@ -216,6 +216,21 @@
     .vf-btn.active { background:#fff; color:#0f4540; border-color:#fff; }
     .vf-btn.active span { background:#e8f4f3; }
     .v-item.hide { display:none; }
+    .v-sec { margin-bottom: 5rem; scroll-margin-top: 110px; }
+    .v-sec-head { display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:.5rem 2rem; border-bottom:1px solid rgba(255,255,255,.15); padding-bottom:1rem; margin-bottom:2.5rem; }
+    .v-sec-head h3 { font-size:1.9rem; font-weight:800; display:flex; align-items:center; gap:.75rem; }
+    .v-sec-head h3 span { font-size:.85rem; padding:.1rem .7rem; border-radius:9999px; background:rgba(255,255,255,.12); color:#c2dedd; }
+    .v-sec-head p { color:rgba(255,255,255,.6); }
+    .v-idea { margin-top:1rem; padding:.85rem 1rem; border-radius:14px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); }
+    .v-idea span { display:inline-block; font-size:.75rem; font-weight:800; color:#c2dedd; margin-bottom:.3rem; }
+    .v-idea p { color:rgba(255,255,255,.8); line-height:1.8; font-size:.95rem; }
+    .v-text { margin-top:.75rem; border-radius:14px; border:1px solid rgba(255,255,255,.12); overflow:hidden; }
+    .v-text summary { cursor:pointer; list-style:none; padding:.7rem 1rem; font-weight:700; font-size:.9rem; color:#fff; display:flex; align-items:center; gap:.5rem; background:rgba(255,255,255,.04); }
+    .v-text summary::-webkit-details-marker { display:none; }
+    .v-text summary::after { content:'+'; margin-inline-start:auto; font-size:1.1rem; color:#c2dedd; }
+    .v-text[open] summary::after { content:'−'; }
+    .v-text-body { padding:.9rem 1rem 1rem; max-height:340px; overflow-y:auto; }
+    .v-text-body p { color:rgba(255,255,255,.78); line-height:2; font-size:.95rem; margin-bottom:.35rem; }
     @media (prefers-reduced-motion: reduce) { .vcard, .vcard .v-overlay, .vcard .v-play { transition: none; } }
   </style>
 </head>
@@ -714,144 +729,24 @@
           موشن جرافيك · تايبوغرافي متحرك
         </span>
         <h2 class="text-4xl md:text-5xl font-extrabold mb-4">فيديوهات <span class="text-olive-muted">أحمد</span></h2>
-        <p class="text-white/70 text-lg leading-loose">أحوّل القصائد والكلمات إلى مشاهد متحركة؛ لكل نص هويته البصرية الخاصة، من الخط واللون إلى الإيقاع والحركة. من القصائد إلى المحتوى الإيماني والإعلانات والمونتاج، أكثر من عشرين عملاً مرئياً. اختر التصنيف واضغط على أي فيديو لمشاهدته.</p>
+        <p class="text-white/70 text-lg leading-loose">أحوّل القصائد والكلمات إلى مشاهد متحركة؛ لكل نص هويته البصرية الخاصة، من الخط واللون إلى الإيقاع والحركة. 38 عملاً مرئياً مرتبة في أقسام: المحتوى الإيماني، والقصائد، والمحتوى المالي، والإعلانات، والمونتاج. تحت كل فيديو فكرته ونصه كاملاً.</p>
       </div>
 
-      <div id="video-filters" class="flex flex-wrap justify-center gap-3 mb-12" data-aos="fade-up">
-        <button class="vf-btn active" data-f="all">الكل <span>25</span></button>
-        <button class="vf-btn" data-f="قصائد">قصائد <span>7</span></button>
-        <button class="vf-btn" data-f="محتوى إيماني">محتوى إيماني <span>7</span></button>
-        <button class="vf-btn" data-f="مونتاج">مونتاج <span>3</span></button>
-        <button class="vf-btn" data-f="إعلانات">إعلانات <span>8</span></button>
-      </div>
+      <nav id="video-filters" class="flex flex-wrap justify-center gap-3 mb-14" data-aos="fade-up">
+        <a class="vf-btn" href="#v-faith">محتوى إيماني <span>18</span></a>
+        <a class="vf-btn" href="#v-poems">قصائد <span>7</span></a>
+        <a class="vf-btn" href="#v-finance">محتوى مالي <span>2</span></a>
+        <a class="vf-btn" href="#v-ads">إعلانات <span>8</span></a>
+        <a class="vf-btn" href="#v-montage">مونتاج <span>3</span></a>
+      </nav>
 
-      <div id="video-grid" class="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
-        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
-          <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/qadi-alhob.jpg" aria-label="فيديو قاضي الحب">
-              <source src="assets/qadi-alhob.mp4" type="video/mp4" />
-              متصفحك لا يدعم تشغيل الفيديو.
-            </video>
-            <div class="v-overlay">
-              <span class="v-num">قصائد</span>
-              <span class="v-dur">1:09</span>
-              <span class="v-play"><i class="fa-solid fa-play"></i></span>
-              <h3 class="text-2xl font-extrabold">قاضي الحب</h3>
-            </div>
+      <div id="video-grid" class="max-w-6xl mx-auto">
+        <div id="v-faith" class="v-sec">
+          <div class="v-sec-head">
+            <h3>محتوى إيماني <span>18</span></h3>
+            <p>آيات وأحاديث ومواعظ، لكل واحد منها هوية بصرية تخدم معناه.</p>
           </div>
-          <div class="pt-5 px-1">
-            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">موشن جرافيك</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">قصيدة</span></div>
-            <p class="text-white/70 leading-relaxed">مسرح عربي بستارته الحمراء وفوانيسه، تتحرك فيه أبيات القصيدة مع الإيقاع لتتحول الكلمات إلى مشهد يُروى.</p>
-          </div>
-        </article>
-        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
-          <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/aldurar.jpg" aria-label="فيديو الدُّرر">
-              <source src="assets/aldurar.mp4" type="video/mp4" />
-              متصفحك لا يدعم تشغيل الفيديو.
-            </video>
-            <div class="v-overlay">
-              <span class="v-num">قصائد</span>
-              <span class="v-dur">0:23</span>
-              <span class="v-play"><i class="fa-solid fa-play"></i></span>
-              <h3 class="text-2xl font-extrabold">الدُّرر</h3>
-            </div>
-          </div>
-          <div class="pt-5 px-1">
-            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">شعر فصيح</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">ذهبي</span></div>
-            <p class="text-white/70 leading-relaxed">بوصلة ونجوم وموج بخطوط ذهبية على أزرق ملكي، تجسّد الأبيات الشهيرة عن نجوم السماء ودُرر البحر في مشهد فاخر.</p>
-          </div>
-        </article>
-        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
-          <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/akhawi-alsabr.jpg" aria-label="فيديو أخاوي الصبر">
-              <source src="assets/akhawi-alsabr.mp4" type="video/mp4" />
-              متصفحك لا يدعم تشغيل الفيديو.
-            </video>
-            <div class="v-overlay">
-              <span class="v-num">قصائد</span>
-              <span class="v-dur">0:43</span>
-              <span class="v-play"><i class="fa-solid fa-play"></i></span>
-              <h3 class="text-2xl font-extrabold">أخاوي الصبر</h3>
-            </div>
-          </div>
-          <div class="pt-5 px-1">
-            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">زجاج معشّق</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">قصيدة</span></div>
-            <p class="text-white/70 leading-relaxed">نوافذ من الزجاج المعشّق داخل أقواس حجرية، كل نافذة تروي مشهداً من القصيدة بطابع كلاسيكي وحركة حديثة.</p>
-          </div>
-        </article>
-        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
-          <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/ya-rafiqi.jpg" aria-label="فيديو يا رفيقي">
-              <source src="assets/ya-rafiqi.mp4" type="video/mp4" />
-              متصفحك لا يدعم تشغيل الفيديو.
-            </video>
-            <div class="v-overlay">
-              <span class="v-num">قصائد</span>
-              <span class="v-dur">0:35</span>
-              <span class="v-play"><i class="fa-solid fa-play"></i></span>
-              <h3 class="text-2xl font-extrabold">يا رفيقي</h3>
-            </div>
-          </div>
-          <div class="pt-5 px-1">
-            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">نيون</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">صداقة</span></div>
-            <p class="text-white/70 leading-relaxed">لافتات نيون مضيئة على جدار من الطوب، تحتفي برفقة السنين بأيقونات تلمع وكلمات تتوهج مع كل بيت.</p>
-          </div>
-        </article>
-        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
-          <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/wajhain.jpg" aria-label="فيديو وجهين">
-              <source src="assets/wajhain.mp4" type="video/mp4" />
-              متصفحك لا يدعم تشغيل الفيديو.
-            </video>
-            <div class="v-overlay">
-              <span class="v-num">قصائد</span>
-              <span class="v-dur">1:00</span>
-              <span class="v-play"><i class="fa-solid fa-play"></i></span>
-              <h3 class="text-2xl font-extrabold">وجهين</h3>
-            </div>
-          </div>
-          <div class="pt-5 px-1">
-            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">تايبوغرافي</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">عتاب</span></div>
-            <p class="text-white/70 leading-relaxed">فوانيس معلّقة وخط عربي على خلفية داكنة، تتصاعد فيه الكلمات بين العتاب والهجر بإيقاع يشدّ المستمع حتى آخر بيت.</p>
-          </div>
-        </article>
-        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
-          <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/ahinnu-ila-alhijaz.jpg" aria-label="فيديو أحنّ إلى الحجاز">
-              <source src="assets/ahinnu-ila-alhijaz.mp4" type="video/mp4" />
-              متصفحك لا يدعم تشغيل الفيديو.
-            </video>
-            <div class="v-overlay">
-              <span class="v-num">قصائد</span>
-              <span class="v-dur">0:35</span>
-              <span class="v-play"><i class="fa-solid fa-play"></i></span>
-              <h3 class="text-2xl font-extrabold">أحنّ إلى الحجاز</h3>
-            </div>
-          </div>
-          <div class="pt-5 px-1">
-            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">ورق مقصوص</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">حنين</span></div>
-            <p class="text-white/70 leading-relaxed">طبقات من الجبال بأسلوب الورق المقصوص وألوان دافئة، تستحضر الحنين إلى الحجاز وتجمع بين الكلمة والمكان.</p>
-          </div>
-        </article>
-        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
-          <div class="vcard" data-vcard>
-            <video preload="none" playsinline poster="assets/yawm-alfiraq.jpg" aria-label="فيديو يوم الفراق">
-              <source src="assets/yawm-alfiraq.mp4" type="video/mp4" />
-              متصفحك لا يدعم تشغيل الفيديو.
-            </video>
-            <div class="v-overlay">
-              <span class="v-num">قصائد</span>
-              <span class="v-dur">0:34</span>
-              <span class="v-play"><i class="fa-solid fa-play"></i></span>
-              <h3 class="text-2xl font-extrabold">يوم الفراق</h3>
-            </div>
-          </div>
-          <div class="pt-5 px-1">
-            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">درامي</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">أجواء</span></div>
-            <p class="text-white/70 leading-relaxed">أجواء ممطرة وألوان باردة تعكس ثقل الوداع، مع كتابة متحركة تتناغم مع نبرة الإلقاء ولحظاته.</p>
-          </div>
-        </article>
+          <div class="flex flex-wrap justify-center gap-8">
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
           <div class="vcard" data-vcard>
             <video preload="none" playsinline poster="assets/darb_final.jpg" aria-label="فيديو درب">
@@ -868,6 +763,8 @@
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">تايبوغرافي</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">توبة</span></div>
             <p class="text-white/70 leading-relaxed">أشكال هندسية بسيطة وخط ذهبي يرسم الطريق، يرافق كلمات التوبة والرجاء بهدوء يترك للمعنى مساحته.</p>
+            <div class="v-idea"><span>الفكرة</span><p>قصيدة نبطية للشاعر موفق السلمي، رحلة عمر تبدأ بالتوبة ومناجاة الله ونصيحة النفس، وتمر بالحب والقدر، وتنتهي بالفرح والدعاء بالبركة.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>يا ربّ لك توبتي.. ومنك السماح</p><p>أنت الغفور الأحد.. وأنت العزيز الصمد</p><p>أنا السبب في ضياع الدرب.. ما له صلاح</p><p>وأنا السبب في المتاهة.. والتعب والنكد</p><p>وصّيت نفسي قبل عامين.. خلّك صباح</p><p>واذا تعدّاك ريم الحلم.. خلّك فهد</p><p>ولا تارد من العدود.. إلا عدود القراح</p><p>ولا تكسر من العيون.. إلا عيون الحسد</p><p>واليوم مدري علام القلب.. ملّ الكفاح</p><p>والروح من ضيمها.. تاكل وتشرب كمد</p><p>يمكن بعد ما رماني طرف.. سيد الملاح</p><p>اللي قذف لهفته بين الضلوع.. ورقد</p><p>همسلي بشفتين.. ومدّ طرفه وشاح</p><p>من بعدها قام قلبي للوليف.. وقعد</p><p>الظاهر ان البروق اللي بعينه.. رماح</p><p>واللي على الشفتين.. الظاهر انه شهد</p><p>كنت احسبه ما يروح.. وشال نفسه وراح</p><p>يبدو لي انه ولد.. قبل اكتشاف الوعد</p><p>لكنّي أيقنت من بعد الهدد.. والصياح</p><p>وتسميع درس الحصاة.. اللي يطعّق الوتد</p><p>لو يقدر البحر يهرب.. من سجونه الرياح</p><p>ما يقدر الظبي يخرج.. من نصيب الأسد</p><p>واليوم وانت يا عاده.. لطيف القلب كثر الجراح</p><p>وان مرّ طاري.. قلت: العين تكرم بلد</p><p>الوقت صافٍ حيدانه.. بالكفوف الشحاح</p><p>مقدّم السبت قبلك.. ما لقيته لحد</p><p>عشنا بلا شك بين.. المستحب والمباح</p><p>والعز نخطب يديه.. من المهد للحد</p><p>سلّم على روسنا.. في الليل ولا الصباح</p><p>وسلّم على سلمنا.. اللي نحفظه للأبد</p><p>جبنا عقود العمل.. باقي عقود النكاح</p><p>والله يبارك عليك.. واجعل بكرك ولد</p></div></details>
           </div>
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
@@ -886,6 +783,8 @@
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">زخرفة إسلامية</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">تأمل</span></div>
             <p class="text-white/70 leading-relaxed">زخارف هندسية إسلامية بالأخضر والذهبي تتشكّل حول كلمات الحمد، في تكوين متوازن يبعث السكينة.</p>
+            <div class="v-idea"><span>الفكرة</span><p>قصيدة نبطية في حمد الله والثناء عليه على كل حال: الحمد أولاً وثانياً وثالثاً بعدد المطر والسيول، ويقين أن الضيقة تعود عزّاً بفضل الله.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>الحمد للباري فرَج من شكى له</p><p>والحمد له ثاني على كل الأحوال</p><p>والحمد له ثالث بقدرة فعاله</p><p>حمدٍ كثير عدّ ما قايل قاله</p><p>وعدّ ما فوق الوطا من رمل ماله</p><p>أو ساح ظلٍّ بالعوالي للأسهالة</p><p>وعدّ ما ترمي وقايع خياله</p><p>بسحٍّ وتسكابٍ وديمٍ وهمّال</p><p>كل الثنا والشكر له والجلالة</p><p>سبحان منه الكل ما رات فعّال</p><p>ربّ السما رزق الملا منه وإله</p><p>محيي هشيم الدارس الدمدم البال</p><p>مولاي عازل شمسها عن ظلاله</p><p>سيدي ومسنادي اللي أضفى الجال</p><p>كم ضيقةٍ من منّته هجّت وزاله</p><p>وعادت بعزٍّ ما هقيناه بالبال</p><p>والحمد لله ما كرهنا القالة</p><p>إلا تصير عقوبته عزٍّ وقبال</p><p>ومن قال ذا فعلي فهو منه باله</p><p>الفعل فعل الله ما رات فعّال</p></div></details>
           </div>
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
@@ -904,6 +803,8 @@
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">تراث</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">رمزية</span></div>
             <p class="text-white/70 leading-relaxed">نول خشبي يحيك سجادة عربية بنقوشها خيطاً بعد خيط، استعارة بصرية لما يُبنى بين العبد وربه بالصبر والإحسان.</p>
+            <div class="v-idea"><span>الفكرة</span><p>عن حسن الظن بالله عند المصيبة: كل ما يختاره الله لعبده خير، مع الأخذ بالأسباب، وأن البلاء فرصة ليرى الله منك الدعاء والصدقة والعمل.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>الله ما يختار لعباده إلا الخير.</p><p>قد يأتيك مصيبة، قد يأتيك حادث، قد ينقص مالك، قد ينقص أبناؤك، قد ينقص عليك شيء، قد تحتاج شيء.</p><p>لكن أنت فيما بينك وبين الله تؤمن أن هذا خير.. خلاص، هذا اختاره الله لي.</p><p>ليش يا أخي؟ لا يا أخي، هذا الله اختاره. ولا يمنع أنك تعمل بالأسباب.</p><p>ما تقول: لا خلاص هذا حظي. لا، ابذل.. افعل.</p><p>أحسن الظن بالله بأنك تقول: لا، الله اختار لي هذا لئلا يراني مثلاً مقصّراً، ليراني متقرباً إليه، ليراني أدعوه وأناجيه، ليراني أتصدق، ليراني أنفق، ليراني أبذل، ليراني أفعل.</p><p>هذه من الأشياء التي تجعل الرابط ما بين العبد وربه حقيقة.</p></div></details>
           </div>
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
@@ -922,6 +823,8 @@
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">آيات</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">الوقت</span></div>
             <p class="text-white/70 leading-relaxed">ساعة رملية تتساقط حبّاتها مع الآيات والكلمات، تذكير بقيمة الوقت وأن باب التوبة مفتوح قبل أن ينفد الرمل.</p>
+            <div class="v-idea"><span>الفكرة</span><p>تذكير بالاستجابة لله قبل فوات الوقت: لا تؤجل التوبة ولا تستخفّ بمقام الله، فالذي أفنى عمره في الطاعة لا يستوي مع من أفناه في المعاصي ثم تاب.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>﴿يَا أَيُّهَا الَّذِينَ آمَنُوا اسْتَجِيبُوا لِلَّهِ وَلِلرَّسُولِ إِذَا دَعَاكُمْ لِمَا يُحْيِيكُمْ وَاعْلَمُوا أَنَّ اللَّهَ يَحُولُ بَيْنَ الْمَرْءِ وَقَلْبِهِ﴾</p><p>يعني لا تكثر من التفريط: بكرة، بعدين.. لا تجعل الله أهون الناظرين إليك.</p><p>لا تستخف بمقام الله فتسقط من عين الله.</p><p>ثم يجي ذاك الوقت اللي تبغى تتوب فيه ما تقدر، ما عاد ألِفت الطاعة.</p><p>يا أخي سبعين ستين سنة وهو في المعاصي.. افرض فرضاً جدلياً أنه أنعم الله عليه وتاب، وإن شاء الله إذا تاب يدخل الجنة.. طيب حلو.</p><p>خلاص ما دام يدخل الجنة حلوة.. إيه، بس تتوقع عنده تتساوى مع اللي من يومها في طفولتها أو في شبابها؟</p><p>يتساوون؟ والله ما يستوي.</p></div></details>
           </div>
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
@@ -940,6 +843,8 @@
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">رسم طباشير</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">أمل</span></div>
             <p class="text-white/70 leading-relaxed">رسوم بالطباشير على سبورة داكنة ترسم طريق الحزن والأمل، حيث تتحول الخطوط المتعرجة إلى سلّم نحو الفرج.</p>
+            <div class="v-idea"><span>الفكرة</span><p>قصيدة نبطية عن الحزن والأمل وتغيّر الناس، وخوف الشاعر أن يموت حلمه يوم يتحقق، لا أن يتأخر تحقيقه.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>لنا الشوارع.. لنا المسمار والبنشر</p><p>في كل شارع لنا حكّة وتلبيقة</p><p>شبعان دنيا ومتبهذل ومجرجر</p><p>محلوق راسي وماكل الكفّ تحليقة</p><p>حابق مع الحزن وادشر.. وين ما يدشر؟</p><p>الحزن حابق ويبغى ناس حبّيقة</p><p>أبغى من الوقت وقتي.. ما أطلب أكثر</p><p>ومن جناح البكا خفقة وتحليقة</p><p>يتغيّر الناس وأنا ما عرفت أتغيّر</p><p>ما بدّل الطفل زحليقة بزحليقة</p><p>ما خاف تحقيق حلمي يوم يتأخر</p><p>أخاف حلمي يموت بيوم تحقيقه</p></div></details>
           </div>
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
@@ -958,6 +863,8 @@
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">قصة بصرية</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">صبر</span></div>
             <p class="text-white/70 leading-relaxed">بذرة تشق طريقها تحت التراب حتى تصير شجرة مثمرة، قصة بصرية عن أن في البلاء عطاءً وأن الصبر يُثمر.</p>
+            <div class="v-idea"><span>الفكرة</span><p>البلاء امتحان على قدر الإيمان، وقد يكون عطية من الله يصلح بها الحال ويغفر الذنب، كما كان دعاء موسى عليه السلام سبباً لكل الخير الذي جاءه.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>شوف، الله سبحانه وتعالى إذا حبّ عبداً يبتليه ليعود.</p><p>يا الله! شوف جمال الرب جل وعلا، إذا ابتعدت يشتاق لك، فيبتليك لتعود.</p><p>البلاء هو امتحان، اختبار من الله جل في عليائه لأي مؤمن، والإنسان يُبتلى على قدر إيمانه.</p><p>فالإنسان اللي يعيش بالدنيا من غير ابتلاء، ويعيش: ملك، تاجر، رب أسرة، سليم معافى.. كل حياته زينة، هذا لازم يراجع نفسه.</p><p>لأن قد يكون الله سبحانه وتعالى يمدّ فيه لشيء في المستقبل ما يكون لا خير، لا في الآخرة ولا في الدنيا.</p><p>أنا أعرف أن هذه المصيبة اللي صابتني أنها عطية من الله: يمكن الله بيصلح حالي، يمكن الله بيغفر ذنبي، يمكن الله بيكفّر سيئاتي.. فلاحظ أن البلاء فيه العطاء.</p><p>موسى عليه السلام بس قال: ﴿رَبِّ إِنِّي لِمَا أَنزَلْتَ إِلَيَّ مِنْ خَيْرٍ فَقِيرٌ﴾</p><p>يعني أنا في أمسّ الحاجة إليك.</p><p>لما يكون الإنسان متصل مع الله سبحانه، ماذا كانت النتيجة بالنسبة لموسى؟ كانت زوجة صالحة، وأمن وأمان، وعمل وأجر يومي، ورسالة.</p><p>كل هذا لأنه قال: ﴿رَبِّ إِنِّي لِمَا أَنزَلْتَ إِلَيَّ مِنْ خَيْرٍ فَقِيرٌ﴾ طالع من قلبه.</p><p>النبي عليه الصلاة والسلام قال: «عجباً لأمر المؤمن، إن أمره كله خير، إن أصابته سرّاء شكر فكان خيراً له، وإن أصابته ضرّاء صبر فكان خيراً له، وليس ذاك لأحد إلا للمؤمن».</p></div></details>
           </div>
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
@@ -976,8 +883,434 @@
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">ميكانيكي</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">همّة</span></div>
             <p class="text-white/70 leading-relaxed">تروس نحاسية تدور بلا توقف، ترافق مواقف السلف وأقوالهم عن الجد والمثابرة حتى بلوغ الغاية.</p>
+            <div class="v-idea"><span>الفكرة</span><p>الدنيا دار كَبَد واختبار لا راحة فيها، وقد قال الإمام أحمد إن الراحة عند أول قدم في الجنة، وعدّاد الحسنات والسيئات يبقى شغّالاً حتى بعد الموت.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>الدنيا لله، وأنت لله، حتى إذا مات الإنسان ماذا يقول أهله؟ إنا لله وإنا إليه راجعون.</p><p>﴿وَنَبْلُوكُم بِالشَّرِّ وَالْخَيْرِ فِتْنَةً وَإِلَيْنَا تُرْجَعُونَ﴾</p><p>﴿الم ۝ أَحَسِبَ النَّاسُ أَن يُتْرَكُوا أَن يَقُولُوا آمَنَّا وَهُمْ لَا يُفْتَنُونَ ۝ وَلَقَدْ فَتَنَّا الَّذِينَ مِن قَبْلِهِمْ﴾</p><p>طُبعت على كدرٍ وأنت تريدها.. صفواً من الأقذاء والأكدار. ما هي على كيفك!</p><p>﴿لَقَدْ خَلَقْنَا الْإِنسَانَ فِي كَبَدٍ﴾ أنت في مكابدة مع هذه الحياة، في تعب، في مشقة، ولن تصفو.</p><p>أحمد بن حنبل يقول: لا راحة حتى أطأ بقدمي أول عتبة في الجنة.</p><p>والشيطان جاءه على فراش الموت وهو في الغرغرة.. وهو أحمد بن حنبل، صاحب أحد أكبر المذاهب اليوم.</p><p>أين المستراح؟ هالدنيا ما فيها راحة من تولد إلى أن تُبعث.</p><p>ما فيه شيء اسمه راحة.. أنت في عمل، أنت في حياة.</p><p>عدّاد الحسنات أو السيئات شغّال حتى في حياة البرزخ: إذا لك صدقة جارية فعدّاد الحسنات، وسيئة جارية فعدّاد السيئات.</p></div></details>
           </div>
         </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/zann-abdi.jpg" aria-label="فيديو أنا عند ظن عبدي بي">
+              <source src="assets/zann-abdi.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى إيماني</span>
+              <span class="v-dur">0:30</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">أنا عند ظن عبدي بي</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">مطبعة</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">حديث قدسي</span></div>
+            <p class="text-white/70 leading-relaxed">حروف خشبية تُصفّ وتُطبع على ورق كاكي، وكل سؤال عن الظن بالله يجيبه ختم أحمر: سيعطيك، سيرحمك، سيغفر لك، سيعفو عنك.</p>
+            <div class="v-idea"><span>الفكرة</span><p>حديث قدسي عن حسن الظن بالله: كل ما تظنه بربك من عطاء ورحمة ومغفرة وعفو تجده عنده.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>يقول الله تعالى في الحديث القدسي: «أَنَا عِنْدَ ظَنِّ عَبْدِي بِي، فَلْيَظُنَّ بِي مَا شَاءَ».</p><p>أنت وش تظن بالله؟</p><p>تظن الله يعطيك؟ سيعطيك.</p><p>تظن بالله عز وجل أنه سيرحمك؟ سيرحمك.</p><p>تظن بالله أنه سيغفر لك؟ سيغفر لك.</p><p>تظن بالله سبحانه وتعالى أنه سيعفو عنك؟ سيعفو عنك.</p><p>«أَنَا عِنْدَ ظَنِّ عَبْدِي بِي».</p></div></details>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/allah-maak.jpg" aria-label="فيديو إذا كان الله معك">
+              <source src="assets/allah-maak.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى إيماني</span>
+              <span class="v-dur">0:24</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">إذا كان الله معك</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">مضلعات</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">توكل</span></div>
+            <p class="text-white/70 leading-relaxed">جبل مضلع راسخ تدور حوله عاصفة المخاوف، وعلى قمته فانوس يتوهج كلما اشتد الكلام عن معية الله.</p>
+            <div class="v-idea"><span>الفكرة</span><p>اليقين والتوكل أقوى قوة في العالم: إذا كان الله معك فممّ تخاف؟ وإذا كان ضدك فمن ترجو؟</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>عندك يقين وتوكّل على الله؟ أنت تملك كل الدنيا.</p><p>يعني أنك مع الله سبحانه وتعالى، وتشعر أنه معك، وأنه سوف يؤنسك، وسوف يشفيك ويعافيك، ويؤمّن خوفك.</p><p>لكن كن معه أنت.. هذه أقوى قوة في العالم.</p><p>إذا كان الله معك فممّن تخاف؟ وإذا كان الله ضدك فمن ترجو؟</p><p>إذا كان الله معك.. فممّ تخاف؟</p><p>معك الله.. ﴿إِنَّنِي مَعَكُمَا أَسْمَعُ وَأَرَىٰ﴾</p></div></details>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/saat-alafiya.jpg" aria-label="فيديو ساعة من العافية">
+              <source src="assets/saat-alafiya.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى إيماني</span>
+              <span class="v-dur">0:30</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">ساعة من العافية</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">نيون</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">عافية</span></div>
+            <p class="text-white/70 leading-relaxed">خط نبض أخضر مضيء على خلفية داكنة، يرسم نعم العافية والأمان والقوت واحدة بعد واحدة.</p>
+            <div class="v-idea"><span>الفكرة</span><p>تأمل في نعمة العافية: من أصبح آمناً معافى عنده قوت يومه فكأنما مَلَك الدنيا، والدنيا كلها لا تساوي ساعة عافية يعرف قيمتها من دخل العناية المركزة.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>ولذلك يقول ﷺ: «من أصبح منكم آمناً في سربه، معافى في جسده، عنده قوت يومه، فكأنما حيزت له الدنيا بحذافيرها».</p><p>آمناً في سربه.. يعني غرفة، ولو في كوخ.</p><p>والله يا أبا عمر إني أدركت لما دخلت العناية المركزة أن الدنيا كلها ما تساوي ساعة من العافية.. جلست شهر.</p><p>وإني لو جاتك جبال الدنيا وهموم وهموم..</p><p>قلت: يا ليتني أخرج وأرعى الغنم في الصحراء، أكون راعي غنم بس عافية.</p><p>عندنا يا شيخ نِعَم لا تُقدّر ولا توصف أبداً.</p></div></details>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/la-tanzil.jpg" aria-label="فيديو لا تنزل في المستوى">
+              <source src="assets/la-tanzil.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى إيماني</span>
+              <span class="v-dur">0:26</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">لا تنزل في المستوى</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">أيزومتري</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">أخلاق</span></div>
+            <p class="text-white/70 leading-relaxed">مكتب أيزومتري أبيض تتطاير فيه فقاعات الهمس والكلام السلبي، ورسالة واضحة: لا تنزل لمستوى من يتكلم في الناس.</p>
+            <div class="v-idea"><span>الفكرة</span><p>رسالة في الأخلاق والاحترافية: لا تنزل لمستوى القيل والقال ونقل الكلام والإشاعات، فهي سلبية تؤثر على نفوس الناس وعلى الأمل.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>لا تنزل في المستوى مع أحد.</p><p>فلان يقول، وفلان.. لا تدخل فيها، بل إنه من عدم الاحترافية.</p><p>اللي يدخل في القيل والقال والإشاعات: شف فلان وش سوّى، وفلان بيقرّبونه، وفلان بيفصلونه، وفلان بيحطّونه، وتدري وش قال فلان..</p><p>فيه ناس كذا كلامهم: دو دو دو دو.. نقل كلام وسوالف.</p><p>هذي سلبية كبيرة، تأثّر على نفسيات الناس، تأثّر على الأمل.</p></div></details>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/duaa-alkhurooj.jpg" aria-label="فيديو دعاء الخروج من البيت">
+              <source src="assets/duaa-alkhurooj.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى إيماني</span>
+              <span class="v-dur">0:43</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">دعاء الخروج من البيت</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">صلصال</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">أذكار</span></div>
+            <p class="text-white/70 leading-relaxed">باب من الصلصال وطريق يخرج من البيت، تُبنى عليه كلمات دعاء الخروج طبقة فوق طبقة كحصن يحفظك.</p>
+            <div class="v-idea"><span>الفكرة</span><p>تذكير بأن الأذكار ودعاء الخروج من البيت ليست للحفظ من السحر والعين فقط، بل تحفظك بإذن الله من كل شر وسوء.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>سؤال: هل تحافظ أو تحافظين على دعاء الخروج وأذكار الصباح والمساء؟</p><p>ترى كثير يظنون أن الأذكار فقط للحفظ من السحر أو العين، والحقيقة أنها تحفظك بإذن الله من كل شر وسوء.. كلها، يحفظك الله بإذن الله.</p><p>قالت أم سلمة رضي الله عنها: ما خرج النبي ﷺ من بيتي قط إلا رفع طرفه إلى السماء فقال:</p><p>«اللهم إني أعوذ بك أن أَضِلّ أو أُضَلّ، أو أَزِلّ أو أُزَلّ، أو أَظلِم أو أُظلَم، أو أَجهَل أو يُجهَل عليّ».</p></div></details>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/rabbi-inni.jpg" aria-label="فيديو رب إني لما أنزلت إلي">
+              <source src="assets/rabbi-inni.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى إيماني</span>
+              <span class="v-dur">0:33</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">رب إني لما أنزلت إلي</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">رسوم مسطحة</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">قصة موسى</span></div>
+            <p class="text-white/70 leading-relaxed">أرض مدين بألوان دافئة: شجرة وبئر وشمس، تحكي دعاء موسى عليه السلام وما جاءه بعده من خير.</p>
+            <div class="v-idea"><span>الفكرة</span><p>قصة دعاء موسى عليه السلام عند ماء مدين: كلمة فقرٍ صادقة إلى الله جاءت بعدها زوجة صالحة وأمن وعمل ورسالة.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>الله سبحانه وتعالى إذا اشتاق لعبده يبتليه ليعود.</p><p>إذا ابتعدت اشتاق لك فيبتليك لتعود، وإذا عدت تدعوه فيستجيب لك.</p><p>موسى عليه السلام بس قال: ﴿رَبِّ إِنِّي لِمَا أَنزَلْتَ إِلَيَّ مِنْ خَيْرٍ فَقِيرٌ﴾</p><p>يعني أنا في أمسّ الحاجة إليك.</p><p>ماذا كانت النتيجة بالنسبة لموسى؟ كانت زوجة صالحة، وأمن وأمان، وعمل وأجر يومي، ورسالة.</p><p>كل هذا لأنه قال: ﴿رَبِّ إِنِّي لِمَا أَنزَلْتَ إِلَيَّ مِنْ خَيْرٍ فَقِيرٌ﴾</p></div></details>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/dar-mamar.jpg" aria-label="فيديو دار ممر">
+              <source src="assets/dar-mamar.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى إيماني</span>
+              <span class="v-dur">0:27</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">دار ممر</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">رسم بالرمل</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">شعر</span></div>
+            <p class="text-white/70 leading-relaxed">رسم بالرمل على طاولة ضوئية لأبيات الإمام الشافعي، تتشكل البيوت ثم تُمسح، حتى يصير الرمل بحراً والأعمال الصالحة سفناً من ذهب.</p>
+            <div class="v-idea"><span>الفكرة</span><p>الدنيا دار عبور لا دار قرار، مع أبيات الإمام الشافعي عن عباد فطنوا لحقيقتها فجعلوها بحراً واتخذوا صالح الأعمال سفناً.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>الدنيا دار ممر لا دار مقر.</p><p>حلالها حساب، وحرامها عذاب.</p><p>الدنيا لا مستقر فيها لأهل العقل والفطنة.. خلاص.</p><p>إِنَّ لِلَّهِ عِبَاداً فُطَنَا</p><p>طَلَّقُوا الدُّنْيَا وَخَافُوا الفِتَنَا</p><p>نَظَرُوا فِيهَا فَلَمَّا عَلِمُوا</p><p>أَنَّهَا لَيْسَتْ لِحَيٍّ وَطَنَا</p><p>جَعَلُوهَا لُجَّةً وَاتَّخَذُوا</p><p>صَالِحَ الأَعْمَالِ فِيهَا سُفُنَا</p></div></details>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/taarraf-fi-alrakhaa.jpg" aria-label="فيديو تعرّف على الله في الرخاء">
+              <source src="assets/taarraf-fi-alrakhaa.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى إيماني</span>
+              <span class="v-dur">1:28</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">تعرّف على الله في الرخاء</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">زليج</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">دعاء</span></div>
+            <p class="text-white/70 leading-relaxed">بلاطات زليج زرقاء تُرصّ في أيام الرخاء، وتضيء طريقاً يوم الشدة، حتى تكتمل الأرضية حول نافورة تجري.</p>
+            <div class="v-idea"><span>الفكرة</span><p>من أسباب إجابة الدعاء في الشدة أن يكون لك رصيد من الدعاء في الرخاء، والدعاء أوسع من الطلب: يشمل الثناء على الله وذكره.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>في حديث النبي ﷺ: «تعرّف إلى الله في الرخاء يعرفك في الشدة».</p><p>من أسباب إجابة الدعاء إذا جاتك شدة أنك تكون تدعو الله عز وجل في وقت الرخاء.</p><p>متى تدعو الله عز وجل؟ ﴿يَذْكُرُونَ اللَّهَ قِيَامًا وَقُعُودًا وَعَلَىٰ جُنُوبِهِمْ﴾</p><p>بعض الناس للأسف ما يذكر الله إلا متى؟ إلا إذا جته الحاجة وجاءته المصيبة.</p><p>من أسباب إجابة الله عز وجل دعاءك في وقت الشدة أن يكون عندك رصيد لدعاء الله عز وجل في الرخاء.</p><p>ودعاء الله عز وجل ليس فقط في الطلب. يعني بعض الناس يظن أن دعاء الله عز وجل هو الطلب، دعاء الله عز وجل أوسع من ذلك.. بالثناء على الله.</p><p>مثلاً قول يونس عليه الصلاة والسلام: ﴿لَّا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ﴾ وين الطلب؟</p><p>فيه الثناء على الله عز وجل، واعتراف بماذا؟ بالذنب. وهذا من أبلغ الدعاء.</p><p>فالثناء على الله عز وجل وذكره: سبحان الله، والحمد لله، ولا إله إلا الله، والله أكبر، ولا حول ولا قوة إلا بالله، سبحان الله وبحمده سبحان الله العظيم.. هذا من الثناء على الله عز وجل الذي يدخل في الدعاء.</p></div></details>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/albalaa-alataa.jpg" aria-label="فيديو البلاء فيه العطاء">
+              <source src="assets/albalaa-alataa.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى إيماني</span>
+              <span class="v-dur">1:40</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">البلاء فيه العطاء</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">ثلاثي الأبعاد</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">صبر</span></div>
+            <p class="text-white/70 leading-relaxed">رحلة نزول إلى قلب منجم: حجر خام تحت ضغط ونار يتشقق ليخرج منه ألماس يكسر الضوء، كما يخرج العطاء من البلاء.</p>
+            <div class="v-idea"><span>الفكرة</span><p>البلاء اختبار على قدر الإيمان، وفيه العطاء: يصلح الله به الحال ويغفر الذنب، وأمر المؤمن كله خير، إن أصابته سرّاء شكر وإن أصابته ضرّاء صبر.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>شوف.. الله سبحانه وتعالى إذا حبّ عبداً يبتليه ليعود.</p><p>يا الله! شوف جمال الرب جل وعلا، إذا ابتعدت يشتاق لك، فيبتليك لتعود.</p><p>البلاء هو امتحان، اختبار من الله جل في عليائه لأي مؤمن، والإنسان يُبتلى على قدر إيمانه.</p><p>فالإنسان اللي يعيش بالدنيا من غير ابتلاء، ويعيش: ملك، تاجر، رب أسرة، سليم معافى.. كل حياته زينة، هذا لازم يراجع نفسه.</p><p>لأن قد يكون الله سبحانه وتعالى يمدّ فيه لشيء.. يعني في المستقبل ما يكون لا خير، لا في الآخرة ولا في الدنيا.</p><p>يعني أنا أعرف أن هذه المصيبة اللي صابتني أنها عطية من الله: يمكن الله بيصلح حالي، يمكن الله بيغفر ذنبي، يمكن الله بيكفّر سيئاتي.. فلاحظ أن البلاء فيه العطاء.</p><p>موسى عليه السلام بس قال: ﴿رَبِّ إِنِّي لِمَا أَنزَلْتَ إِلَيَّ مِنْ خَيْرٍ فَقِيرٌ﴾</p><p>يا الله! شوف يا أخي، لما يقول: أنا فقير إليك يا رب.. يعني أنا في أمسّ الحاجة إليك.</p><p>فلما يكون الإنسان متصل مع الله سبحانه، ماذا كانت النتيجة بالنسبة لموسى؟ كانت زوجة صالحة، وأمن وأمان، وعمل وأجر يومي، ورسالة.</p><p>كل هذا لأنه قال: ﴿رَبِّ إِنِّي لِمَا أَنزَلْتَ إِلَيَّ مِنْ خَيْرٍ فَقِيرٌ﴾ طالع من قلبه.</p><p>النبي عليه الصلاة والسلام قال: «عجباً لأمر المؤمن، إن أمره كله خير، إن أصابته سرّاء شكر فكان خيراً له، وإن أصابته ضرّاء صبر فكان خيراً له، وما كان ذاك إلا للمؤمن».</p></div></details>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/wasiat-kull-shay.jpg" aria-label="فيديو وسعت كل شيء">
+              <source src="assets/wasiat-kull-shay.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى إيماني</span>
+              <span class="v-dur">1:46</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">وسعت كل شيء</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">ضباب</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">رحمة</span></div>
+            <p class="text-white/70 leading-relaxed">مشاهد هادئة في ضباب الفجر، بضوء دافئ وعناصر بسيطة، عن سعة رحمة الله وأنه لا يتعاظمه ذنب.</p>
+            <div class="v-idea"><span>الفكرة</span><p>رحمة الله وسعت كل شيء وأنت شيء منها: لا تقنط ولا تسئ الظن بربك، فهو ينتظر توبتك ويبدّل السيئات حسنات.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>﴿وَرَحْمَتِي وَسِعَتْ كُلَّ شَيْءٍ﴾.. أنت شيء، مستحيل ما تسعك.</p><p>أكبر جريمة يرتكبها الإنسان أن يسيء الظن بربه.</p><p>لا تقنط، لا تقنط، لا تيأس.</p><p>لو كل المجتمع كله والناس وقفوا ضدك، والظروف صارت أقوى منك.. ما يضرك.</p><p>فيه واحد بس كان ولا زال وسيظل يستمع إليك، يستمع إليك جيداً.</p><p>اللي ينتظرك هو ربك، بس يبي منك التفاتة، يبي يسمع صوتك.</p><p>ما تصوم ولا تصلي؟ الموضوع بسيط، صح أنه كبير لكن بيصير بسيط: تتوب، وتبدأ تصوم وتصلي، واللي فاتك الحمد لله، نسأل أهل العلم المفتين.. ولا تخاف، لها ألف حل.</p><p>لكن الله سبحانه وتعالى عليم، حكيم، خبير، رؤوف، رحيم. الله لطيف بعباده، هو البر الرحيم سبحانه.</p><p>يقول سبحانه: ﴿قُلْ يَا عِبَادِيَ الَّذِينَ أَسْرَفُوا عَلَىٰ أَنفُسِهِمْ لَا تَقْنَطُوا مِن رَّحْمَةِ اللَّهِ إِنَّ اللَّهَ يَغْفِرُ الذُّنُوبَ جَمِيعًا إِنَّهُ هُوَ الْغَفُورُ الرَّحِيمُ﴾</p><p>الله سبحانه وتعالى يقول في سورة الفرقان: ﴿إِلَّا مَن تَابَ وَآمَنَ وَعَمِلَ عَمَلًا صَالِحًا فَأُولَٰئِكَ يُبَدِّلُ اللَّهُ سَيِّئَاتِهِمْ حَسَنَاتٍ وَكَانَ اللَّهُ غَفُورًا رَّحِيمًا﴾</p></div></details>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى إيماني">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/lahzat-sidq.jpg" aria-label="فيديو بلحظة صدق">
+              <source src="assets/lahzat-sidq.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى إيماني</span>
+              <span class="v-dur">2:23</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">بلحظة صدق</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">كنتسوجي</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">توبة</span></div>
+            <p class="text-white/70 leading-relaxed">إناء خزفي يتشقق بالمعاصي ثم يُرمّم بخطوط الذهب، فيصير أجمل مما كان، كما تفعل التوبة الصادقة.</p>
+            <div class="v-idea"><span>الفكرة</span><p>التوبة الصادقة تهدم سنوات من المعاصي في لحظة، فباب التوبة أوسع باب، والله الغني هو الذي يبادر عبده الفقير وينزل كل ليلة: هل من تائب؟</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>سؤالي لك يا بو راشد: عشر سنوات يعصي، كم سنة يحتاج للتوبة؟</p><p>من باب العدل.. من باب العدل: العشرة بعشر، عشرة بعشر، معصية.. يوم بيوم.</p><p>ولكن الكريم جل في علاه يهدم عشر سنوات من المعاصي بلحظة صدق مع الله عز وجل.</p><p>بلحظة.. حتى مو بيوم. بلحظة صدق، مش يوم، مش ساعة.. بلحظة صدق.</p><p>جلس في الليل، شاف الماضي، شاف سيئاته.. وش كسب منها؟ غير حسرات.</p><p>وش كسب من المعاصي؟ غير البعد عن الله عز وجل، ظلمة في الوجه، ضيق في الصدر.. هكذا هي المعصية.</p><p>توجّه لله عز وجل: يا رب، أنا العاصي، ومن للعاصي غير الغفور الرحيم سبحانه؟</p><p>يا رب، كل الأبواب غُلّقت إلا بابك. باب التوبة مفتوح، باب التوبة أوسع باب.</p><p>يا رب، أنا عبدك الضعيف. يا رب، أنت لما خلقتني قلت: ﴿وَخُلِقَ الْإِنسَانُ ضَعِيفًا﴾</p><p>يا رب، أنا هذا الإنسان الضعيف. يا رب، أنا ما عندي أحد غيرك، ما لجأت لأحد غيرك.</p><p>يا رب، رجعت لك بهذه المعاصي، يا رب اغفرها لي.</p><p>فتأتي الكرامة من الله سبحانه وتعالى: يغفرها لك.. يغفرها لك.</p><p>يا بو راشد، إذا أنا بكلمك عن التوبة فأنا في الحقيقة أكلمك عن ربٍّ رحيم، كريم، غفور، ودود.. ما خلقني ليعذبني. إن كانت هناك معصية فقد فتح لي أبواباً وأبواباً للمغفرة.</p><p>يا بو راشد أسألك سؤال: من يبادر؟ الفقير يبادر الغني ولا الغني يبادر الفقير؟</p><p>المفروض.. الفقير، الفقير اللي يجي، يمد يده.. يا بو راشد.</p><p>لكن الملك جل في علاه يبسط يده بالليل ليتوب مسيء النهار، ويبسط يده بالنهار ليتوب مسيء الليل.</p><p>الله يبادر لك.. الله ينزل إلى السماء الدنيا: هل من تائب فأغفر له؟</p><p>يا الله! هو الغني جل في علاه، ينزل لي أنا.. المذنب المقصّر، المذنب المقصّر.</p><p>هل من تائب أتوب عليه؟ هل من مستغفر أغفر له؟ هل من سائل فأعطيه؟</p><p>هذا هو ربي.</p></div></details>
+          </div>
+        </article>
+          </div>
+        </div>
+        <div id="v-poems" class="v-sec">
+          <div class="v-sec-head">
+            <h3>قصائد <span>7</span></h3>
+            <p>قصائد فصيحة ونبطية تتحول أبياتها إلى مشاهد متحركة.</p>
+          </div>
+          <div class="flex flex-wrap justify-center gap-8">
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/qadi-alhob.jpg" aria-label="فيديو قاضي الحب">
+              <source src="assets/qadi-alhob.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">قصائد</span>
+              <span class="v-dur">1:09</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">قاضي الحب</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">موشن جرافيك</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">قصيدة</span></div>
+            <p class="text-white/70 leading-relaxed">مسرح عربي بستارته الحمراء وفوانيسه، تتحرك فيه أبيات القصيدة مع الإيقاع لتتحول الكلمات إلى مشهد يُروى.</p>
+            <div class="v-idea"><span>الفكرة</span><p>قصيدة عفيف الدين التلمساني في الحب والوجد: محبّ يشكو أحبته إلى «قاضي الحب»، ويقدّم شهوده من السهر والشوق والدمع، ثم يدخل عليهم بالشفيع.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>تملّكتمُ عقلي وطرفي ومسمعي</p><p>وروحي وأحشائي وكلّي بأجمعي</p><p>وتيّهتموني في بديعِ جمالكم</p><p>فلم أدرِ في بحرِ الهوى أينَ موضعي</p><p>وأوصيتموني لا أبوحَ بسرّكم</p><p>فباحَ بما أُخفي تفيضُ أدمعي</p><p>ولمّا فني صبري وقلّ تجلّدي</p><p>وفارقني نومي وحُرّمتُ مضجعي</p><p>أتيتُ لقاضي الحبِّ قلتُ: أحبّتي</p><p>جفوني، وقالوا: أنتَ في الحبِّ مُدّعي</p><p>وعندي شهودٌ للصبابةِ والأسى</p><p>يزكّون دعوايَ إذا جئتُ أدّعي</p><p>سهادي ووجدي واشتياقي ولوعتي</p><p>وشوقي وسقمي واصفراري وأدمعي</p><p>ومن عجبٍ أنّي أحنُّ إليهمُ</p><p>وأسألُ شوقاً عنهمُ وهمُ معي</p><p>وتبكيهمُ عيني وهم في سوادِها</p><p>ويشكو النوى قلبي وهم بين أضلعي</p><p>فإن طالبوني في حقوقِ هواهمُ</p><p>أقولُ: فقيرٌ.. لا عليّ ولا معي</p><p>وإن سجنوني في سجونِ جفاهمُ</p><p>دخلتُ عليهم بالشفيعِ المشفّعِ</p></div></details>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/aldurar.jpg" aria-label="فيديو الدُّرر">
+              <source src="assets/aldurar.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">قصائد</span>
+              <span class="v-dur">0:23</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">الدُّرر</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">شعر فصيح</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">ذهبي</span></div>
+            <p class="text-white/70 leading-relaxed">بوصلة ونجوم وموج بخطوط ذهبية على أزرق ملكي، تجسّد الأبيات الشهيرة عن نجوم السماء ودُرر البحر في مشهد فاخر.</p>
+            <div class="v-idea"><span>الفكرة</span><p>أبيات في الثبات أمام من يعيّر بتقلّب الزمان: البحر تطفو فوقه الجيف وتستقر الدرر في قاعه، والكسوف لا يصيب إلا الشمس والقمر.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>قل للذي بصروفِ الدهرِ عيّرنا</p><p>هل حاربَ الدهرُ إلا من له خطرُ؟</p><p>أما ترى البحرَ تعلو فوقه جيفٌ</p><p>وتستقرُّ بأقصى قعرِه الدررُ؟</p><p>فإن تكن عبثت أيدي الزمانِ بنا</p><p>ونالنا من تمادي بؤسِه الضررُ</p><p>ففي السماءِ نجومٌ لا عدادَ لها</p><p>وليس يُكسفُ إلا الشمسُ والقمرُ</p></div></details>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/akhawi-alsabr.jpg" aria-label="فيديو أخاوي الصبر">
+              <source src="assets/akhawi-alsabr.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">قصائد</span>
+              <span class="v-dur">0:43</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">أخاوي الصبر</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">زجاج معشّق</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">قصيدة</span></div>
+            <p class="text-white/70 leading-relaxed">نوافذ من الزجاج المعشّق داخل أقواس حجرية، كل نافذة تروي مشهداً من القصيدة بطابع كلاسيكي وحركة حديثة.</p>
+            <div class="v-idea"><span>الفكرة</span><p>قصيدة نبطية عن ترك المغريات وتهذيب النفس: طريق يبدأ بالياسمين وينتهي بالسراب والطين، حتى تؤدّب الليالي صاحبه ويصير الصبر رفيقه.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>يا ما من المغريات.. اللي تركته وراي</p><p>كنت أوّل أطرد هوى بالي.. وحرزه مكين</p><p>بي عنفوان الشباب.. اللي يطوّل مداي</p><p>أطالع الدرب وان شفت.. أوّله ياسمين</p><p>أسوقها ما نشدت.. اللي مع الدرب جاي</p><p>والقى بنصفه سراب.. وباخر الدرب طين</p><p>وارجع أعيد الخطا.. من كبريائي وعياي</p><p>لين أدّبتنا الليالي.. وعسّفتنا السنين</p><p>وبديت أسيطر على نفسي.. وأخالف هواي</p><p>وان جيت وارد نشدت.. اللي هنا صادرين</p><p>وجمعت لي كم راي.. وفوقهن جبت راي</p><p>وأجنّب اللي تبي نفسي.. ولو هو ثمين</p><p>يا ما من المغريات.. اللي تركته وراي</p><p>أخاوي الصبر.. وانّ الله مع الصابرين</p><p>لين أصبح الصبر خوي.. والصابرين أخوياي</p></div></details>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/ya-rafiqi.jpg" aria-label="فيديو يا رفيقي">
+              <source src="assets/ya-rafiqi.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">قصائد</span>
+              <span class="v-dur">0:35</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">يا رفيقي</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">نيون</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">صداقة</span></div>
+            <p class="text-white/70 leading-relaxed">لافتات نيون مضيئة على جدار من الطوب، تحتفي برفقة السنين بأيقونات تلمع وكلمات تتوهج مع كل بيت.</p>
+            <div class="v-idea"><span>الفكرة</span><p>قصيدة نبطية في الوفاء لرفيق العمر: ثماني سنوات من الذكريات والتضحيات، ووصية أخيرة ألا يتبع الصديق من يطيح من عينه.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>وانا يا رفيقي مَضَت لي ثمان سنين</p><p>من أغلى سنين العمر ومن أجمل سنينه</p><p>على تضحيات وذكريات وسوالف في عين</p><p>وحبٍّ فقدته ما قدرت أقول لك وينه</p><p>طريقٍ انت شايفه ولا عاد به يزين</p><p>ومليت من كثرة أعاديه ومحبّينه</p><p>الشي المهم انك من أصحابي الغالين</p><p>اللي مستحيل أرضى لها الحزن والشينه</p><p>نصيحة وجه الله: لا تتبع المقفّين</p><p>ترى من تبع له مقفّين طاح من عينه</p></div></details>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/wajhain.jpg" aria-label="فيديو وجهين">
+              <source src="assets/wajhain.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">قصائد</span>
+              <span class="v-dur">1:00</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">وجهين</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">تايبوغرافي</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">عتاب</span></div>
+            <p class="text-white/70 leading-relaxed">فوانيس معلّقة وخط عربي على خلفية داكنة، تتصاعد فيه الكلمات بين العتاب والهجر بإيقاع يشدّ المستمع حتى آخر بيت.</p>
+            <div class="v-idea"><span>الفكرة</span><p>قصيدة نبطية عن الحب والشوق والهجر، يلقيها الشاعر في لقاء ويحكي موقفها: حبٌّ ظن أنه سينساه فبقي معه في الطريق وفي الضحك والبكاء.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>يا حب توقّعت انّ الليالي تنسّيني</p><p>على بالي انك من الحال.. على بالي</p><p>لها الحين اجي دربٍ معك قبل كنت اجيه</p><p>على جرحك جريت قلبي ومواليه</p><p>يا حب الطريق اللي يوصّلك يمشّيني</p><p>همومٍ تضايقني وتتعدّى وتنسالي</p><p>وحبّ المكان اللي يجي مع غالي بغاليه</p><p>لو أموت ما جيت بحدّ غير بعيالي</p><p>على ضيم هجرك مرّة في الحسّ ما يمتلّ</p><p>الشوق صدّك.. الله يحييك ويحييه</p><p>وصرت أسوّي حزنك وصرت أخفيه</p><p>وكان الكل ما يعرف حوالي</p><p>وعاد أضحك لطيفك مع الناس في اللقيّة</p><p>وأروح أضحك لحالي.. وأروح أبكي</p></div></details>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/ahinnu-ila-alhijaz.jpg" aria-label="فيديو أحنّ إلى الحجاز">
+              <source src="assets/ahinnu-ila-alhijaz.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">قصائد</span>
+              <span class="v-dur">0:35</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">أحنّ إلى الحجاز</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">ورق مقصوص</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">حنين</span></div>
+            <p class="text-white/70 leading-relaxed">طبقات من الجبال بأسلوب الورق المقصوص وألوان دافئة، تستحضر الحنين إلى الحجاز وتجمع بين الكلمة والمكان.</p>
+            <div class="v-idea"><span>الفكرة</span><p>أبيات في الحنين إلى نجد ودموع الشوق: نظرة لا تنفع صاحبها لكنه يعود ينظر، ودمع ليس ماءً بل نفسٌ تذوب وتقطر.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>أحنُّ إلى أرضِ الحجازِ وحاجتي</p><p>خيامٌ بنجدٍ دونها الطرفُ يقصرُ</p><p>وما نظري من نحوِ نجدٍ بنافعي</p><p>أجلْ لا.. ولكنّي على ذاكَ أنظرُ</p><p>أفي كلّ يومٍ عبرةٌ ثمّ نظرةٌ</p><p>لعينيكَ يجري ماؤها يتحدّرُ</p><p>متى يستريحُ القلبُ؟ إمّا مجاورٌ</p><p>حزينٌ وإمّا نازحٌ يتذكّرُ</p><p>يقولونَ كم تجري مدامعُ عينِه</p><p>لها الدهرَ دمعٌ واكفٌ يتحدّرُ</p><p>وليسَ الذي يجري من العينِ ماؤها</p><p>ولكنّها نفسٌ تذوبُ وتقطرُ</p></div></details>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="قصائد">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/yawm-alfiraq.jpg" aria-label="فيديو يوم الفراق">
+              <source src="assets/yawm-alfiraq.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">قصائد</span>
+              <span class="v-dur">0:34</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">يوم الفراق</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">درامي</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">أجواء</span></div>
+            <p class="text-white/70 leading-relaxed">أجواء ممطرة وألوان باردة تعكس ثقل الوداع، مع كتابة متحركة تتناغم مع نبرة الإلقاء ولحظاته.</p>
+            <div class="v-idea"><span>الفكرة</span><p>أبيات لأبي تمّام عن ألم الفراق: يوم طويل لا يُبقي صبراً ولا عقلاً، ودمعٌ أصعب ردّاً من الفرس الجموح، وسماءٌ تبكي بكرةً وأصيلاً.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>يومُ الفراقِ لقد خُلقتَ طويلا</p><p>لم تُبقِ لي جَلَداً ولا معقولا</p><p>لو حارَ مرتادُ المنيّةِ لم يجدْ</p><p>إلا الفراقَ إلى النفوسِ سبيلا</p><p>قالوا الرحيلُ فما شككتُ بأنّها</p><p>نفسي عن الدنيا تريدُ رحيلا</p><p>الصبرُ أجملُ غيرَ أنّ تلذّذاً</p><p>في الحبّ أحرى أن يكونَ جميلا</p><p>أتظنّني أجدُ السبيلَ إلى العزا</p><p>وجدَ الحِمامُ إذن إليّ سبيلا</p><p>ردُّ الجَموحِ الصعبِ أسهلُ مطلباً</p><p>من ردّ دمعٍ قد أصابَ مسيلا</p><p>ذكرتكمُ الأنواءُ ذكري بعدكم</p><p>فبكتْ عليكم بُكرةً وأصيلا</p></div></details>
+          </div>
+        </article>
+          </div>
+        </div>
+        <div id="v-finance" class="v-sec">
+          <div class="v-sec-head">
+            <h3>محتوى مالي <span>2</span></h3>
+            <p>معلومات مالية واستثمارية تصير الأرقام فيها هي البطل.</p>
+          </div>
+          <div class="flex flex-wrap justify-center gap-8">
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى مالي">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/reit-funds.jpg" aria-label="فيديو صناديق الريت">
+              <source src="assets/reit-funds.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى مالي</span>
+              <span class="v-dur">1:20</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">صناديق الريت</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">ماكيت معماري</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">استثمار</span></div>
+            <p class="text-white/70 leading-relaxed">ماكيت أبيض لمدينة الرياض تنقسم فيه الكتلة العقارية الكبيرة إلى وحدات صغيرة، والأرقام هي البطل: كيف تستثمر في العقار بدون مليون.</p>
+            <div class="v-idea"><span>الفكرة</span><p>تعريف مبسّط بصناديق الريت العقارية: تقدر تستثمر في العقار بدون مليون ريال، وقد يكون عائد الصندوق أعلى من امتلاك عمارة كاملة، مع نظرة على مستقبل سوق الرياض.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>لكن اللي أعرفه شغلة بسيطة: إنه جميع الناس، أو معظم الناس، يعتقدوا أن الاستثمار في العقار يتطلب رأس مال كبير.</p><p>يقول لك مثلاً: الشقق في الرياض وصلت إلى مليون، أنا كيف؟ أنا من وين أجيب المليون؟</p><p>لا يا أخي، في عندك حاجة اسمها الصناديق العقارية.. صناديق الريت العقارية.</p><p>يعني أنت الآن لما يكون عندك عمارة.. أنا بصراحة عندي عمارة في المدينة، فدخلها 5% في السنة، تمام؟</p><p>لكن صندوق الريت مثلاً ممكن يوصل دخله إلى 8%.</p><p>يعني أنك تدخل في صندوق من صناديق الريت أو صناديق التداول العقارية أفضل من أنك تملك عمارة بأكملها، وهذه نقطة مهمة.</p><p>هذا إذا احنا تكلمنا عن العقار. العقار دائماً، وهذه معلومة عامة، يعتمد على ارتفاع الزيادة السكانية.</p><p>احنا نعرف الآن أنه من مشاريع الرؤية، واللي صرّح عنها سمو ولي العهد، أن سكان الرياض في المستقبل بيوصل إلى 15 مليون.</p><p>فهذا الهدف ماذا يعني؟ يعني أنهم بحاجة إلى المزيد من الوحدات العقارية.</p><p>فأنا لا أتوقع أن الذي يحدث الآن في الرياض فقاعة. قد تحدث فقاعات صغيرة من أجل جني الأرباح، ولكن الترند دائماً طالع أو في صعود بسبب زيادة عدد السكان.</p></div></details>
+          </div>
+        </article>
+        <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="محتوى مالي">
+          <div class="vcard" data-vcard>
+            <video preload="none" playsinline poster="assets/nisab-alnajah.jpg" aria-label="فيديو نسب النجاح">
+              <source src="assets/nisab-alnajah.mp4" type="video/mp4" />
+              متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="v-overlay">
+              <span class="v-num">محتوى مالي</span>
+              <span class="v-dur">1:00</span>
+              <span class="v-play"><i class="fa-solid fa-play"></i></span>
+              <h3 class="text-2xl font-extrabold">نسب النجاح</h3>
+            </div>
+          </div>
+          <div class="pt-5 px-1">
+            <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">مختبر</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">ريادة أعمال</span></div>
+            <p class="text-white/70 leading-relaxed">مختبر علمي بكؤوس قياس وسوائل ملونة، كل نسبة تتحول إلى سائل يملأ الكأس حتى علامتها، والمقارنة بين العاديين والأثرياء تجربتان على طاولتين.</p>
+            <div class="v-idea"><span>الفكرة</span><p>دراسة تقارن بين أصحاب المشاريع العاديين والأثرياء: نفس المكونات لكن بنسب مختلفة، فالأثرياء يركزون على التسويق قبل التشغيل.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>في دراسة أمريكية طلعت عليها، شافوا ناس قاعدين ينجحون في مشاريعهم، ومشاريعهم قاعدة.. خلينا نقول أثرياء.</p><p>وركّزوا على الناس العاديين اللي يا الله يوصلون نقطة التعادل، يمكن يحققون الربح ويمكن ما يحققون.</p><p>وجدوا الناس العاديين اللي ما يحققون أرباح كبيرة ولا يقدرون يتوسعون: مركّزين على التسويق بنسبة 10%، وعلى التشغيل بنسبة 65%، وعلى الإنتاج بنسبة 25%.</p><p>راحوا بالنقيض إلى الناس الأثرياء اللي قاعدين اليوم يتوسعون ويربحون: مركّزين على التسويق بنسبة 65%، وعلى التشغيل بنسبة 10%، وعلى الإنتاج نفسه 25%.</p><p>أنا اليوم ما أقول لك لا تركز على التشغيل، فوّضه لشخص آخر.</p><p>في البداية لا بد تكون عندك الخبرة الفنية، بعدين لازم تخلي شخص آخر يقوم بهذا الشيء.</p></div></details>
+          </div>
+        </article>
+          </div>
+        </div>
+        <div id="v-ads" class="v-sec">
+          <div class="v-sec-head">
+            <h3>إعلانات <span>8</span></h3>
+            <p>إعلانات تعريفية وتوعوية لقنوات ومبادرات وخدمات.</p>
+          </div>
+          <div class="flex flex-wrap justify-center gap-8">
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
           <div class="vcard" data-vcard>
             <video preload="none" playsinline poster="assets/riyadh-alsaliheen-3.jpg" aria-label="فيديو رياض الصالحين · وقفات إيمانية">
@@ -994,6 +1327,8 @@
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">إعلان قناة</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">هوية</span></div>
             <p class="text-white/70 leading-relaxed">إعلان تعريفي لقناة رياض الصالحين بإضاءة ذهبية وشعار متوهّج، يعرض محتوى القناة من وقفات قرآنية وتسبيح واستغفار.</p>
+            <div class="v-idea"><span>الفكرة</span><p>إعلان تعريفي يدعو لمتابعة قناة رياض الصالحين على واتساب، ويعرض ما تقدمه من آيات وأحاديث موثقة وأقوال للعلماء.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>هل تبحث عن تذكير يقرّبك من الله؟</p><p>في قناة رياض الصالحين نشاركك وقفات إيمانية مع آيات القرآن الكريم، وأحاديث نبوية مع مصادرها، وأقوالاً نافعة للعلماء.</p><p>رسائل تذكّرك بالتسبيح والاستغفار، وتعينك على التوكل والإخلاص، وتقرّب إليك معاني الخير والطمأنينة.</p><p>تابع قناة رياض الصالحين على واتساب، وكن قريباً من التذكير النافع.</p><p>انضم إلينا عبر الرابط الظاهر أمامك.</p></div></details>
           </div>
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
@@ -1012,6 +1347,8 @@
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">إعلان قناة</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">دعوة</span></div>
             <p class="text-white/70 leading-relaxed">شمس تعبر قوساً هادئاً وبوابة خضراء مضيئة، برسالة تدعو المشاهد ليجعل للتذكير مكاناً ثابتاً في يومه.</p>
+            <div class="v-idea"><span>الفكرة</span><p>إعلان يقدّم القناة كتذكير يومي يرافقك، ويدعو لجعل التذكير جزءاً من اليوم.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>هل تحتاج إلى تذكير يرافق يومك؟</p><p>في قناة رياض الصالحين تصلك وقفات مع آيات القرآن الكريم، وأحاديث نبوية مع مصادرها، وأقوال نافعة للعلماء.</p><p>وتجد رسائل تذكّرك بالتسبيح والاستغفار، وتعينك على التوكل والإخلاص.</p><p>اجعل للتذكير مكاناً في يومك، وتابع قناة رياض الصالحين على واتساب.</p><p>انضم إلينا عبر الرابط الظاهر أمامك.</p></div></details>
           </div>
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
@@ -1030,6 +1367,8 @@
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">إعلان قناة</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">سينمائي</span></div>
             <p class="text-white/70 leading-relaxed">ممر من الأقواس الخضراء والذهبية تعبره المصاحف والمخطوطات نحو الشعار، بإخراج سينمائي ينتهي بدعوة للمتابعة.</p>
+            <div class="v-idea"><span>الفكرة</span><p>إعلان يعرض تنوّع محتوى القناة: رسائل إيمانية، وأذكار وأدعية، وفوائد ومواقف من السيرة، ومحتوى للمناسبات.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>هل تبحث عن محتوى ديني متنوع يرافق يومك؟</p><p>في قناة رياض الصالحين نشاركك رسائل إيمانية، وتذكيراً بالقرآن الكريم، وأحاديث نبوية، وأذكاراً وأدعية مأثورة.</p><p>ونقدم فوائد دينية، ومواقف من السيرة النبوية، وتذكيراً بالعبادات والأخلاق، ومحتوى نافعاً في مختلف المناسبات.</p><p>تابع قناة رياض الصالحين على واتساب، وكن قريباً من كل ما يذكّرك بالخير.</p><p>انضم إلينا عبر الرابط الظاهر أمامك.</p></div></details>
           </div>
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
@@ -1048,6 +1387,8 @@
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">إعلان قناة</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">فسيفساء</span></div>
             <p class="text-white/70 leading-relaxed">بلاطات فسيفساء ثُمانية بالأخضر والذهبي تنقلب لتكشف أقسام القناة: الآيات والتسبيح والأذكار.</p>
+            <div class="v-idea"><span>الفكرة</span><p>إعلان يقدّم القناة كرسالة خير وسط زحام الرسائل اليومية.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>في زحام الرسائل، تبقى الرسالة التي تذكّرك بالخير قريبة من القلب.</p><p>في قناة رياض الصالحين نشاركك آيات من القرآن الكريم، وأحاديث نبوية مع مصادرها، وأقوالاً نافعة للعلماء.</p><p>وبين التسبيح والاستغفار، ومعاني التوكل والإخلاص، تجد تذكيراً يعينك على استحضار الخير في يومك.</p><p>تابع قناة رياض الصالحين على واتساب، واجعل للتذكير مساحة في يومك.</p><p>انضم إلينا عبر الرابط الظاهر أمامك.</p></div></details>
           </div>
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
@@ -1066,6 +1407,8 @@
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">إعلان قناة</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">مسطّح</span></div>
             <p class="text-white/70 leading-relaxed">تصميم مسطّح أنيق بألوان هادئة، يعرّف بمحتوى القناة: آيات من القرآن، ومواقف من السيرة، وتذكير بالعبادات والأخلاق.</p>
+            <div class="v-idea"><span>الفكرة</span><p>إعلان بأسلوب هادئ يعرّف بأقسام القناة وينتهي بشعارها: رسائل تذكّر بالخير.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>من بين الرسائل التي تمر بك كل يوم، قد تجد رسالة تذكّرك بما ينفع قلبك:</p><p>آية من القرآن، وحديثاً نبوياً مع مصدره، وذكراً أو دعاءً مأثوراً، وفائدة من كلام أهل العلم.</p><p>في قناة رياض الصالحين نشارك رسائل إيمانية، ومواقف من السيرة، وتذكيراً بالعبادات والأخلاق.</p><p>تابعنا على واتساب، واجعل للتذكير مساحة في يومك.</p><p>رياض الصالحين.. رسائل تذكّر بالخير.</p></div></details>
           </div>
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
@@ -1084,6 +1427,8 @@
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">إعلان قناة</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">ثلاثي الأبعاد</span></div>
             <p class="text-white/70 leading-relaxed">منصّات ثلاثية الأبعاد بعناصر إسلامية من هلال وفانوس ومصحف، تعرض أقسام القناة من السنة والعبادة والأخلاق.</p>
+            <div class="v-idea"><span>الفكرة</span><p>إعلان عن لحظة تذكير وسط انشغال اليوم، ويدعو لمتابعة القناة لعل رسالة نافعة تصل في وقتها.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>وسط انشغال اليوم، لحظة تذكير قد تغيّر نظرتك:</p><p>آية نتدبّر معناها، وحديث نتعلّم منه، وذكر يطمئن القلب، وفائدة تقرّبنا من الخير.</p><p>في قناة رياض الصالحين تجد رسائل دينية متنوعة من القرآن والسنة وأقوال أهل العلم، ومواقف من السيرة، ونصائح تعين على العبادة وحسن الخلق.</p><p>افتح واتساب وتابع قناة رياض الصالحين، لعلّ رسالة نافعة تصلك في وقت تحتاجها.</p></div></details>
           </div>
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
@@ -1102,6 +1447,8 @@
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">تعليق صوتي</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">خدمات</span></div>
             <p class="text-white/70 leading-relaxed">إعلان لخدمات التعليق الصوتي بتصميم داكن وذهبي، يستعرض مجالات العمل من الإعلانات إلى المحتوى الرقمي بإيقاع يحافظ على الانتباه.</p>
+            <div class="v-idea"><span>الفكرة</span><p>إعلان لخدمات التعليق الصوتي لمحمد ناجي: يوضح أن الصوت ليس مجرد قراءة، ويعرض مجالات العمل وخطوات التنفيذ وطريقة التواصل. (الفيديو بدون كلام منطوق، والنص هو المكتوب على الشاشة).</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>رسالتك..</p><p>محمد ناجي - خدمات التعليق الصوتي</p><p>الأفلام التعريفية - المحتوى الرقمي</p><p>ليست مجرد قراءة..</p><p>نبرة - إيقاع</p><p>فهم الرسالة - تحديد الأداء - تسجيل واضح</p><p>للتواصل والحجز: 0503829605</p></div></details>
           </div>
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="إعلانات">
@@ -1120,8 +1467,18 @@
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">حملة توعوية</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">موشن جرافيك</span></div>
             <p class="text-white/70 leading-relaxed">عمل توعوي ضمن مبادرة «بلاغ» الأمنية، يشرح خطوات التعامل مع الأجسام والتصرفات المشبوهة (لاحِظ، ابتعِد، بلِّغ، لا تُشِع) بتصميم واضح ورسالة مسؤولة.</p>
+            <div class="v-idea"><span>الفكرة</span><p>عمل توعوي ضمن مبادرة «بلاغ» يشرح أربع خطوات عند ملاحظة جسم مشبوه أو خطر: لاحظ، ابتعد، بلّغ، لا تُشِع. (الفيديو بدون كلام منطوق، والنص هو المكتوب على الشاشة).</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>مبادرة بلاغ</p><p>قبل أن يصبح الخطر خبراً</p><p>قد تبدأ الحكاية بتفصيل صغير.. وتنتهي ببلاغ يحمي وطناً.</p><p>01 | لاحظ: جسمٌ مشبوه، تصرّفٌ مريب، أو مؤشّرُ خطر.. لا تتجاهل ما قد يهدد سلامة الآخرين.</p><p>02 | ابتعِد: سلامتك أولاً؛ لا تقترب من الأجسام المشبوهة، ولا تحاول لمسها أو التعامل معها.</p><p>03 | بلِّغ: انقل ملاحظتك إلى الجهات المختصة عبر القنوات الرسمية، بمعلومات دقيقة ودون أن تعرّض نفسك للخطر.</p><p>04 | لا تُشِع: لا تنشر الشائعات أو المقاطع غير الموثّقة؛ فالمعلومة الخاطئة قد تُربك الاستجابة وتضاعف القلق.</p><p>البلاغ مسؤولية.. والوعي وقاية.</p><p>فقد تكون ملاحظتك اليوم سبباً في حماية أرواح غداً.</p></div></details>
           </div>
         </article>
+          </div>
+        </div>
+        <div id="v-montage" class="v-sec">
+          <div class="v-sec-head">
+            <h3>مونتاج <span>3</span></h3>
+            <p>مقاطع بودكاست وصنّاع محتوى بعد المونتاج.</p>
+          </div>
+          <div class="flex flex-wrap justify-center gap-8">
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="مونتاج">
           <div class="vcard" data-vcard>
             <video preload="none" playsinline poster="assets/montage-ameer.jpg" aria-label="فيديو مونتاج بودكاست · أمير أو أسير">
@@ -1138,6 +1495,8 @@
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">قبل وبعد</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">بودكاست</span></div>
             <p class="text-white/70 leading-relaxed">مقارنة قبل وبعد لمقطع بودكاست: من لقطة خام إلى مشهد متكامل بعناوين متحركة وعناصر جرافيك توضّح الفكرة وتشدّ المشاهد.</p>
+            <div class="v-idea"><span>الفكرة</span><p>مونتاج لمقطع بودكاست عن ثلاثية العلاقات: الناس بين أمير وأسير ونظير، وأن الإنسان ما دام حياً فهو محتاج ومحتاج إليه.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>ونقلوا أيضاً عن علي رضي الله عنه: الناس يسيرون ما بين أسير وأمير ونظير. هذه الثلاثية، نحن نعيش بهذه الطريقة.</p><p>فمن أحسنت إليه فأنت أميره، ومن أحسن إليك فأنت أسيره، ومن استغنيت عنه فأنت نظيره.</p><p>أن تعيش دائماً أميراً خطأ، لأنك سترهق وستشعر بالخذلان.</p><p>أن تعيش دائماً أسيراً هذا خطأ، والناس سترميك في مكب النفايات البشرية ولا يريدك أحد.</p><p>أن تعيش دائماً نظيراً فأنت تتحدى الطبيعة البشرية؛ طبيعة البشر أنك لا بد أن تحتاج إلى أحد.</p><p>لما دعا ذلك الرجل فقال: اللهم لا تحوجني لأحد من خلقك، قال الإمام أحمد رحمه الله: هذا إنسان دعا على نفسه بالهلاك.</p><p>اللي ما يحتاج أحد هو اللي بيموت.. لكن طالما أنك تعيش، أنت محتاج ومحتاجون إليك.</p></div></details>
           </div>
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="مونتاج">
@@ -1156,6 +1515,8 @@
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">قبل وبعد</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">محتوى قصير</span></div>
             <p class="text-white/70 leading-relaxed">تحويل حوار بودكاست إلى مقطع قصير جذّاب، بنصوص متحركة وأيقونات تبرز أهم اللحظات وتحافظ على إيقاع القصة.</p>
+            <div class="v-idea"><span>الفكرة</span><p>مونتاج لمقطع بودكاست يحكي فيه الضيف قصة أول فعالية تكلم فيها بدون شرائح، وكيف تعلّم الاسترسال والارتجال في الأفكار.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>أنا بصراحة يدهشني أكتر.. ما شاء الله.</p><p>ثمانية وعشرين دقيقة ولا نص ساعة.. إزاي بتعدّي الموضوع ده؟ الاسترسال في الأفكار والانتقال من الفكرة للتانية بدون توقف، بدون ما تقف تفكر.. بتعملها إزاي؟</p><p>الموضوع بدأ معايا من الإيفنتات. أول إيفنت في حياتي، وأنا ما عملتش إيفنتات كتير، إنت ممكن تكون عملت إيفنتات أكتر مني.</p><p>أول إيفنت في حياتي مستني السلايد.. ما جاش السلايد.</p><p>طب أقول إيه دلوقتي؟ المهم افتكرت رؤوس الأقلام بس، أول تايتل افتكرته واتكلمت عنه ونسيت الباقي، فرحت قايل حاجات مختلفة تماماً عن السلايد.. وربنا ستر ومشيت.</p><p>في ناس وأنا بشرح يقولي: لو سمحت ورّينا التطبيق شكله إيه في الأول.</p><p>أقول: والله أنا مش عارف التطبيق شكله إيه، أنا بعمله وأنا بسجّل.</p><p>يعني مفيش سكريبت والتصميم جاهز وإنت بتكوّده قدامنا؟</p><p>أقول: لأ والله العظيم بعمله معاك، وبتيجي لي أفكار وأنا بسجّل.</p></div></details>
           </div>
         </article>
         <article class="v-item w-full max-w-sm sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]" data-cat="مونتاج">
@@ -1174,8 +1535,12 @@
           <div class="pt-5 px-1">
             <div class="flex flex-wrap gap-2 mb-3"><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">قبل وبعد</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-olive-muted">رياضي</span></div>
             <p class="text-white/70 leading-relaxed">مقطع رياضي لصانع محتوى بمونتاج سريع وعناوين نارية وألوان حيّة، يرفع طاقة الفيديو ويجعله مناسباً لمنصات التواصل.</p>
+            <div class="v-idea"><span>الفكرة</span><p>مونتاج رياضي لصانع محتوى يحكي كيف قاده سؤال لأصحابه عن أفضل لاعب في التاريخ إلى مشاهدة مباراة كاملة لزيدان.</p></div>
+            <details class="v-text"><summary><i class="fa-solid fa-align-right"></i> نص الفيديو</summary><div class="v-text-body"><p>السلام عليكم. كنت طالع مع الشباب وسألت كل واحد فيهم: من هو أفضل لاعب في التاريخ بالنسبة لك؟</p><p>طبعاً أغلبهم جابوا.. اللي يقول كريستيانو واللي يقول ميسي، ما عدا واحد فقط طلع عن المألوف، قال: أنا بالنسبة لي أفضل لاعب في التاريخ هو زين الدين زيدان.</p><p>قلت: لحظة، أنت الحين طلعت عن المألوف، ليش اخترت زين الدين زيدان؟ قال: عبدالله، أنا حضرت فترة زيدان، هذا اللاعب من عالم ثاني، من كوكب آخر.</p><p>المهم رجعت البيت وجاني فضول أبي أشوف وش سوّى زيدان في مباراة وحدة بس. أبي أشوف المباراة تسعين دقيقة، مش ملخص ولا أهداف.. لا لا، تسعين دقيقة.</p><p>دخلت وتابعت المباراة.. بصراحة والله العظيم يا جماعة، أول ما خلصت التسعين دقيقة كلمت صاحبي هذا، قلت له: يا ولد، أنت محظوظ في هذه الدنيا، جداً محظوظ أنك تابعت زين الدين زيدان.</p><p>يا جماعة أنا قاعد أتكلم عن مباراة وحدة، فما بالك في مسيرة زيدان كاملة!</p><p>أدري أنك تابعت كريستيانو وتابعت ميسي، لكن إذا تابعت زيدان فأنت جداً محظوظ. إحنا مش محظوظين للأسف، أنا مواليد 2002.</p><p>محظوظ أني تابعت ميسي وكريستيانو، لكن كنت أتمنى بصراحة أني تابعت زين الدين زيدان في يوم من الأيام.</p><p>فبس.. والله يعطيكم العافية، مع السلامة.</p></div></details>
           </div>
         </article>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1371,12 +1736,13 @@
       v.addEventListener('ended', () => { v.currentTime = 0; reset(); });
     });
 
-    // فلترة الفيديوهات حسب التصنيف
+    // التنقل بين أقسام الفيديوهات
     document.getElementById('video-filters').addEventListener('click', e => {
       const b = e.target.closest('.vf-btn'); if (!b) return;
+      e.preventDefault();
       document.querySelectorAll('.vf-btn').forEach(x => x.classList.toggle('active', x === b));
-      vGrid.querySelectorAll('video').forEach(v => v.pause());
-      vGrid.querySelectorAll('.v-item').forEach(it => it.classList.toggle('hide', b.dataset.f !== 'all' && it.dataset.cat !== b.dataset.f));
+      const t = document.querySelector(b.getAttribute('href'));
+      if (t) window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
     });
   </script>
 </body>
